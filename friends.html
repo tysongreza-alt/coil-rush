@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#091321"><title>Coil Rush | Friends Lobby</title><style>*{box-sizing:border-box}body{margin:0;min-height:100dvh;background:#091321;color:#eafdf9;font:16px system-ui;padding:24px 16px}main{max-width:440px;margin:auto;background:#10243b;border:1px solid #54e6d266;border-radius:20px;padding:22px}h1{color:#60ebd7}label{display:block;margin:15px 0}input,select,button{font:inherit;width:100%;padding:12px;border-radius:10px;border:1px solid #63839a;background:#1d394f;color:white}button{background:#55e7cf;color:#082232;font-weight:800;cursor:pointer;margin:6px 0}button:disabled{opacity:.45}a{color:#60ebd7}.muted{color:#b8cbd8;font-size:13px}.hidden{display:none}ul{padding-left:22px}#status{min-height:25px;color:#fbd38d}</style><main><a href="./">← Single Player</a><h1>Play With Friends</h1><p class="muted">Private rooms for 2–8 friends. Online matches are still under development.</p><label>Your name<input id="name" maxlength="24" placeholder="Player" autocomplete="nickname"></label><label>Snake color<select id="color"><option value="0">Mint</option><option value="1">Coral</option><option value="2">Gold</option><option value="3">Purple</option><option value="4">Blue</option><option value="5">Pink</option><option value="6">Green</option><option value="7">Orange</option></select></label><label>Multiplayer server URL<input id="server" placeholder="wss://your-server.example" autocapitalize="none" spellcheck="false"></label><button id="create">Create Private Room</button><label>Friend's room code<input id="code" maxlength="6" placeholder="6-letter code" autocapitalize="characters"></label><button id="join">Join Room</button><p id="status" role="status"></p><section id="lobby" class="hidden"><h2>Room <span id="roomCode"></span></h2><button id="copy">Copy Room Code</button><ul id="players"></ul><button id="ready">Ready</button><button id="start" disabled>Start Match (Coming Soon)</button><p class="muted">Multiplayer never pauses. Opening settings or leaving the app will not stop other players.</p><button id="leave">Leave Room</button></section></main><script>
+const $=id=>document.getElementById(id),storage=localStorage;let socket=null,myId='',room=null,ready=false;
+$('name').value=storage.getItem('coilrush-mp-name')||'';
+$('color').value=storage.getItem('coilrush-snakeColor')||'0';
+$('server').value=storage.getItem('coilrush-mp-server')||'';
+const say=t=>$('status').textContent=t;
+function connect(action){
+ const name=$('name').value.trim().slice(0,24)||'Player',color=Number($('color').value),url=$('server').value.trim();
+ if(!/^wss:\/\/[a-z0-9.-]+(?::\d+)?(?:\/[^\s]*)?$/i.test(url)){say('Enter a secure wss:// server address once a multiplayer server is deployed.');return}
+ storage.setItem('coilrush-mp-name',name);storage.setItem('coilrush-snakeColor',color);storage.setItem('coilrush-mp-server',url);
+ if(socket)socket.close();
+ say('Connecting…');socket=new WebSocket(url);
+ socket.onopen=()=>{say('Connected');socket.send(JSON.stringify({...action,name,color}))};
+ socket.onmessage=e=>{let m;try{m=JSON.parse(e.data)}catch{return}
+ if(m.type==='hello')myId=m.id;
+ if(m.type==='error')say(m.message);
+ if(m.type==='room'){room=m.room;render()}
+ };
+ socket.onerror=()=>say('Unable to connect to multiplayer server.');
+ socket.onclose=()=>{room=null;$('lobby').classList.add('hidden');say('Disconnected from server.')};
+}
+function render(){
+ $('lobby').classList.remove('hidden');$('roomCode').textContent=room.code;
+ $('players').replaceChildren(...room.players.map(p=>{let li=document.createElement('li');li.textContent=p.name+(p.id===room.host?' (host)':'')+(p.ready?' ✓':'');li.style.color=['#5eead4','#fb7185','#fbbf24','#a78bfa','#60a5fa','#f472b6','#4ade80','#ff9566'][p.color]||'white';return li}));
+ ready=!!room.players.find(p=>p.id===myId)?.ready;$('ready').textContent=ready?'Not Ready':'Ready';say('Lobby connected. Game simulation is not online yet.');
+}
+$('create').onclick=()=>connect({type:'create'});
+$('join').onclick=()=>connect({type:'join',code:$('code').value.toUpperCase().trim()});
+$('ready').onclick=()=>socket?.send(JSON.stringify({type:'ready',ready:!ready}));
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(room.code);say('Room code copied')}catch{say('Room code: '+room.code)}};
+$('leave').onclick=()=>{socket?.send(JSON.stringify({type:'leave'}));socket?.close();room=null;$('lobby').classList.add('hidden')};
+</script></html>
