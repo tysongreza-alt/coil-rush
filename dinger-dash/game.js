@@ -138,6 +138,7 @@ function seasonStart(){
  game.match.pitchSeed=game.restUntil;
  overlay.className="overlay";overlay.innerHTML="";banner.className="banner";
  $("cue").textContent=game.match.offense==="cpu"?"YOU ARE PITCHING":"YOU ARE BATTING";
+ if(game.outs>=3||(game.match.offense==="you"&&game.match.inning>=3&&game.match.scores[0]>game.match.scores[1])){seasonAfterPitch(performance.now());return}
  seasonSave();updateHud();
 }
 function seasonSave(){
@@ -209,11 +210,15 @@ function seasonFinish(){
 function seasonPlayerContact(type,now,sector,perfect,distance){
  const m=game.match,cpuStrength=seasonTeams[m.index][1];
  const steps={"SINGLE":1,"DOUBLE":2,"TRIPLE":3,"HOME RUN":4}[type]||0;
- const caught=steps>0&&steps<4&&Math.random()<(type==="SINGLE"?.07:type==="DOUBLE"?.11:.09)+cpuStrength*.012;
+ const defense=(type==="SINGLE"?.27:type==="DOUBLE"?.17:.12)+cpuStrength*(type==="SINGLE"?.048:.034)+(perfect?-.09:.045);
+ const caught=steps>0&&steps<4&&Math.random()<Math.min(.70,Math.max(.09,defense));
  game.swingAt=now;
  game.flight={start:now,duration:900,distance,sector,kind:caught?"POP OUT":type,perfect,quality:perfect?"PERFECT":"HIT"};
  if(steps===0||caught){
-  game.outs++;game.streak=0;notify(caught?"CAUGHT BY THE DEFENSE!":"POP FLY · OUT","miss");
+  const doublePlay=caught&&type==="SINGLE"&&m.bases[0]&&game.outs<2&&Math.random()<.30+cpuStrength*.045;
+  game.outs+=doublePlay?2:1;
+  if(doublePlay)m.bases[0]=false;
+  game.streak=0;notify(doublePlay?"DOUBLE PLAY! · TWO OUTS":caught?"GREAT FIELDING! · OUT":"POP FLY · OUT","miss");
  }else{
   const runs=seasonAdvance(0,steps);
   game.hits++;game.streak++;
@@ -436,6 +441,10 @@ function hit(now,delta){
  else distance=perfect?333+bat*13+Math.random()*45:quality==="GREAT"?235+bat*15+Math.random()*56:quality==="GOOD"?163+bat*12+Math.random()*49:104+bat*9+Math.random()*41;
  if(p.kind==="FOUR-SEAM"||p.kind==="CUTTER")distance+=8;
  if(p.kind==="SINKER")distance-=10;
+ if(game.mode==="season"){
+  const defense=seasonTeams[game.match.index][1];
+  distance=distance*(power?.94:.77)+(Math.random()-.5)*50-defense*5;
+ }
  distance=Math.round(distance);
  const type=distance>=330?"HOME RUN":distance>=275?"TRIPLE":distance>=210?"DOUBLE":distance>=145?"SINGLE":"POP OUT";
  const sector=delta< -53?0:delta>53?2:1;
