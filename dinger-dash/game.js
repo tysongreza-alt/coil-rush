@@ -204,7 +204,7 @@ overlay.addEventListener("click",e=>{
 const b=e.target.closest("button[data-action]");if(!b||b.disabled)return;
 const act=b.dataset.action;
 if(act==="play")start(false);else if(act==="practice")start(true);else if(act==="home")home();else if(act==="resume")resume();
-else if(act==="bat"||act==="eye"){let cost=coinPrice(act);if(saved[act]<5&&saved.coins>=cost){saved.coins-=cost;saved[act]++;store();sound(800,.18,"triangle");if(game.mode==="over")end();else home();}}
+else if(act==="bat"||act==="eye"){let cost=coinPrice(act);if(saved[act]<5&&saved.coins>=cost){saved.coins-=cost;saved[act]++;store();sound(800,.18,"triangle");home();}}
 });
 canvas.addEventListener("pointerdown",e=>{e.preventDefault();swing()},{passive:false});
 $("swing").addEventListener("pointerdown",e=>{e.preventDefault();swing()},{passive:false});
