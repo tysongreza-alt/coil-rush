@@ -39,7 +39,7 @@ function load(){try{const raw=localStorage.getItem(KEY);if(!raw)return null;cons
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch{toast('Storage is full. Export a backup in Camp.')}}
 function dailyCheck(){if(!state)return;if(!state.daily||state.daily.day!==dstr())state.daily={day:dstr(),progress:{},claimed:[]};}
 function activity(type,n=1){dailyCheck();state.daily.progress[type]=(state.daily.progress[type]||0)+n}
-function dailyQuests(){return[{id:'search',title:'Follow the footprints',desc:'Search the wilds 5 times',need:5,reward:100,icon:'👣'}, {id:'win',title:'Battle practice',desc:'Win 3 wild battles',need:3,reward:140,icon:'⚔️'}, {id:'catch',title:'New friendships',desc:'Capture 2 Wildkin',need:2,reward:170,icon:'💚'}]}
+function dailyQuests(){const d=new Date(),seed=Math.floor(d.getTime()/86400000),search=[3,5,8][seed%3],wins=[2,3,4][(seed+1)%3],catches=[1,2,3][(seed+2)%3];return[{id:'search',title:search>=8?'Trailblazer':'Follow the footprints',desc:`Search the wilds ${search} times`,need:search,reward:60+search*9,icon:'👣'}, {id:'win',title:wins>=4?'Battle champion':'Battle practice',desc:`Win ${wins} wild battles`,need:wins,reward:65+wins*25,icon:'⚔️'}, {id:'catch',title:catches>=3?'Creature caretaker':'New friendships',desc:`Capture ${catches} Wildkin`,need:catches,reward:95+catches*38,icon:'💚'}]}
 function tier(){return 1+Math.floor((state.totalWins+state.totalCatches)/7)}
 function unlocked(z){return z===0||state.badges.includes(z-1)}
 function teamKin(){return state.team.map(id=>state.kin.find(k=>k.uid===id)).filter(Boolean)}
