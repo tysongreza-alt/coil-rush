@@ -210,8 +210,8 @@ function seasonFinish(){
 function seasonPlayerContact(type,now,sector,perfect,distance){
  const m=game.match,cpuStrength=seasonTeams[m.index][1];
  const steps={"SINGLE":1,"DOUBLE":2,"TRIPLE":3,"HOME RUN":4}[type]||0;
- const defense=(type==="SINGLE"?.27:type==="DOUBLE"?.17:.12)+cpuStrength*(type==="SINGLE"?.048:.034)+(perfect?-.09:.045);
- const caught=steps>0&&steps<4&&Math.random()<Math.min(.70,Math.max(.09,defense));
+ const defense=(type==="SINGLE"?.34:type==="DOUBLE"?.26:.22)+cpuStrength*(type==="SINGLE"?.050:.038)+(perfect?-.05:.04);
+ const caught=steps>0&&steps<4&&Math.random()<Math.min(.78,Math.max(.09,defense));
  game.swingAt=now;
  game.flight={start:now,duration:900,distance,sector,kind:caught?"POP OUT":type,perfect,quality:perfect?"PERFECT":"HIT"};
  if(steps===0||caught){
@@ -264,14 +264,14 @@ function seasonThrow(now){
   if(locationStrike){game.strikes++;result="CALLED STRIKE!"}
   else{game.balls++;result="BALL "+game.balls+" · GOOD EYE"}
  }else{
-  const hitChance=Math.max(.12,Math.min(.76,.30+cpuSkill*.043+weakness+(1-control)*.22+(repeated>=3?.15:0)+(zone==="waste"?-.16:0)-(saved.pitching*.022)));
+  const hitChance=Math.max(.10,Math.min(.65,.21+cpuSkill*.028+weakness+(1-control)*.16+(repeated>=3?.12:0)+(zone==="waste"?-.14:0)-(saved.pitching*.025)));
   const v=Math.random();
   if(v>hitChance+.12){game.strikes++;result="SWING & MISS!"}
   else if(v>hitChance){if(game.strikes<2)game.strikes++;result="FOUL BALL!"}
   else{
    const power=Math.random(),big=power<(Math.max(.02,.10+(cpuSkill-3)*.02-saved.pitching*.008));
    const hitType=big?"HOME RUN":power<.30?"DOUBLE":power<.34?"TRIPLE":"SINGLE";
-   const fieldChance=Math.min(.70,(hitType==="SINGLE"?.34:hitType==="DOUBLE"?.17:hitType==="TRIPLE"?.12:0)+saved.fielding*.09+control*.06);
+   const fieldChance=Math.min(.80,(hitType==="SINGLE"?.49:hitType==="DOUBLE"?.28:hitType==="TRIPLE"?.16:0)+saved.fielding*.075+control*.08);
    if(Math.random()<fieldChance){
     game.outs++;result="GREAT DEFENSIVE PLAY! · OUT";
    }else{
