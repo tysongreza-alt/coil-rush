@@ -86,6 +86,7 @@ if(saved.daily.progress>=m.goal){saved.daily.claimed=true;saved.coins+=65;setTim
 function coinPrice(type){return 65+(saved[type]||0)*55}
 function shopHtml(){return '<div class="shop-heading">TRAIN YOUR SLUGGER</div><div class="shop-row"><div class="up-icon">💪</div><div class="up-copy"><strong>POWER BAT <span>'+saved.bat+'/5</span></strong><small>Hit the ball farther</small></div><button class="small-btn" data-action="bat" '+(saved.bat>=5||saved.coins<coinPrice("bat")?"disabled":"")+'>'+(saved.bat>=5?"MAX":coinPrice("bat")+" 🪙")+'</button></div><div class="shop-row"><div class="up-icon">👀</div><div class="up-copy"><strong>EAGLE EYES <span>'+saved.eye+'/5</span></strong><small>More forgiving swing timing</small></div><button class="small-btn" data-action="eye" '+(saved.eye>=5||saved.coins<coinPrice("eye")?"disabled":"")+'>'+(saved.eye>=5?"MAX":coinPrice("eye")+" 🪙")+'</button></div><div class="shop-foot">Earn coins by hitting. Upgrades stay saved on this device.</div>'+seasonShop()}
 
+const seasonColors=["#34b1a8","#f1a846","#557cd6","#b9a0ea","#f26d4c","#50a5db","#62c58d","#c88bde","#f16d55","#a1b6e3","#747bd6","#b97548","#f3c84e","#8ea4b7","#dd658d","#e8aa50"];
 const seasonTeams=[
  ["Harbor Sharks",1,"FASTBALL"],["Maple Bears",1,"CURVEBALL"],["Thunder Bolts",2,"CHANGEUP"],["Canyon Coyotes",2,"FASTBALL"],
  ["Rocket Runners",2,"CURVEBALL"],["Storm Chasers",3,"CHANGEUP"],["River Otters",2,"FASTBALL"],["Comet Crushers",3,"CURVEBALL"],
@@ -199,13 +200,14 @@ function seasonFinish(){
  const opponent=seasonTeams[m.index][0];
  sd.results.push({won,score:endScores,opponent,innings:m.inning});
  sd.active=null;sd.wins+=won?1:0;sd.losses+=won?0:1;
- saved.coins+=reward+(won?Math.min(30,game.homers||0)*5:0);
+ const homeRunBonus=won?Math.min(30,game.homers||0)*5:0;
+ saved.coins+=reward+homeRunBonus;
  if(sd.results.length===16&&sd.wins>=10){sd.championships=(sd.championships||0)+1;saved.coins+=300}
  game.mode="seasonOver";game.phase="idle";game.pitch=null;game.flight=null;game.match=null;store();updateHud();
  if(won)melody();else sound(220,.24,"triangle");
  const done=sd.results.length===16;
  overlay.className="overlay on";
- overlay.innerHTML='<div class="menu-card over-card"><div class="menu-badge">'+(done?"16-GAME SEASON COMPLETE":"GAME "+sd.results.length+" OF 16")+'</div><h2>'+(won?"YOU WIN!":"TOUGH LOSS!")+'</h2><div class="final-score">'+endScores[0]+' – '+endScores[1]+'</div><div class="record-grid"><div><b>'+sd.wins+'</b><small>WINS</small></div><div><b>'+sd.losses+'</b><small>LOSSES</small></div><div><b>+'+reward+'</b><small>🪙 COINS</small></div></div><p class="replay-note">'+(done?(sd.wins>=10?"PENNANT CHAMPIONS! BONUS 300 COINS!":"Season complete. Build your club for next season."):("Next up: "+seasonOpponent()[0]))+'</p><button class="primary-btn season-btn" data-action="seasonMenu">'+(done?"VIEW SEASON RESULTS":"CONTINUE SEASON")+' <span>›</span></button><button class="ghost-btn" data-action="home">MAIN MENU</button></div>';
+ overlay.innerHTML='<div class="menu-card over-card"><div class="menu-badge">'+(done?"16-GAME SEASON COMPLETE":"GAME "+sd.results.length+" OF 16")+'</div><h2>'+(won?"YOU WIN!":"TOUGH LOSS!")+'</h2><div class="final-score">'+endScores[0]+' – '+endScores[1]+'</div><div class="record-grid"><div><b>'+sd.wins+'</b><small>WINS</small></div><div><b>'+sd.losses+'</b><small>LOSSES</small></div><div><b>+'+(reward+homeRunBonus)+'</b><small>🪙 COINS</small></div></div><p class="replay-note">'+(done?(sd.wins>=10?"PENNANT CHAMPIONS! BONUS 300 COINS!":"Season complete. Build your club for next season."):("Next up: "+seasonOpponent()[0]))+'</p><button class="primary-btn season-btn" data-action="seasonMenu">'+(done?"VIEW SEASON RESULTS":"CONTINUE SEASON")+' <span>›</span></button><button class="ghost-btn" data-action="home">MAIN MENU</button></div>';
 }
 function seasonPlayerContact(type,now,sector,perfect,distance){
  const m=game.match,cpuStrength=seasonTeams[m.index][1];
@@ -531,7 +533,7 @@ function pitcher(now){
 const mov=Math.sin(now/180)*2;
 ellipse(195,294,21,6,"#174b3699");
 line(185,281,179,292,"#263859",5);line(204,282,211,292,"#263859",5);
-roundRect(182,256+mov,27,29,8,"#f9f2e2","#264565");roundRect(182,256+mov,27,8,6,"#ffc43b");
+roundRect(182,256+mov,27,29,8,game.mode==="season"&&game.match?(game.match.offense==="cpu"?"#ef5a43":seasonColors[game.match.index]):"#f9f2e2","#264565");roundRect(182,256+mov,27,8,6,"#ffc43b");
 ellipse(195,247+mov,11,12,"#db996f");roundRect(183,234+mov,26,9,5,"#153a5a");
 line(184,262+mov,174,273+mov,"#e7a57c",5);line(206,262+mov,217,267+mov,"#e7a57c",5);
 ellipse(173,273+mov,5,6,"#82533e");textAt("7",195,278+mov,10,"#183c55");
@@ -541,7 +543,7 @@ const sw=game.swingAt>0?Math.max(0,1-(now-game.swingAt)/260):0;
 ellipse(133,460,32,8,"#12482d80");
 line(123,434,113,458,"#e2eaff",9);line(141,436,152,458,"#e2eaff",9);
 line(108,457,120,457,"#153d5c",6);line(146,457,159,457,"#153d5c",6);
-roundRect(118,395,34,43,12,"#ef5a43","#fbc66e");ellipse(136,382,17,18,"#e8a87a");
+roundRect(118,395,34,43,12,game.mode==="season"&&game.match&&game.match.offense==="cpu"?seasonColors[game.match.index]:"#ef5a43","#fbc66e");ellipse(136,382,17,18,"#e8a87a");
 roundRect(117,364,39,13,6,"#123a5c");roundRect(146,371,16,5,3,"#123a5c");
 line(144,406,158,418,"#e9aa80",8);line(126,406,146,416,"#e9aa80",8);
 ctx.save();ctx.translate(151,417);ctx.rotate(-.5-sw*2.1);line(0,0,12,-66,"#c08b53",9);line(12,-66,12,-74,"#ffe1a0",4);ctx.restore();
