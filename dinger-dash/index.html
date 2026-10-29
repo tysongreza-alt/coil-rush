@@ -71,6 +71,8 @@
     .ghost-btn{width:100%;min-height:44px;margin-top:13px;border:1px solid #b6e8e38c;border-radius:13px;background:#13536c;color:#fff;font-size:13px;letter-spacing:.7px;font-weight:900}
     .how{display:flex;gap:10px;margin-top:20px;padding:13px;text-align:left;background:#052d46b3;border:1px solid #4f8ca3b3;border-radius:15px}
     .how-icon{font-size:28px;flex:none}.how b{font-size:12px;color:#fff196;letter-spacing:1px}.how p{font-size:12px;color:#c4e3eb;line-height:1.52;margin:4px 0 0}
+    .shell.season-pitch .field-area{width:min(100%,calc(39dvh * 390 / 520));align-self:center;flex:none}
+    .shell.season-bat .field-area{width:min(100%,calc(54dvh * 390 / 520));align-self:center;flex:none}
     .season-panel{padding:13px 12px;background:linear-gradient(135deg,#185d68,#0a304f);border:1px solid #7fcebb;border-radius:14px;text-align:left;margin:16px 0 12px}
     .season-panel .season-title{font-size:12px;color:#aafbe2;letter-spacing:1.2px;font-weight:950}
     .season-panel strong{display:block;font-size:23px;line-height:1.2;color:#fff6d9;margin:5px 0}
@@ -127,7 +129,7 @@
     </div>
   </header>
   <div class="scorebar" aria-label="Game score">
-    <div class="stat score"><label>SCORE</label><b id="score">0</b></div>
+    <div class="stat score"><label id="scoreLabel">SCORE</label><b id="score">0</b></div>
     <div class="stat"><label>OUTS</label><b id="outVal">0/3</b></div>
     <div class="stat"><label>STRIKES</label><b id="strikes">0/3</b></div>
     <div class="stat"><label>BALLS</label><b id="balls">0/4</b></div>
