@@ -30,7 +30,8 @@ function melody(){sound(530,.12,"triangle");setTimeout(()=>sound(720,.16,"triang
 function vibrate(ms){if(navigator.vibrate)navigator.vibrate(ms)}
 function resize(){let d=Math.min(window.devicePixelRatio||1,2),r=canvas.getBoundingClientRect();canvas.width=Math.round(r.width*d);canvas.height=Math.round(r.height*d);ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0)}
 function updateHud(){
- $("score").textContent=game.score.toLocaleString();
+ $("score").textContent=game.mode==="season"&&game.match?game.match.scores[0]+":"+game.match.scores[1]:game.score.toLocaleString();
+ $("scoreLabel").textContent=game.mode==="season"?"RUNS":"SCORE";
  $("outVal").textContent=game.outs+"/3";
  $("strikes").textContent=game.strikes+"/3";
  $("balls").textContent=game.balls+"/4";
@@ -39,6 +40,8 @@ function updateHud(){
  $("firefill").style.width=Math.min(100,(game.streak%5)*20)+"%";
  $("sound").textContent=saved.sound?"🔊":"🔇";
  $("pause").style.display=live()?"":"none";
+ document.querySelector(".shell").classList.toggle("season-pitch",game.mode==="season"&&!!game.match&&game.match.offense==="cpu");
+ document.querySelector(".shell").classList.toggle("season-bat",game.mode==="season"&&!!game.match&&game.match.offense==="you");
  const isSeason=game.mode==="season",cpuSide=isSeason&&game.match&&game.match.offense==="cpu";
  $("pitchControls").style.display=cpuSide?"flex":"none";
  $("batStyleControls").style.display=cpuSide?"none":"flex";
@@ -178,6 +181,7 @@ function seasonAfterPitch(now){
  if(game.outs>=3){
   game.outs=0;game.strikes=0;game.balls=0;m.bases=[false,false,false];m.lastPitch="";m.repeats=0;
   if(m.offense==="cpu"){
+   if(m.inning>=3&&m.scores[0]>m.scores[1]){seasonFinish();return}
    m.offense="you";notify("BOTTOM "+m.inning+" · YOU BAT!","good");
   }else{
    if(m.inning>=3&&m.scores[0]!==m.scores[1]){seasonFinish();return}
@@ -290,7 +294,7 @@ function seasonUpdate(now){
  if(!m)return;
  if(game.phase==="rest"&&now>=game.restUntil){
   if(m.offense==="you"){pitch(now)}
-  else{game.phase="seasonPitch";m.pitchSeed=now;game.pitch=null;updateHud()}
+  else{game.phase="seasonPitch";m.pitchSeed=now-Math.random()*1800;game.pitch=null;updateHud()}
  }
  if(game.phase==="seasonPitch"){
   const position=(.5+.5*Math.sin((now-m.pitchSeed)/350))*100;
