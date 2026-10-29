@@ -39,15 +39,31 @@ function updateHud(){
  $("firefill").style.width=Math.min(100,(game.streak%5)*20)+"%";
  $("sound").textContent=saved.sound?"🔊":"🔇";
  $("pause").style.display=live()?"":"none";
+ const isSeason=game.mode==="season",cpuSide=isSeason&&game.match&&game.match.offense==="cpu";
+ $("pitchControls").style.display=cpuSide?"flex":"none";
+ $("batStyleControls").style.display=cpuSide?"none":"flex";
+ $("seasonScoreboard").style.display=isSeason?"flex":"none";
+ if(isSeason){
+  const m=game.match;
+  $("seasonRuns").textContent="YOU "+m.scores[0]+" · "+seasonTeams[m.index][0].split(" ").slice(-1)[0].toUpperCase()+" "+m.scores[1];
+  $("seasonInning").textContent=(m.offense==="cpu"?"▲":"▼")+" "+m.inning+" · "+game.outs+" OUT";
+  $("seasonBases").textContent=(m.bases[1]?"◆":"◇")+(m.bases[2]?"◆":"◇")+(m.bases[0]?"◆":"◇");
+  $("pitchHelp").textContent="SCOUT: "+seasonTeams[m.index][0]+" struggles with "+seasonTeams[m.index][2].toLowerCase()+"s. Aim green!";
+  for(const b of document.querySelectorAll("[data-pitch]"))b.classList.toggle("selected",b.dataset.pitch===m.pitchKind);
+  for(const b of document.querySelectorAll("[data-zone]"))b.classList.toggle("selected",b.dataset.zone===m.pitchZone);
+ }
  $("swing").style.display=live()?"":"none";
  $("contact").parentElement.parentElement.style.display=live()?"":"none";
  $("contact").classList.toggle("active",game.swingStyle==="contact");
  $("power").classList.toggle("active",game.swingStyle==="power");
  $("contact").setAttribute("aria-pressed",String(game.swingStyle==="contact"));
  $("power").setAttribute("aria-pressed",String(game.swingStyle==="power"));
- $("swing").textContent=game.swingStyle==="power"?"💥 POWER SWING!":"⚾ SWING!";
- $("swing").disabled=game.phase!=="pitch"||!live();
- if(game.mode==="challenge"){
+ $("swing").textContent=cpuSide?"⚾ THROW PITCH!":game.swingStyle==="power"?"💥 POWER SWING!":"⚾ SWING!";
+ $("swing").disabled=!live()||(cpuSide?game.phase!=="seasonPitch":game.phase!=="pitch");
+ if(isSeason){
+   $("modeinfo").textContent=(cpuSide?"YOU PITCH":"YOU BAT")+" · INNING "+game.match.inning;
+   $("pitchinfo").textContent=cpuSide?"PITCH "+game.match.pitchKind+" · "+game.match.pitchZone.toUpperCase():game.pitch?game.pitch.kind+" · "+game.pitch.mph+" MPH":"UP TO BAT";
+ }else if(game.mode==="challenge"){
    const rv=rivalAt(game.rivalIndex);
    $("modeinfo").textContent="RIVAL "+(game.rivalIndex+1)+" · PITCH "+Math.min(game.pitchCount,rv.limit)+"/"+rv.limit;
    $("pitchinfo").textContent=game.pitch?game.pitch.kind+" "+game.pitch.mph+" MPH":"NEED "+rv.score+" PTS · "+rv.homers+" HR";
@@ -65,7 +81,7 @@ const m=todayMission();if(m.type!==type)return;saved.daily.progress=Math.min(m.g
 if(saved.daily.progress>=m.goal){saved.daily.claimed=true;saved.coins+=65;setTimeout(()=>notify("DAILY MISSION +65 COINS!","gold"),1100);melody()}store();
 }
 function coinPrice(type){return 65+(saved[type]||0)*55}
-function shopHtml(){return '<div class="shop-heading">TRAIN YOUR SLUGGER</div><div class="shop-row"><div class="up-icon">💪</div><div class="up-copy"><strong>POWER BAT <span>'+saved.bat+'/5</span></strong><small>Hit the ball farther</small></div><button class="small-btn" data-action="bat" '+(saved.bat>=5||saved.coins<coinPrice("bat")?"disabled":"")+'>'+(saved.bat>=5?"MAX":coinPrice("bat")+" 🪙")+'</button></div><div class="shop-row"><div class="up-icon">👀</div><div class="up-copy"><strong>EAGLE EYES <span>'+saved.eye+'/5</span></strong><small>More forgiving swing timing</small></div><button class="small-btn" data-action="eye" '+(saved.eye>=5||saved.coins<coinPrice("eye")?"disabled":"")+'>'+(saved.eye>=5?"MAX":coinPrice("eye")+" 🪙")+'</button></div><div class="shop-foot">Earn coins by hitting. Upgrades stay saved on this device.</div>'}
+function shopHtml(){return '<div class="shop-heading">TRAIN YOUR SLUGGER</div><div class="shop-row"><div class="up-icon">💪</div><div class="up-copy"><strong>POWER BAT <span>'+saved.bat+'/5</span></strong><small>Hit the ball farther</small></div><button class="small-btn" data-action="bat" '+(saved.bat>=5||saved.coins<coinPrice("bat")?"disabled":"")+'>'+(saved.bat>=5?"MAX":coinPrice("bat")+" 🪙")+'</button></div><div class="shop-row"><div class="up-icon">👀</div><div class="up-copy"><strong>EAGLE EYES <span>'+saved.eye+'/5</span></strong><small>More forgiving swing timing</small></div><button class="small-btn" data-action="eye" '+(saved.eye>=5||saved.coins<coinPrice("eye")?"disabled":"")+'>'+(saved.eye>=5?"MAX":coinPrice("eye")+" 🪙")+'</button></div><div class="shop-foot">Earn coins by hitting. Upgrades stay saved on this device.</div>'+seasonShop()}
 
 const seasonTeams=[
  ["Harbor Sharks",1,"FASTBALL"],["Maple Bears",1,"CURVEBALL"],["Thunder Bolts",2,"CHANGEUP"],["Canyon Coyotes",2,"FASTBALL"],
@@ -296,7 +312,7 @@ function seasonUpdate(now){
 function home(){
  game.mode="home";game.phase="idle";game.pitch=null;game.finishAt=0;updateHud();overlay.className="overlay on";
  const rv=rivalAt(saved.rival);
- overlay.innerHTML='<div class="menu-card"><div class="menu-badge">⚾ THE BACKYARD BASEBALL ARCADE ⚾</div><h1>DINGER<br><span>DASH!</span></h1><div class="menu-ball">⚾</div><p class="lead">Read the pitch. Pick your swing.<br>Become a backyard legend.</p><div class="record-grid"><div><b>'+saved.high.toLocaleString()+'</b><small>HIGH SCORE</small></div><div><b>'+saved.homers+'</b><small>CAREER HOMERS</small></div><div><b>'+saved.coins+'</b><small>🪙 COINS</small></div></div><button class="primary-btn" data-action="play">ARCADE DERBY <span>›</span></button><div class="rival-panel"><span class="rival-kicker">🏆 RIVAL ROAD · LEVEL '+(saved.rival+1)+'</span><strong>'+rv.name+'</strong><small>Beat '+rv.score+' points and hit '+rv.homers+' home run'+(rv.homers===1?"":"s")+' in '+rv.limit+' pitches.</small></div><button class="primary-btn secondary-play" data-action="challenge">CHALLENGE RIVAL <span>›</span></button><button class="ghost-btn" data-action="practice">PRACTICE SWINGS</button><div class="how"><span class="how-icon">☝️</span><div><b>MASTER THE PLATE</b><p>Some pitches are balls, so let them pass! Swing at strikes. Three strikes make an out; four balls earn a walk. Choose CONTACT for safer hits or POWER for big home runs. Watch the ball, not the words!</p></div></div>'+shopHtml()+'<div class="credits">NO ADS · NO ACCOUNT · PROGRESS SAVES ON THIS DEVICE</div></div>';
+ overlay.innerHTML='<div class="menu-card"><div class="menu-badge">⚾ THE BACKYARD BASEBALL ARCADE ⚾</div><h1>DINGER<br><span>DASH!</span></h1><div class="menu-ball">⚾</div><p class="lead">Read the pitch. Pick your swing.<br>Become a backyard legend.</p><div class="record-grid"><div><b>'+saved.high.toLocaleString()+'</b><small>HIGH SCORE</small></div><div><b>'+saved.homers+'</b><small>CAREER HOMERS</small></div><div><b>'+saved.coins+'</b><small>🪙 COINS</small></div></div><button class="primary-btn" data-action="play">ARCADE DERBY <span>›</span></button><div class="season-panel"><div class="season-title">🏆 16-GAME SEASON · THREE INNINGS</div><strong>PLAY REAL BASEBALL!</strong><small>Bat, pitch, score runs, and build a winning team. Your season saves between games.</small></div><button class="primary-btn season-btn" data-action="seasonMenu">ENTER SEASON MODE <span>›</span></button><div class="rival-panel"><span class="rival-kicker">🏆 RIVAL ROAD · LEVEL '+(saved.rival+1)+'</span><strong>'+rv.name+'</strong><small>Beat '+rv.score+' points and hit '+rv.homers+' home run'+(rv.homers===1?"":"s")+' in '+rv.limit+' pitches.</small></div><button class="primary-btn secondary-play" data-action="challenge">CHALLENGE RIVAL <span>›</span></button><button class="ghost-btn" data-action="practice">PRACTICE SWINGS</button><div class="how"><span class="how-icon">☝️</span><div><b>MASTER THE PLATE</b><p>Some pitches are balls, so let them pass! Swing at strikes. Three strikes make an out; four balls earn a walk. Choose CONTACT for safer hits or POWER for big home runs. Watch the ball, not the words!</p></div></div>'+shopHtml()+'<div class="credits">NO ADS · NO ACCOUNT · PROGRESS SAVES ON THIS DEVICE</div></div>';
 }
 function start(mode="play"){
  game.mode=mode===true?"practice":mode===false?"play":mode;
