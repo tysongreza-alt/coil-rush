@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#07334b">
+  <meta name="description" content="Dinger Dash is a free, one-tap home run derby arcade game. Hit big home runs, smash bonus targets and become a backyard legend!">
+  <meta property="og:title" content="Dinger Dash! ⚾">
+  <meta property="og:description" content="Tap. Swing. Crush it! A free baseball game made for phones.">
+  <title>Dinger Dash! ⚾ | Backyard Baseball Arcade</title>
+  <style>
+    :root{color-scheme:dark;--ink:#12354c;--yellow:#ffe362;--mint:#8cfcbd;--panel:#0b3652;--pale:#eafaff}
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{background:#05283d;scrollbar-width:none}
+    body{margin:0;font-family:ui-rounded,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#fff;min-height:100vh;min-height:100dvh;overscroll-behavior-y:contain}
+    button{font:inherit;cursor:pointer;touch-action:manipulation}
+    button:focus-visible{outline:3px solid #fff;outline-offset:4px}
+    .shell{position:relative;isolation:isolate;display:flex;flex-direction:column;width:100%;max-width:440px;min-height:100dvh;margin:0 auto;background:linear-gradient(180deg,#0b3654,#092d47 72%,#06273f);box-shadow:0 0 0 1px #ffffff17,0 0 70px #021d31;overflow:hidden}
+    .app-header{padding:12px 15px 9px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .brand{font-size:20px;letter-spacing:-1px;line-height:1;font-weight:1000;text-shadow:0 2px 0 #003447;transform:skew(-4deg)}
+    .brand span{color:var(--yellow)}
+    .brand em{font-style:normal;font-size:20px}
+    .header-actions{display:flex;gap:7px}
+    .circle-btn{height:36px;min-width:37px;border:1px solid #7dc7dd59;border-radius:11px;background:#1c5270;color:white;font-size:17px;display:grid;place-items:center;box-shadow:0 3px 0 #06283e}
+    .circle-btn:active{transform:translateY(2px);box-shadow:none}
+    .scorebar{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:5px;padding:1px 11px 10px}
+    .stat{background:#144963;border:1px solid #76a9c13d;box-shadow:0 3px 0 #04263e;border-radius:11px;padding:8px 4px;text-align:center;min-width:0}
+    .stat label{display:block;color:#b4d8e6;font-size:9px;font-weight:900;letter-spacing:1.05px}
+    .stat b{display:block;color:white;font-size:19px;line-height:1.3;letter-spacing:-.3px;font-variant-numeric:tabular-nums}
+    .stat.score b{color:var(--yellow)}.stat.cash b{color:#a7f8c0}
+    .field-area{position:relative;width:100%;aspect-ratio:390/520;flex:none;background:#56c0ea;box-shadow:0 8px 22px #031e3388;touch-action:none;user-select:none}
+    canvas{display:block;width:100%;height:100%;touch-action:none}
+    .cue{position:absolute;top:16%;left:50%;transform:translateX(-50%);width:max-content;max-width:94%;padding:8px 12px;background:#082d47c9;border:1px solid #fff6;border-radius:10px;font-weight:950;font-size:15px;text-shadow:0 2px 0 #063047;box-shadow:0 4px 0 #05223b5c;letter-spacing:.3px;pointer-events:none;text-align:center}
+    .cue.hot{background:#ffdf49;color:#103a54;border:2px solid #fff;font-size:20px;box-shadow:0 0 24px #fff36f}
+    .banner{position:absolute;top:28%;left:50%;transform:translate(-50%,-20%) scale(.8) rotate(-2deg);width:max-content;max-width:96%;padding:12px 18px;background:#183f55;color:#fff;border:3px solid #fff;border-radius:13px;box-shadow:0 8px 0 #032b4570,0 4px 30px #0221399f;font-size:21px;font-weight:1000;text-shadow:0 2px 0 #051d34;text-align:center;opacity:0;transition:opacity .12s,transform .15s;pointer-events:none}
+    .banner.visible{opacity:1;transform:translate(-50%,-20%) scale(1) rotate(-2deg)}
+    .banner.gold{background:#f4b531;color:#0e3751;text-shadow:none}
+    .banner.good{background:#168a78}.banner.miss{background:#d94b50}
+    .controls{padding:11px 14px calc(15px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:11px}
+    .combo{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    #streak{font-size:10px;font-weight:950;letter-spacing:1px;color:#b7ecf0;white-space:nowrap}
+    .heat{height:8px;max-width:140px;flex:1;border-radius:99px;background:#052337;border:1px solid #4988a4;overflow:hidden}
+    #firefill{height:100%;width:0;background:linear-gradient(90deg,#ee7742,#ffe15b);border-radius:99px;transition:width .2s}
+    .swing-button{width:100%;height:73px;border-radius:19px;border:3px solid #fff0b5;background:linear-gradient(180deg,#fff26e 0%,#ffc42f 80%,#ef9b22 100%);color:#153b54;box-shadow:0 7px 0 #ae7419,0 11px 24px #0006;font-size:30px;font-weight:1000;letter-spacing:1.5px;text-shadow:0 1px 0 #fff8cb;transition:transform .07s,filter .07s}
+    .swing-button:active{transform:translateY(5px);box-shadow:0 2px 0 #ae7419}
+    .swing-button:disabled{opacity:.60;filter:saturate(.6);cursor:default}
+    .mission{font-size:11px;line-height:1.5;text-align:center;color:#b4e0e7;font-weight:800;letter-spacing:.2px}
+    .footer-note{font-size:10px;color:#84adc3;text-align:center;line-height:1.4;margin:-4px 0 0}
+    .overlay{position:absolute;inset:0;z-index:20;display:none;align-items:flex-start;justify-content:center;padding:14px 13px 22px;background:linear-gradient(160deg,#082941f5,#082941eb);backdrop-filter:blur(12px);overflow-y:auto;overscroll-behavior:contain;max-height:100dvh;scrollbar-width:thin;scrollbar-color:#4d9aaf #102f48}
+    .overlay.on{display:flex}
+    .menu-card{position:relative;width:100%;max-width:390px;min-width:0;background:linear-gradient(160deg,#1a5a71,#0b334f 55%,#092e4d);border:1px solid #8cd9db59;border-radius:23px;padding:21px 19px 23px;text-align:center;box-shadow:0 8px 0 #031d34,0 22px 45px #001c30b0;overflow:hidden}
+    .menu-card:before{content:"";position:absolute;top:-100px;left:-140px;width:260px;height:260px;background:radial-gradient(circle,#80e3d51d,transparent 70%);pointer-events:none}
+    .menu-badge{display:inline-block;padding:6px 11px;background:#0e3e56;border-radius:30px;color:#b6fbd7;letter-spacing:.85px;font-size:10px;font-weight:950}
+    h1{font-size:64px;line-height:.83;letter-spacing:-4px;font-style:italic;font-weight:1000;margin:18px 0 0;transform:rotate(-3deg);text-shadow:3px 5px 0 #062437,4px 8px 15px #062437}
+    h1 span{color:#ffe35d;font-size:75px}
+    .menu-ball{font-size:53px;line-height:1;margin:2px 0 8px;filter:drop-shadow(0 5px 5px #032339)}
+    .lead{font-size:14px;color:#e4f9ff;font-weight:760;line-height:1.5;margin:9px 0 17px}
+    .record-grid,.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:15px 0 19px}
+    .record-grid>div,.stats-grid>div{border:1px solid #9fd7db4a;border-radius:12px;padding:12px 5px;background:#072c45a6}
+    .record-grid b,.stats-grid b{display:block;font-size:21px;color:#ffe361}
+    .record-grid small,.stats-grid small{display:block;font-size:9px;color:#b9e0e9;font-weight:850;letter-spacing:.4px}
+    .primary-btn{width:100%;min-height:57px;border:2px solid #fff39c;border-radius:15px;background:linear-gradient(180deg,#fff077,#ffc02c);box-shadow:0 5px 0 #b97b19;color:#12354c;font-weight:1000;font-size:20px;letter-spacing:.7px}
+    .primary-btn span{font-size:29px;margin-left:12px;line-height:0}
+    .primary-btn:active{transform:translateY(4px);box-shadow:0 1px 0 #b97b19}
+    .ghost-btn{width:100%;min-height:44px;margin-top:13px;border:1px solid #b6e8e38c;border-radius:13px;background:#13536c;color:#fff;font-size:13px;letter-spacing:.7px;font-weight:900}
+    .how{display:flex;gap:10px;margin-top:20px;padding:13px;text-align:left;background:#052d46b3;border:1px solid #4f8ca3b3;border-radius:15px}
+    .how-icon{font-size:28px;flex:none}.how b{font-size:12px;color:#fff196;letter-spacing:1px}.how p{font-size:12px;color:#c4e3eb;line-height:1.52;margin:4px 0 0}
+    .shop-heading{margin:20px 0 9px;color:#ffe783;font-weight:950;font-size:12px;letter-spacing:1.3px;text-align:left}
+    .shop-row{display:flex;align-items:center;gap:8px;text-align:left;padding:10px 8px;background:#082e48;border:1px solid #2d7287;border-radius:12px;margin-bottom:8px}
+    .up-icon{font-size:23px;line-height:1;flex:none}
+    .up-copy{flex:1;min-width:0}.up-copy strong{font-size:12px;display:block;white-space:nowrap}.up-copy strong span{color:#ffe275}.up-copy small{display:block;font-size:10px;color:#a5d1d9;margin-top:2px}
+    .small-btn{flex:none;min-width:78px;min-height:38px;padding:0 6px;border:none;border-radius:9px;background:#f9d852;color:#133b4e;font-size:11px;font-weight:1000}
+    .small-btn:disabled{background:#56778a;color:#c0d3d9;cursor:not-allowed}
+    .shop-foot{font-size:10px;color:#aed1d8;margin:7px 0 0;text-align:left}
+    .credits{font-size:9px;color:#87b9c4;margin:20px 0 0;letter-spacing:.7px;font-weight:800}
+    .over-card h2,.pause-card h2{font-size:32px;line-height:1.05;margin:22px 0 8px;color:#ffeb7a;letter-spacing:-1.3px}
+    .final-score{font-size:64px;font-weight:1000;color:white;text-shadow:0 4px 0 #04263f}
+    .stats-grid{margin:8px 0}.stats-grid b{font-size:24px}
+    .replay-note{font-size:14px;color:#ceebf0;margin:19px 0}
+    .bank-total{margin-top:18px;font-size:13px;font-weight:900;color:#fff09d}
+    .pause-card{margin-top:min(15vh,90px);padding-top:35px;padding-bottom:45px}.pause-ball{font-size:82px;margin:20px auto 35px}
+    @media(min-width:600px){body{padding:10px}.shell{border-radius:24px;min-height:calc(100dvh - 20px)}.overlay{border-radius:24px;max-height:calc(100dvh - 20px)}}
+    @media(max-width:350px){h1{font-size:50px}h1 span{font-size:66px}.menu-card{padding:19px 13px}.scorebar{gap:3px;padding-inline:7px}.stat b{font-size:16px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+<main class="shell" aria-label="Dinger Dash baseball game">
+  <header class="app-header">
+    <div class="brand"><em>⚾</em> DINGER<span>DASH!</span></div>
+    <div class="header-actions">
+      <button id="sound" type="button" class="circle-btn" aria-label="Toggle sound">🔊</button>
+      <button id="pause" type="button" class="circle-btn" aria-label="Pause and show menu">Ⅱ</button>
+    </div>
+  </header>
+  <div class="scorebar" aria-label="Game score">
+    <div class="stat score"><label>SCORE</label><b id="score">0</b></div>
+    <div class="stat"><label>OUTS</label><b id="outVal">0/3</b></div>
+    <div class="stat"><label>STRIKES</label><b id="strikes">0/3</b></div>
+    <div class="stat cash"><label>COINS</label><b id="coins">0</b></div>
+  </div>
+  <section class="field-area" aria-label="Baseball field, tap to swing">
+    <canvas id="field" width="390" height="520" aria-label="Live baseball stadium and pitched ball">Your browser needs Canvas support to play.</canvas>
+    <div id="cue" class="cue" aria-live="off">WATCH THE PITCH</div>
+    <div id="banner" class="banner" role="status" aria-live="polite"></div>
+  </section>
+  <section class="controls">
+    <div class="combo"><div id="streak">BUILD A HIT STREAK</div><div class="heat"><div id="firefill"></div></div></div>
+    <button id="swing" class="swing-button" type="button">⚾ SWING!</button>
+    <div class="mission" id="mission">DAILY CHALLENGE</div>
+    <p class="footer-note">Tap SWING or anywhere on the field. Timing is everything!</p>
+  </section>
+  <section id="overlay" class="overlay on" aria-label="Game menu"></section>
+</main>
+<script src="./game.js" defer></script>
+</body>
+</html>
