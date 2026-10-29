@@ -71,6 +71,28 @@
     .ghost-btn{width:100%;min-height:44px;margin-top:13px;border:1px solid #b6e8e38c;border-radius:13px;background:#13536c;color:#fff;font-size:13px;letter-spacing:.7px;font-weight:900}
     .how{display:flex;gap:10px;margin-top:20px;padding:13px;text-align:left;background:#052d46b3;border:1px solid #4f8ca3b3;border-radius:15px}
     .how-icon{font-size:28px;flex:none}.how b{font-size:12px;color:#fff196;letter-spacing:1px}.how p{font-size:12px;color:#c4e3eb;line-height:1.52;margin:4px 0 0}
+    .season-panel{padding:13px 12px;background:linear-gradient(135deg,#185d68,#0a304f);border:1px solid #7fcebb;border-radius:14px;text-align:left;margin:16px 0 12px}
+    .season-panel .season-title{font-size:12px;color:#aafbe2;letter-spacing:1.2px;font-weight:950}
+    .season-panel strong{display:block;font-size:23px;line-height:1.2;color:#fff6d9;margin:5px 0}
+    .season-panel small{display:block;color:#c2e7e7;font-size:11px;line-height:1.5}
+    .season-btn{margin-top:10px;background:linear-gradient(180deg,#a4ffe1,#43d5ad);border-color:#c3fff4;box-shadow:0 5px 0 #177d73;font-size:19px}
+    .season-box{position:absolute;z-index:3;left:9px;right:9px;top:7px;display:none;justify-content:space-between;gap:9px;align-items:center;padding:8px 10px;border-radius:11px;background:#072d43eb;border:1px solid #ffffff7e;box-shadow:0 3px 0 #071c2f;pointer-events:none;font-size:12px}
+    .season-box strong{color:#ffe16a;font-weight:950;white-space:nowrap}
+    .season-box .bases{font-size:14px;letter-spacing:2px;white-space:nowrap}
+    .pitch-controls{display:none;flex-direction:column;gap:7px;align-items:stretch}
+    .pitch-label{font-size:10px;color:#d1e6ee;font-weight:950;letter-spacing:1px}
+    .pitch-option-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+    .pitch-option{padding:10px 2px;background:#154963;border:1px solid #6ca8b6;border-radius:9px;color:white;font-size:11px;font-weight:850;letter-spacing:.25px;min-height:39px}
+    .pitch-option.selected{background:#ffe06f;color:#0e3e57;border-color:#fff7be}
+    .pitch-meter{position:relative;height:17px;border-radius:20px;background:linear-gradient(90deg,#d95a53 0%,#ecb85a 30%,#72db99 41%,#72db99 59%,#ecb85a 70%,#d95a53 100%);border:2px solid #c0e9e7;overflow:hidden}
+    .pitch-meter:after{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:#fff}
+    .meter-dot{position:absolute;top:-2px;left:50%;width:7px;height:19px;transform:translateX(-50%);background:white;border:1px solid #1e3e55;border-radius:3px;box-shadow:0 0 5px #fff}
+    .pitch-help{font-size:10px;line-height:1.4;text-align:center;color:#bad9e2}
+    .inning-detail{border:1px solid #679bab;border-radius:10px;padding:10px;background:#0b334c;margin:12px 0;font-size:12px;color:#e0f2fa;line-height:1.5}
+    .inning-detail strong{color:#ffe36c}
+    .season-results{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;margin-top:10px}
+    .result-tile{border-radius:5px;background:#1c4b60;text-align:center;padding:7px 1px;color:#dfebee;font-size:10px;font-weight:900}
+    .result-tile.won{background:#3f9e7a}.result-tile.lost{background:#a55250}.result-tile.next{outline:2px solid #ffe36a}
     .rival-panel{padding:12px;margin-top:19px;background:#08283e;border:1px solid #5facc2;border-radius:13px;display:grid;gap:5px;text-align:left}
     .rival-kicker{font-size:10px;letter-spacing:1.2px;font-weight:1000;color:#ffe36c}
     .rival-panel strong{color:#fff;font-size:20px;line-height:1.2}
@@ -114,18 +136,20 @@
   <div class="pitch-info"><span id="modeinfo">ONE-TAP HOME RUN DERBY</span><strong id="pitchinfo">READ THE PITCH</strong></div>
   <section class="field-area" aria-label="Baseball field, tap to swing">
     <canvas id="field" width="390" height="520" aria-label="Live baseball stadium and pitched ball">Your browser needs Canvas support to play.</canvas>
+    <div id="seasonScoreboard" class="season-box" aria-live="off"><strong id="seasonRuns">YOU 0 · CPU 0</strong><span id="seasonInning">▲ 1</span><span id="seasonBases" class="bases">◇◇◇</span></div>
     <div id="cue" class="cue" aria-live="off">WATCH THE PITCH</div>
     <div id="banner" class="banner" role="status" aria-live="polite"></div>
   </section>
   <section class="controls">
     <div class="combo"><div id="streak">BUILD A HIT STREAK</div><div class="heat"><div id="firefill"></div></div></div>
-    <div class="style-row"><span>CHOOSE YOUR SWING</span><div class="style-buttons"><button class="style-btn active" id="contact" type="button" aria-pressed="true">CONTACT</button><button class="style-btn" id="power" type="button" aria-pressed="false">POWER</button></div></div>
+    <div id="pitchControls" class="pitch-controls"><div class="pitch-label">PICK YOUR PITCH</div><div class="pitch-option-row"><button class="pitch-option selected" type="button" data-pitch="FASTBALL">FAST ⚡</button><button class="pitch-option" type="button" data-pitch="CURVEBALL">CURVE ↷</button><button class="pitch-option" type="button" data-pitch="CHANGEUP">CHANGE ⏳</button></div><div class="pitch-label">AIM THE PITCH</div><div class="pitch-option-row"><button class="pitch-option" type="button" data-zone="inside">INSIDE</button><button class="pitch-option selected" type="button" data-zone="corner">CORNER</button><button class="pitch-option" type="button" data-zone="waste">OUTSIDE</button></div><div class="pitch-meter"><div id="meterDot" class="meter-dot"></div></div><div id="pitchHelp" class="pitch-help">Tap THROW when the marker is in the green zone!</div></div>
+    <div id="batStyleControls" class="style-row"><span>CHOOSE YOUR SWING</span><div class="style-buttons"><button class="style-btn active" id="contact" type="button" aria-pressed="true">CONTACT</button><button class="style-btn" id="power" type="button" aria-pressed="false">POWER</button></div></div>
     <button id="swing" class="swing-button" type="button">⚾ SWING!</button>
     <div class="mission" id="mission">DAILY CHALLENGE</div>
     <p class="footer-note">Swing in the strike zone. Let outside pitches go for a ball.</p>
   </section>
   <section id="overlay" class="overlay on" aria-label="Game menu"></section>
 </main>
-<script src="./game.js?v=2" defer></script>
+<script src="./game.js?v=3" defer></script>
 </body>
 </html>
