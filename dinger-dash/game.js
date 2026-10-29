@@ -93,8 +93,22 @@ function end(){
  overlay.className="overlay on";
  overlay.innerHTML='<div class="menu-card over-card"><div class="menu-badge">'+(career?"RIVAL ROAD · LEVEL "+(game.rivalIndex+1):"ARCADE FINAL SCORE")+'</div><h2>'+headline+'</h2><div class="final-score">'+game.score.toLocaleString()+'</div><div class="stats-grid"><div><b>'+game.homers+'</b><small>HOME RUNS</small></div><div><b>'+game.hits+'</b><small>HITS</small></div><div><b>'+game.perfects+'</b><small>PERFECT SWINGS</small></div></div><p class="replay-note">'+assessment+'</p><button class="primary-btn" data-action="'+(career?"challenge":"play")+'">'+(career?(won?"NEXT CHALLENGER":"RETRY RIVAL"):"PLAY AGAIN")+' <span>›</span></button><button class="ghost-btn" data-action="home">MAIN MENU</button><div class="bank-total">🪙 '+saved.coins+' COINS SAVED</div>'+shopHtml()+'</div>';
 }
-function pause(){if(!live())return;game.wasMode=game.mode;game.mode="paused";overlay.className="overlay on";overlay.innerHTML='<div class="menu-card pause-card"><div class="menu-badge">TAKE A BREATHER</div><h2>TIME OUT!</h2><div class="pause-ball">⚾</div><button class="primary-btn" data-action="resume">RESUME GAME <span>›</span></button><button class="ghost-btn" data-action="home">QUIT TO MENU</button></div>';$("swing").disabled=true}
-function resume(){game.mode=game.wasMode||"play";game.phase="rest";game.restUntil=performance.now()+700;overlay.className="overlay";overlay.innerHTML="";updateHud()}
+function pause(){
+ if(!live())return;
+ game.wasMode=game.mode;game.wasPhase=game.phase;game.mode="paused";
+ overlay.className="overlay on";
+ overlay.innerHTML='<div class="menu-card pause-card"><div class="menu-badge">TAKE A BREATHER</div><h2>TIME OUT!</h2><div class="pause-ball">⚾</div><button class="primary-btn" data-action="resume">RESUME GAME <span>›</span></button><button class="ghost-btn" data-action="home">QUIT TO MENU</button></div>';
+ $("swing").disabled=true;
+}
+function resume(){
+ game.mode=game.wasMode||"play";
+ if(game.wasPhase==="pitch")game.pitchCount=Math.max(0,game.pitchCount-1);
+ game.phase="rest";game.pitch=null;game.flight=null;
+ const finished=(game.outs>=3&&game.mode!=="practice")||(game.mode==="challenge"&&game.pitchCount>=game.limit);
+ game.finishAt=finished?performance.now()+750:0;
+ game.restUntil=performance.now()+750;
+ overlay.className="overlay";overlay.innerHTML="";$("cue").textContent="WATCH THE PITCH";updateHud();
+}
 function pitch(now){
  if(game.mode==="challenge"&&game.pitchCount>=game.limit){game.finishAt=now+350;return}
  game.pitchCount++;
