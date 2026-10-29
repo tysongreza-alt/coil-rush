@@ -96,68 +96,120 @@ function end(){
 function pause(){if(game.mode!=="play"&&game.mode!=="practice")return;game.wasMode=game.mode;game.mode="paused";overlay.className="overlay on";overlay.innerHTML='<div class="menu-card pause-card"><div class="menu-badge">TAKE A BREATHER</div><h2>TIME OUT!</h2><div class="pause-ball">⚾</div><button class="primary-btn" data-action="resume">RESUME GAME <span>›</span></button><button class="ghost-btn" data-action="home">QUIT TO MENU</button></div>';$("swing").disabled=true}
 function resume(){game.mode=game.wasMode||"play";game.phase="rest";game.restUntil=performance.now()+700;overlay.className="overlay";overlay.innerHTML="";updateHud()}
 function pitch(now){
-game.pitchCount++;game.target=[1,0,2][Math.floor((game.pitchCount-1)/3)%3];
-let speed=1540-Math.min(420,Math.floor(game.pitchCount/4)*65)-(game.mode==="practice"?-150:0);
-game.pitch={start:now+380,duration:speed,curve:Math.sin(game.pitchCount*5.31)*12,kind:game.pitchCount>6&&game.pitchCount%7===0?"CURVE":(game.pitchCount>4&&game.pitchCount%5===0?"FAST":"NORMAL")};
-if(game.pitch.kind==="FAST")game.pitch.duration-=120;
-game.phase="pitch";game.swingAt=-1;$("cue").textContent="GET READY...";updateHud();
+ if(game.mode==="challenge"&&game.pitchCount>=game.limit){game.finishAt=now+350;return}
+ game.pitchCount++;
+ const grade=game.mode==="practice"?0:game.mode==="challenge"?Math.min(7,game.rivalIndex+1):Math.min(7,Math.floor((game.pitchCount-1)/6));
+ game.pitchGrade=grade;
+ const pool=["FOUR-SEAM","FOUR-SEAM","CHANGEUP","CURVEBALL","SLIDER"];
+ if(grade>=2)pool.push("CUTTER","SLIDER");
+ if(grade>=4)pool.push("SINKER","CUTTER");
+ let kind=pool[Math.floor(Math.random()*pool.length)];
+ if(game.pitchCount<=2&&game.mode!=="challenge")kind=game.pitchCount===1?"FOUR-SEAM":"CHANGEUP";
+ if(kind===game.lastKind&&pool.length>3){const others=pool.filter(x=>x!==kind);kind=others[Math.floor(Math.random()*others.length)]}
+ game.lastKind=kind;
+ const tuning={
+ "FOUR-SEAM":[990,210,84,5,-41],"CHANGEUP":[1410,270,68,4,-17],
+ "CURVEBALL":[1150,290,76,5,-24],"SLIDER":[1080,210,81,6,-27],
+ "CUTTER":[900,210,87,5,-39],"SINKER":[1030,230,80,5,-32]
+ }[kind];
+ const duration=Math.max(560,tuning[0]+Math.random()*tuning[1]+tuning[4]*grade);
+ const mph=Math.round(tuning[2]+Math.random()*tuning[3]+grade*.9);
+ const isBall=game.pitchCount>2&&Math.random()<(game.mode==="practice"?.26:.20+Math.min(.11,grade*.014));
+ const lane=isBall?(Math.random()<.5?-1:1)*(57+Math.random()*33):(Math.random()-.5)*34;
+ const curve=(kind==="CURVEBALL"?1:kind==="SLIDER"?1.2:kind==="SINKER"?-.9:kind==="CUTTER"?.55:.25)*(Math.random()<.5?-1:1)*(13+Math.random()*21);
+ let target=Math.floor(Math.random()*3);
+ if(Math.random()<.65&&target===game.lastTarget)target=(target+1+Math.floor(Math.random()*2))%3;
+ game.target=target;game.lastTarget=target;
+ game.pitch={start:now+300+Math.random()*250,duration,curve,kind,mph,isBall,lane};
+ game.phase="pitch";game.swingAt=-1;$("cue").textContent=kind+"!";updateHud();
 }
-function resultRest(now){game.phase="rest";game.pitch=null;game.flight=null;game.restUntil=now+1050;if(game.outs>=3&&game.mode==="play")game.finishAt=now+1100;updateHud()}
-function strike(reason,now){
-game.streak=0;game.strikes++;game.swingAt=now;sound(220,.15,"sawtooth",.07);
-if(game.strikes>=3){game.strikes=0;game.outs++;notify(game.outs>=3?"THREE OUTS!":"STRIKE THREE!","miss");}
-else notify(reason||"STRIKE!","miss");
-$("cue").textContent=game.mode==="practice"?"KEEP TRYING!":"STRIKES: "+game.strikes+"/3";
-if(game.mode==="practice"){game.outs=0;game.strikes=0}
-resultRest(now);
+function resultRest(now){
+ game.phase="rest";game.pitch=null;game.flight=null;game.restUntil=now+950;
+ if((game.outs>=3&&game.mode!=="practice")||(game.mode==="challenge"&&game.pitchCount>=game.limit))game.finishAt=now+960;
+ updateHud();
+}
+function strike(reason,now,foul=false){
+ game.streak=0;game.swingAt=now;
+ if(!foul||game.strikes<2)game.strikes++;
+ sound(220,.15,"sawtooth",.07);
+ if(game.strikes>=3){game.strikes=0;game.balls=0;game.outs++;notify(game.outs>=3?"THREE OUTS!":"STRIKE THREE!","miss")}
+ else notify(reason||(foul?"FOUL BALL!":"STRIKE!"),"miss");
+ $("cue").textContent=game.mode==="practice"?"KEEP TRYING!":"STRIKES: "+game.strikes+"/3";
+ if(game.mode==="practice"){game.outs=0;game.strikes=0;game.balls=0}
+ resultRest(now);
+}
+function takePitch(now){
+ const p=game.pitch;if(!p)return;
+ if(p.isBall){
+   game.balls++;
+   if(game.balls>=4){
+     game.balls=0;game.strikes=0;game.score+=35;
+     if(game.mode!=="practice")saved.coins+=8;
+     notify("BALL FOUR! WALK +35","good");sound(520,.16,"triangle");
+   }else{notify("BALL "+game.balls+" · GOOD EYE!","good");sound(480,.07,"triangle",.04)}
+   $("cue").textContent="GOOD EYE!";
+   store();resultRest(now);
+ }else strike("CALLED STRIKE!",now);
 }
 function hit(now,delta){
-const margin=240+saved.eye*19,abs=Math.abs(delta);
-if(abs>margin){strike(delta<0?"TOO EARLY!":"TOO LATE!",now);return}
-let perfect=abs<=64+saved.eye*6,quality=perfect?"PERFECT":abs<=145+saved.eye*5?"GREAT":abs<=215+saved.eye*6?"GOOD":"TIP";
-let jitter=(Math.sin(game.pitchCount*25.13+delta)*.5+.5)*24;
-let distance=perfect?365+saved.bat*13+jitter:quality==="GREAT"?268+saved.bat*17+Math.max(0,(145-abs)*.42)+jitter:quality==="GOOD"?177+saved.bat*13+(215-abs)*.54+jitter:115+saved.bat*9+jitter;
-distance=Math.round(distance);
-let type=distance>=330?"HOME RUN":distance>=275?"TRIPLE":distance>=210?"DOUBLE":distance>=145?"SINGLE":"POP OUT";
-let sector=delta< -64?0:delta>64?2:1;
-game.swingAt=now;game.flight={start:now,duration:950,distance,sector,kind:type,perfect,quality};
-if(type==="POP OUT"){game.streak=0;game.outs++;notify("POP FLY · OUT!","miss");sound(180,.14,"triangle");}
-else{
-game.hits++;game.streak++;game.bestStreak=Math.max(game.streak,game.bestStreak);
-if(type==="HOME RUN"){game.homers++;if(game.mode==="play")saved.homers++;missionStep("hr")}
-if(type==="DOUBLE"||type==="TRIPLE"||type==="HOME RUN")missionStep("xbh");
-missionStep("hits");
-if(perfect){game.perfects++;if(game.mode==="play")saved.perfects++;missionStep("perfect")}
-let matched=type==="HOME RUN"&&sector===game.target,base=type==="HOME RUN"?100:type==="TRIPLE"?60:type==="DOUBLE"?35:15,combo=Math.min(3,1+Math.floor(game.streak/4));
-let gain=(base+(perfect?25:0)+(matched?75:0))*combo;
-game.score+=gain;
-if(game.mode==="play")saved.coins+=type==="HOME RUN"?20:type==="TRIPLE"?12:type==="DOUBLE"?8:5;
-if(game.mode==="play"&&perfect)saved.coins+=4;if(game.mode==="play"&&matched)saved.coins+=12;
-if(type==="HOME RUN"){notify(matched?"🎯 TARGET SMASH! +"+gain:"💥 HOME RUN! +"+gain,"gold");celebrate(sector===0?105:sector===1?195:285,170);melody();vibrate([30,35,60])}
-else {notify((perfect?"PERFECT! ":"")+type+" +"+gain,perfect?"gold":"good");sound(480,.19,"triangle");vibrate(18)}
-}
-game.strikes=0;game.phase="flight";$("cue").textContent=quality+" CONTACT · "+distance+" FT";store();updateHud();
+ const p=game.pitch,grade=game.pitchGrade,eye=saved.eye,bat=saved.bat,power=game.swingStyle==="power";
+ const abs=Math.abs(delta),margin=(power?118:173)+eye*(power?10:13)-Math.min(23,grade*3);
+ if(p.isBall){strike("CHASED OUTSIDE!",now);return}
+ if(abs>margin){
+   strike(abs>margin+36?(delta<0?"TOO EARLY!":"TOO LATE!"):"FOUL TIP!",now,abs<=margin+36);return;
+ }
+ const perfectMax=(power?31:41)+eye*5;
+ const greatMax=(power?74:99)+eye*7;
+ const goodMax=(power?104:146)+eye*9;
+ const perfect=abs<=perfectMax,quality=perfect?"PERFECT":abs<=greatMax?"GREAT":abs<=goodMax?"GOOD":"TIP";
+ let distance;
+ if(power)distance=perfect?377+bat*19+Math.random()*53:quality==="GREAT"?309+bat*17+Math.random()*46:quality==="GOOD"?208+bat*14+Math.random()*56:125+bat*10+Math.random()*45;
+ else distance=perfect?333+bat*13+Math.random()*45:quality==="GREAT"?235+bat*15+Math.random()*56:quality==="GOOD"?163+bat*12+Math.random()*49:104+bat*9+Math.random()*41;
+ if(p.kind==="FOUR-SEAM"||p.kind==="CUTTER")distance+=8;
+ if(p.kind==="SINKER")distance-=10;
+ distance=Math.round(distance);
+ const type=distance>=330?"HOME RUN":distance>=275?"TRIPLE":distance>=210?"DOUBLE":distance>=145?"SINGLE":"POP OUT";
+ const sector=delta< -53?0:delta>53?2:1;
+ game.swingAt=now;game.flight={start:now,duration:940,distance,sector,kind:type,perfect,quality};
+ if(type==="POP OUT"){game.streak=0;game.outs++;notify("POP FLY · OUT!","miss");sound(180,.14,"triangle")}
+ else{
+   game.hits++;game.streak++;game.bestStreak=Math.max(game.streak,game.bestStreak);
+   if(type==="HOME RUN"){game.homers++;if(game.mode!=="practice")saved.homers++;missionStep("hr")}
+   if(type==="DOUBLE"||type==="TRIPLE"||type==="HOME RUN")missionStep("xbh");
+   missionStep("hits");
+   if(perfect){game.perfects++;if(game.mode!=="practice")saved.perfects++;missionStep("perfect")}
+   const matched=type==="HOME RUN"&&sector===game.target,base=type==="HOME RUN"?100:type==="TRIPLE"?60:type==="DOUBLE"?35:15,combo=Math.min(3,1+Math.floor(game.streak/4));
+   const gain=(base+(perfect?25:0)+(matched?75:0))*combo+(power&&type==="HOME RUN"?20:0);
+   game.score+=gain;
+   if(game.mode!=="practice")saved.coins+=type==="HOME RUN"?20:type==="TRIPLE"?12:type==="DOUBLE"?8:5;
+   if(game.mode!=="practice"&&perfect)saved.coins+=4;
+   if(game.mode!=="practice"&&matched)saved.coins+=12;
+   if(type==="HOME RUN"){notify(matched?"🎯 TARGET SMASH! +"+gain:"💥 HOME RUN! +"+gain,"gold");celebrate(sector===0?105:sector===1?195:285,170);melody();vibrate([30,35,60])}
+   else{notify((perfect?"PERFECT! ":"")+type+" +"+gain,perfect?"gold":"good");sound(480,.19,"triangle");vibrate(18)}
+ }
+ game.balls=0;game.strikes=0;game.phase="flight";
+ $("cue").textContent=quality+" · "+distance+" FT";store();updateHud();
 }
 function swing(){
-if(game.mode!=="play"&&game.mode!=="practice")return;
-if(game.phase!=="pitch"||!game.pitch)return;
-const now=performance.now(),delta=now-(game.pitch.start+game.pitch.duration);
-if(now<game.pitch.start-30){$("cue").textContent="WAIT FOR THE PITCH!";return}
-sound(280,.08,"square",.04);hit(now,delta);
+ if(!live()||game.phase!=="pitch"||!game.pitch)return;
+ const now=performance.now(),p=game.pitch,delta=now-(p.start+p.duration);
+ if(now<p.start-30){$("cue").textContent="WATCH THE BALL!";return}
+ sound(280,.08,"square",.04);hit(now,delta);
 }
 function update(now){
-game.t=now;
-if(game.mode!=="play"&&game.mode!=="practice")return;
-if(game.finishAt&&now>=game.finishAt){game.finishAt=0;end();return}
-if(game.phase==="rest"&&now>=game.restUntil&&!game.finishAt)pitch(now);
-if(game.phase==="pitch"&&game.pitch){
-const remain=game.pitch.start+game.pitch.duration-now;
-if(remain< -255){strike("SWING & MISS!",now);return}
-$("cue").textContent=remain>550?(game.pitch.kind==="CURVE"?"CURVEBALL!":"EYES ON THE BALL"):remain>240?"HERE IT COMES...":remain> -85?"⚾ SWING NOW!":"SWING!";
-$("cue").className="cue"+(remain<245&&remain> -160?" hot":"");
-}else $("cue").className="cue";
-if(game.phase==="flight"&&game.flight&&now>=game.flight.start+game.flight.duration){resultRest(now)}
-for(let i=game.particles.length-1;i>=0;i--){const p=game.particles[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.13;p.life--;if(p.life<=0)game.particles.splice(i,1)}
+ game.t=now;if(!live())return;
+ if(game.finishAt&&now>=game.finishAt){game.finishAt=0;end();return}
+ if(game.phase==="rest"&&now>=game.restUntil&&!game.finishAt)pitch(now);
+ if(game.phase==="pitch"&&game.pitch){
+   const p=game.pitch,remain=p.start+p.duration-now;
+   if(remain< -185){takePitch(now);return}
+   $("cue").textContent=remain>380?p.kind+" · "+p.mph+" MPH":"TRACK THE BALL!";
+   $("cue").className="cue";
+ }else $("cue").className="cue";
+ if(game.phase==="flight"&&game.flight&&now>=game.flight.start+game.flight.duration)resultRest(now);
+ for(let i=game.particles.length-1;i>=0;i--){
+  const part=game.particles[i];part.x+=part.vx;part.y+=part.vy;part.vy+=.13;part.life--;if(part.life<=0)game.particles.splice(i,1)
+ }
 }
 function celebrate(x,y){
 if(reduced)return;
