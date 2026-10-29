@@ -203,7 +203,7 @@ function update(now){
  if(game.phase==="pitch"&&game.pitch){
    const p=game.pitch,remain=p.start+p.duration-now;
    if(remain< -185){takePitch(now);return}
-   $("cue").textContent=remain>380?p.kind+" · "+p.mph+" MPH":"TRACK THE BALL!";
+   $("cue").textContent=p.kind+" · "+p.mph+" MPH";
    $("cue").className="cue";
  }else $("cue").className="cue";
  if(game.phase==="flight"&&game.flight&&now>=game.flight.start+game.flight.duration)resultRest(now);
@@ -278,9 +278,7 @@ function ring(now){
 function drawPitch(now){
  const p=game.pitch;if(!p||now<p.start)return;
  const progress=Math.max(0,Math.min(1,(now-p.start)/p.duration));
- let shift=p.curve*Math.sin(Math.PI*progress)*Math.pow(progress,.75);
- if(p.kind==="SLIDER"&&progress>.55)shift+=p.curve*1.1*(progress-.55)/.45;
- if(p.kind==="CURVEBALL"&&progress>.65)shift+=Math.abs(p.curve)*.35*(progress-.65)/.35;
+ let shift=p.curve*Math.sin(Math.PI*Math.pow(progress,p.kind==="SLIDER"||p.kind==="CUTTER"?2:1))*Math.pow(progress,.75);
  const x=195+p.lane*Math.pow(progress,1.5)+shift;
  const y=282+156*Math.pow(progress,1.35);
  ellipse(x,y+Math.max(6,20*(1-progress)),7+progress*8,3+progress*3,"#174c3755");
