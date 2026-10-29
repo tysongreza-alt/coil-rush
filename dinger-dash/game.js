@@ -53,7 +53,7 @@ function updateHud(){
   for(const b of document.querySelectorAll("[data-zone]"))b.classList.toggle("selected",b.dataset.zone===m.pitchZone);
  }
  $("swing").style.display=live()?"":"none";
- $("contact").parentElement.parentElement.style.display=live()?"":"none";
+ $("batStyleControls").style.display=live()&&!cpuSide?"flex":"none";
  $("contact").classList.toggle("active",game.swingStyle==="contact");
  $("power").classList.toggle("active",game.swingStyle==="power");
  $("contact").setAttribute("aria-pressed",String(game.swingStyle==="contact"));
@@ -345,6 +345,12 @@ function pause(){
 }
 function resume(){
  game.mode=game.wasMode||"play";
+ if(game.mode==="season"){
+  if(game.wasPhase==="seasonResult"||game.wasPhase==="flight"){overlay.className="overlay";overlay.innerHTML="";seasonAfterPitch(performance.now());return}
+  if(game.wasPhase==="pitch")game.pitchCount=Math.max(0,game.pitchCount-1);
+  game.phase="rest";game.pitch=null;game.flight=null;game.restUntil=performance.now()+750;
+  overlay.className="overlay";overlay.innerHTML="";seasonSave();updateHud();return;
+ }
  if(game.wasPhase==="pitch")game.pitchCount=Math.max(0,game.pitchCount-1);
  game.phase="rest";game.pitch=null;game.flight=null;
  const finished=(game.outs>=3&&game.mode!=="practice")||(game.mode==="challenge"&&game.pitchCount>=game.limit);
@@ -355,7 +361,7 @@ function resume(){
 function pitch(now){
  if(game.mode==="challenge"&&game.pitchCount>=game.limit){game.finishAt=now+350;return}
  game.pitchCount++;
- const grade=game.mode==="practice"?0:game.mode==="challenge"?Math.min(7,game.rivalIndex+1):Math.min(7,Math.floor((game.pitchCount-1)/6));
+ const grade=game.mode==="season"?Math.min(7,seasonTeams[game.match.index][1]):game.mode==="practice"?0:game.mode==="challenge"?Math.min(7,game.rivalIndex+1):Math.min(7,Math.floor((game.pitchCount-1)/6));
  game.pitchGrade=grade;
  const pool=["FOUR-SEAM","FOUR-SEAM","CHANGEUP","CURVEBALL","SLIDER"];
  if(grade>=2)pool.push("CUTTER","SLIDER");
@@ -386,6 +392,7 @@ function resultRest(now){
  updateHud();
 }
 function strike(reason,now,foul=false){
+ if(game.mode==="season"){seasonBatStrike(reason,now,foul);return}
  game.streak=0;game.swingAt=now;
  if(!foul||game.strikes<2)game.strikes++;
  sound(220,.15,"sawtooth",.07);
@@ -396,6 +403,7 @@ function strike(reason,now,foul=false){
  resultRest(now);
 }
 function takePitch(now){
+ if(game.mode==="season"){seasonBatTake(now);return}
  const p=game.pitch;if(!p)return;
  if(p.isBall){
    game.balls++;
@@ -427,6 +435,7 @@ function hit(now,delta){
  distance=Math.round(distance);
  const type=distance>=330?"HOME RUN":distance>=275?"TRIPLE":distance>=210?"DOUBLE":distance>=145?"SINGLE":"POP OUT";
  const sector=delta< -53?0:delta>53?2:1;
+ if(game.mode==="season"){seasonPlayerContact(type,now,sector,perfect,distance);return}
  game.swingAt=now;game.flight={start:now,duration:940,distance,sector,kind:type,perfect,quality};
  if(type==="POP OUT"){game.streak=0;game.outs++;notify("POP FLY · OUT!","miss");sound(180,.14,"triangle")}
  else{
@@ -448,13 +457,14 @@ function hit(now,delta){
  $("cue").textContent=quality+" · "+distance+" FT";store();updateHud();
 }
 function swing(){
+ if(game.mode==="season"&&game.phase==="seasonPitch"){seasonThrow(performance.now());return}
  if(!live()||game.phase!=="pitch"||!game.pitch)return;
  const now=performance.now(),p=game.pitch,delta=now-(p.start+p.duration);
  if(now<p.start-30){$("cue").textContent="WATCH THE BALL!";return}
  sound(280,.08,"square",.04);hit(now,delta);
 }
 function update(now){
- game.t=now;if(!live())return;
+ game.t=now;if(game.mode==="season"){seasonUpdate(now);return}if(!live())return;
  if(game.finishAt&&now>=game.finishAt){game.finishAt=0;end();return}
  if(game.phase==="rest"&&now>=game.restUntil&&!game.finishAt)pitch(now);
  if(game.phase==="pitch"&&game.pitch){
@@ -552,19 +562,28 @@ if(p>.80){ellipse(destX,destY+9,12,4,"#ffffff55")}
 function particles(){for(const p of game.particles){ctx.globalAlpha=Math.min(1,p.life/25);roundRect(p.x,p.y,p.r,p.r,1,p.color)}ctx.globalAlpha=1}
 function draw(now){
 ctx.clearRect(0,0,W,H);stadium();pitcher(now);ring(now);batter(now);
-if(game.phase==="pitch")drawPitch(now);if(game.phase==="flight")drawFlight(now);particles();
+if(game.phase==="pitch")drawPitch(now);if(game.phase==="flight"||(game.phase==="seasonResult"&&game.flight))drawFlight(now);particles();
 if(game.mode==="home"||game.mode==="over"||game.mode==="paused"){ctx.fillStyle="#06233745";ctx.fillRect(0,0,W,H)}
 }
 function frame(now){if(document.hidden){requestAnimationFrame(frame);return}update(now);draw(now);requestAnimationFrame(frame)}
 overlay.addEventListener("click",e=>{
 const b=e.target.closest("button[data-action]");if(!b||b.disabled)return;
 const act=b.dataset.action;
-if(act==="play")start("play");else if(act==="practice")start("practice");else if(act==="challenge")start("challenge");else if(act==="home")home();else if(act==="resume")resume();
+if(act==="seasonMenu")seasonMenu();else if(act==="seasonStart")seasonStart();else if(act==="newseason"){if(seasonData().results.length>=16){const sd=seasonData();saved.season={results:[],wins:0,losses:0,active:null,championships:sd.championships||0};store()}seasonMenu()}
+else if(act==="play")start("play");else if(act==="practice")start("practice");else if(act==="challenge")start("challenge");else if(act==="home")home();else if(act==="resume")resume();
+else if(act==="pitching"||act==="fielding"){let cost=fieldPrice(act);if(saved[act]<5&&saved.coins>=cost){saved.coins-=cost;saved[act]++;store();sound(800,.18,"triangle");if(game.mode==="seasonMenu")seasonMenu();else home()}}
 else if(act==="bat"||act==="eye"){let cost=coinPrice(act);if(saved[act]<5&&saved.coins>=cost){saved.coins-=cost;saved[act]++;store();sound(800,.18,"triangle");home();}}
 });
 canvas.addEventListener("pointerdown",e=>{e.preventDefault();swing()},{passive:false});
 $("swing").addEventListener("pointerdown",e=>{e.preventDefault();swing()},{passive:false});
 $("pause").addEventListener("click",()=>{if(live())pause()});
+$("pitchControls").addEventListener("click",e=>{
+ const button=e.target.closest("button");
+ if(!button||game.mode!=="season"||game.match.offense!=="cpu")return;
+ if(button.dataset.pitch)game.match.pitchKind=button.dataset.pitch;
+ if(button.dataset.zone)game.match.pitchZone=button.dataset.zone;
+ sound(530,.06,"triangle",.04);updateHud();
+});
 for(const style of ["contact","power"]){$(style).addEventListener("click",()=>{if(live()){game.swingStyle=style;updateHud();sound(style==="power"?390:580,.09,"triangle",.05)}})}
 $("sound").addEventListener("click",()=>{saved.sound=!saved.sound;store();updateHud();if(saved.sound)sound(640,.12)});
 document.addEventListener("keydown",e=>{if((e.code==="Space"||e.code==="Enter")&&live()){e.preventDefault();swing()}if(e.code==="Escape"&&live())pause()});
