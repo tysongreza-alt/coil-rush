@@ -3,14 +3,23 @@
 const $=id=>document.getElementById(id);
 const canvas=$("field"),ctx=canvas.getContext("2d"),overlay=$("overlay"),banner=$("banner");
 const W=390,H=520,KEY="dinger-dash-v1";
-const initial={high:0,coins:0,homers:0,perfects:0,bat:0,eye:0,games:0,sound:true,daily:null};
+const initial={high:0,coins:0,homers:0,perfects:0,bat:0,eye:0,games:0,sound:true,daily:null,rival:0,careerWins:0};
 let saved;
 try{saved={...initial,...JSON.parse(localStorage.getItem(KEY)||"{}")}}catch(e){saved={...initial}}
 const dateKey=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-")};
 const missions=[{label:"Hit 3 home runs",type:"hr",goal:3},{label:"Hit 5 doubles or better",type:"xbh",goal:5},{label:"Make 5 perfect swings",type:"perfect",goal:5},{label:"Get 12 hits",type:"hits",goal:12}];
 function todayMission(){let key=dateKey(),n=key.split("").reduce((a,c)=>a+c.charCodeAt(0),0)%missions.length;if(!saved.daily||saved.daily.date!==key)saved.daily={date:key,index:n,progress:0,claimed:false};return missions[saved.daily.index]}
 todayMission();
-const game={mode:"home",phase:"idle",score:0,outs:0,strikes:0,streak:0,bestStreak:0,balls:0,homers:0,perfects:0,hits:0,rank:1,pitchCount:0, target:1,pitch:null,flight:null,swingAt:-1,restUntil:0,finishAt:0,last:0,particles:[],t:0};
+const game={mode:"home",phase:"idle",score:0,outs:0,strikes:0,streak:0,bestStreak:0,balls:0,homers:0,perfects:0,hits:0,rank:1,pitchCount:0, target:1,pitch:null,flight:null,swingAt:-1,restUntil:0,finishAt:0,last:0,particles:[],t:0,playMode:"arcade",rivalIndex:0,limit:0,swingStyle:"contact",pitchGrade:0,lastKind:"",lastTarget:1};
+const rivalNames=["ROOKIE RASCALS","SPEED DEMONS","CURVE KINGS","FIREBALL FOXES","DIAMOND DRAGONS","ALL-STAR ACES","THE LEGENDS"];
+function rivalAt(index){
+ const n=Math.max(0,index);
+ return {name:n<rivalNames.length?rivalNames[n]:"LEGEND LEAGUE "+(n-5),
+ score:[250,430,680,890,1160,1420,1760][n] || (1760+(n-6)*260),
+ homers:Math.min(5,1+Math.floor(n/2)),
+ limit:Math.min(15,10+Math.floor(n/1.4)),reward:100+n*30};
+}
+function live(){return game.mode==="play"||game.mode==="practice"||game.mode==="challenge"}
 let ac=null; const reduced=typeof matchMedia!=="undefined"&&matchMedia("(prefers-reduced-motion: reduce)").matches;
 function store(){try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}}
 function sound(freq=440,duration=.1,type="sine",volume=.09){
@@ -21,35 +30,68 @@ function melody(){sound(530,.12,"triangle");setTimeout(()=>sound(720,.16,"triang
 function vibrate(ms){if(navigator.vibrate)navigator.vibrate(ms)}
 function resize(){let d=Math.min(window.devicePixelRatio||1,2),r=canvas.getBoundingClientRect();canvas.width=Math.round(r.width*d);canvas.height=Math.round(r.height*d);ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0)}
 function updateHud(){
-$("score").textContent=game.score.toLocaleString();$("outVal").textContent=game.outs+"/3";$("strikes").textContent=game.strikes+"/3";$("coins").textContent=saved.coins.toLocaleString();
-$("streak").textContent=game.streak>=2?("x"+Math.min(3,1+Math.floor(game.streak/4))+" | "+game.streak+" HIT STREAK"):"BUILD A HIT STREAK";
-$("firefill").style.width=Math.min(100,(game.streak%5)*20)+"%";
-$("sound").textContent=saved.sound?"🔊":"🔇";
-$("pause").style.display=game.mode==="play"||game.mode==="practice"?"":"none";
-$("swing").style.display=game.mode==="play"||game.mode==="practice"?"":"none";
-$("swing").disabled=game.phase!=="pitch";
-const mission=todayMission();$("mission").textContent=(saved.daily.claimed?"✓ DAILY BONUS COMPLETE":mission.label+" · "+Math.min(mission.goal,saved.daily.progress)+"/"+mission.goal);
+ $("score").textContent=game.score.toLocaleString();
+ $("outVal").textContent=game.outs+"/3";
+ $("strikes").textContent=game.strikes+"/3";
+ $("balls").textContent=game.balls+"/4";
+ $("coins").textContent=saved.coins.toLocaleString();
+ $("streak").textContent=game.streak>=2?("x"+Math.min(3,1+Math.floor(game.streak/4))+" | "+game.streak+" HIT STREAK"):"BUILD A HIT STREAK";
+ $("firefill").style.width=Math.min(100,(game.streak%5)*20)+"%";
+ $("sound").textContent=saved.sound?"🔊":"🔇";
+ $("pause").style.display=live()?"":"none";
+ $("swing").style.display=live()?"":"none";
+ $("contact").parentElement.parentElement.style.display=live()?"":"none";
+ $("contact").classList.toggle("active",game.swingStyle==="contact");
+ $("power").classList.toggle("active",game.swingStyle==="power");
+ $("contact").setAttribute("aria-pressed",String(game.swingStyle==="contact"));
+ $("power").setAttribute("aria-pressed",String(game.swingStyle==="power"));
+ $("swing").textContent=game.swingStyle==="power"?"💥 POWER SWING!":"⚾ SWING!";
+ $("swing").disabled=game.phase!=="pitch"||!live();
+ if(game.mode==="challenge"){
+   const rv=rivalAt(game.rivalIndex);
+   $("modeinfo").textContent="RIVAL "+(game.rivalIndex+1)+" · PITCH "+Math.min(game.pitchCount,rv.limit)+"/"+rv.limit;
+   $("pitchinfo").textContent=game.pitch?game.pitch.kind+" "+game.pitch.mph+" MPH":"NEED "+rv.score+" PTS · "+rv.homers+" HR";
+ }else{
+   $("modeinfo").textContent=game.mode==="practice"?"PRACTICE · NO OUT LIMIT":game.mode==="play"?"ARCADE · PITCH "+game.pitchCount:"ONE-TAP HOME RUN DERBY";
+   $("pitchinfo").textContent=game.pitch?game.pitch.kind+" · "+game.pitch.mph+" MPH":"READ THE PITCH";
+ }
+ const mission=todayMission();
+ $("mission").textContent=saved.daily.claimed?"✓ DAILY BONUS COMPLETE":mission.label+" · "+Math.min(mission.goal,saved.daily.progress)+"/"+mission.goal;
 }
 function notify(txt,kind="normal"){banner.textContent=txt;banner.className="banner visible "+kind;clearTimeout(notify.timer);notify.timer=setTimeout(()=>banner.classList.remove("visible"),1450)}
 function missionStep(type){
-if(game.mode!=="play"||saved.daily.claimed)return;
+if(game.mode==="practice"||saved.daily.claimed)return;
 const m=todayMission();if(m.type!==type)return;saved.daily.progress=Math.min(m.goal,saved.daily.progress+1);
 if(saved.daily.progress>=m.goal){saved.daily.claimed=true;saved.coins+=65;setTimeout(()=>notify("DAILY MISSION +65 COINS!","gold"),1100);melody()}store();
 }
 function coinPrice(type){return 65+(saved[type]||0)*55}
 function shopHtml(){return '<div class="shop-heading">TRAIN YOUR SLUGGER</div><div class="shop-row"><div class="up-icon">💪</div><div class="up-copy"><strong>POWER BAT <span>'+saved.bat+'/5</span></strong><small>Hit the ball farther</small></div><button class="small-btn" data-action="bat" '+(saved.bat>=5||saved.coins<coinPrice("bat")?"disabled":"")+'>'+(saved.bat>=5?"MAX":coinPrice("bat")+" 🪙")+'</button></div><div class="shop-row"><div class="up-icon">👀</div><div class="up-copy"><strong>EAGLE EYES <span>'+saved.eye+'/5</span></strong><small>More forgiving swing timing</small></div><button class="small-btn" data-action="eye" '+(saved.eye>=5||saved.coins<coinPrice("eye")?"disabled":"")+'>'+(saved.eye>=5?"MAX":coinPrice("eye")+" 🪙")+'</button></div><div class="shop-foot">Earn coins by hitting. Upgrades stay saved on this device.</div>'}
 function home(){
-game.mode="home";game.phase="idle";updateHud();overlay.className="overlay on";
-overlay.innerHTML='<div class="menu-card"><div class="menu-badge">⚾ THE BACKYARD BASEBALL ARCADE ⚾</div><h1>DINGER<br><span>DASH!</span></h1><div class="menu-ball">⚾</div><p class="lead">Time your swing. Crush home runs.<br>Become a backyard legend.</p><div class="record-grid"><div><b>'+saved.high.toLocaleString()+'</b><small>HIGH SCORE</small></div><div><b>'+saved.homers+'</b><small>CAREER HOMERS</small></div><div><b>'+saved.coins+'</b><small>🪙 COINS</small></div></div><button class="primary-btn" data-action="play">PLAY BALL! <span>›</span></button><button class="ghost-btn" data-action="practice">PRACTICE SWINGS</button><div class="how"><span class="how-icon">☝️</span><div><b>HOW TO PLAY</b><p>Tap SWING when the ball reaches the glowing circle. Perfect timing sends it flying! Three strikes make an out. Three outs end the game.</p></div></div>'+shopHtml()+'<div class="credits">FREE TO PLAY · NO ADS · SAVES ON THIS PHONE</div></div>';
+ game.mode="home";game.phase="idle";game.pitch=null;game.finishAt=0;updateHud();overlay.className="overlay on";
+ const rv=rivalAt(saved.rival);
+ overlay.innerHTML='<div class="menu-card"><div class="menu-badge">⚾ THE BACKYARD BASEBALL ARCADE ⚾</div><h1>DINGER<br><span>DASH!</span></h1><div class="menu-ball">⚾</div><p class="lead">Read the pitch. Pick your swing.<br>Become a backyard legend.</p><div class="record-grid"><div><b>'+saved.high.toLocaleString()+'</b><small>HIGH SCORE</small></div><div><b>'+saved.homers+'</b><small>CAREER HOMERS</small></div><div><b>'+saved.coins+'</b><small>🪙 COINS</small></div></div><button class="primary-btn" data-action="play">ARCADE DERBY <span>›</span></button><div class="rival-panel"><span class="rival-kicker">🏆 RIVAL ROAD · LEVEL '+(saved.rival+1)+'</span><strong>'+rv.name+'</strong><small>Beat '+rv.score+' points and hit '+rv.homers+' home run'+(rv.homers===1?"":"s")+' in '+rv.limit+' pitches.</small></div><button class="primary-btn secondary-play" data-action="challenge">CHALLENGE RIVAL <span>›</span></button><button class="ghost-btn" data-action="practice">PRACTICE SWINGS</button><div class="how"><span class="how-icon">☝️</span><div><b>MASTER THE PLATE</b><p>Some pitches are balls, so let them pass! Swing at strikes. Three strikes make an out; four balls earn a walk. Choose CONTACT for safer hits or POWER for big home runs. Watch the ball, not the words!</p></div></div>'+shopHtml()+'<div class="credits">NO ADS · NO ACCOUNT · PROGRESS SAVES ON THIS DEVICE</div></div>';
 }
-function start(practice=false){
-game.mode=practice?"practice":"play";game.phase="rest";game.score=0;game.outs=0;game.strikes=0;game.streak=0;game.bestStreak=0;game.balls=0;game.homers=0;game.perfects=0;game.hits=0;game.pitchCount=0;game.target=1;game.pitch=null;game.flight=null;game.particles=[];game.finishAt=0;game.restUntil=performance.now()+650;
-overlay.className="overlay";overlay.innerHTML="";banner.className="banner";$("cue").textContent="WATCH THE PITCH";updateHud();sound(520,.14,"triangle");}
+function start(mode="play"){
+ game.mode=mode===true?"practice":mode===false?"play":mode;
+ game.playMode=game.mode;game.phase="rest";game.score=0;game.outs=0;game.strikes=0;game.balls=0;game.streak=0;game.bestStreak=0;game.homers=0;game.perfects=0;game.hits=0;game.pitchCount=0;game.target=1;game.lastTarget=1;game.lastKind="";game.pitch=null;game.flight=null;game.particles=[];game.finishAt=0;
+ game.rivalIndex=saved.rival;game.limit=game.mode==="challenge"?rivalAt(game.rivalIndex).limit:0;
+ game.swingStyle="contact";game.restUntil=performance.now()+850;
+ overlay.className="overlay";overlay.innerHTML="";banner.className="banner";
+ $("cue").textContent="WATCH THE PITCH";updateHud();sound(520,.14,"triangle");
+}
 function end(){
-if(game.mode!=="play")return;
-game.mode="over";game.phase="idle";saved.games++;let record=game.score>saved.high;if(record)saved.high=game.score;store();updateHud();if(record)melody();
-overlay.className="overlay on";
-overlay.innerHTML='<div class="menu-card over-card"><div class="menu-badge">FINAL SCORE</div><h2>'+(record?"NEW HIGH SCORE!":"NICE HITTING!")+'</h2><div class="final-score">'+game.score.toLocaleString()+'</div><div class="stats-grid"><div><b>'+game.homers+'</b><small>HOME RUNS</small></div><div><b>'+game.hits+'</b><small>HITS</small></div><div><b>'+game.perfects+'</b><small>PERFECT SWINGS</small></div></div><p class="replay-note">'+(game.homers>=3?"You're a home run machine!":game.hits>=5?"Your swing is heating up!":"Every legend starts with one swing!")+'</p><button class="primary-btn" data-action="play">PLAY AGAIN <span>›</span></button><button class="ghost-btn" data-action="home">MAIN MENU</button><div class="bank-total">🪙 '+saved.coins+' COINS SAVED</div>'+shopHtml()+'</div>';
+ if(game.mode!=="play"&&game.mode!=="challenge")return;
+ const career=game.mode==="challenge",rv=rivalAt(game.rivalIndex);
+ game.mode="over";game.phase="idle";saved.games++;
+ const record=!career&&game.score>saved.high;
+ if(record)saved.high=game.score;
+ const won=career&&game.score>=rv.score&&game.homers>=rv.homers;
+ if(won){saved.rival=Math.max(saved.rival,game.rivalIndex+1);saved.careerWins++;saved.coins+=rv.reward}
+ store();updateHud();if(record||won)melody();
+ const headline=career?(won?"RIVAL DEFEATED!":"RIVAL SURVIVES!"):(record?"NEW HIGH SCORE!":"NICE HITTING!");
+ const assessment=career?(won?"+"+rv.reward+" BONUS COINS · NEXT RIVAL UNLOCKED":"NEED "+rv.score+" POINTS + "+rv.homers+" HOME RUN"+(rv.homers===1?"":"S")):(game.homers>=3?"You're a home run machine!":game.hits>=5?"Your swing is heating up!":"Every legend starts with one swing!");
+ overlay.className="overlay on";
+ overlay.innerHTML='<div class="menu-card over-card"><div class="menu-badge">'+(career?"RIVAL ROAD · LEVEL "+(game.rivalIndex+1):"ARCADE FINAL SCORE")+'</div><h2>'+headline+'</h2><div class="final-score">'+game.score.toLocaleString()+'</div><div class="stats-grid"><div><b>'+game.homers+'</b><small>HOME RUNS</small></div><div><b>'+game.hits+'</b><small>HITS</small></div><div><b>'+game.perfects+'</b><small>PERFECT SWINGS</small></div></div><p class="replay-note">'+assessment+'</p><button class="primary-btn" data-action="'+(career?"challenge":"play")+'">'+(career?(won?"NEXT CHALLENGER":"RETRY RIVAL"):"PLAY AGAIN")+' <span>›</span></button><button class="ghost-btn" data-action="home">MAIN MENU</button><div class="bank-total">🪙 '+saved.coins+' COINS SAVED</div>'+shopHtml()+'</div>';
 }
 function pause(){if(game.mode!=="play"&&game.mode!=="practice")return;game.wasMode=game.mode;game.mode="paused";overlay.className="overlay on";overlay.innerHTML='<div class="menu-card pause-card"><div class="menu-badge">TAKE A BREATHER</div><h2>TIME OUT!</h2><div class="pause-ball">⚾</div><button class="primary-btn" data-action="resume">RESUME GAME <span>›</span></button><button class="ghost-btn" data-action="home">QUIT TO MENU</button></div>';$("swing").disabled=true}
 function resume(){game.mode=game.wasMode||"play";game.phase="rest";game.restUntil=performance.now()+700;overlay.className="overlay";overlay.innerHTML="";updateHud()}
