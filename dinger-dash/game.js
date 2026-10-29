@@ -93,7 +93,7 @@ function end(){
  overlay.className="overlay on";
  overlay.innerHTML='<div class="menu-card over-card"><div class="menu-badge">'+(career?"RIVAL ROAD · LEVEL "+(game.rivalIndex+1):"ARCADE FINAL SCORE")+'</div><h2>'+headline+'</h2><div class="final-score">'+game.score.toLocaleString()+'</div><div class="stats-grid"><div><b>'+game.homers+'</b><small>HOME RUNS</small></div><div><b>'+game.hits+'</b><small>HITS</small></div><div><b>'+game.perfects+'</b><small>PERFECT SWINGS</small></div></div><p class="replay-note">'+assessment+'</p><button class="primary-btn" data-action="'+(career?"challenge":"play")+'">'+(career?(won?"NEXT CHALLENGER":"RETRY RIVAL"):"PLAY AGAIN")+' <span>›</span></button><button class="ghost-btn" data-action="home">MAIN MENU</button><div class="bank-total">🪙 '+saved.coins+' COINS SAVED</div>'+shopHtml()+'</div>';
 }
-function pause(){if(game.mode!=="play"&&game.mode!=="practice")return;game.wasMode=game.mode;game.mode="paused";overlay.className="overlay on";overlay.innerHTML='<div class="menu-card pause-card"><div class="menu-badge">TAKE A BREATHER</div><h2>TIME OUT!</h2><div class="pause-ball">⚾</div><button class="primary-btn" data-action="resume">RESUME GAME <span>›</span></button><button class="ghost-btn" data-action="home">QUIT TO MENU</button></div>';$("swing").disabled=true}
+function pause(){if(!live())return;game.wasMode=game.mode;game.mode="paused";overlay.className="overlay on";overlay.innerHTML='<div class="menu-card pause-card"><div class="menu-badge">TAKE A BREATHER</div><h2>TIME OUT!</h2><div class="pause-ball">⚾</div><button class="primary-btn" data-action="resume">RESUME GAME <span>›</span></button><button class="ghost-btn" data-action="home">QUIT TO MENU</button></div>';$("swing").disabled=true}
 function resume(){game.mode=game.wasMode||"play";game.phase="rest";game.restUntil=performance.now()+700;overlay.className="overlay";overlay.innerHTML="";updateHud()}
 function pitch(now){
  if(game.mode==="challenge"&&game.pitchCount>=game.limit){game.finishAt=now+350;return}
@@ -269,15 +269,22 @@ textAt("9",135,425,15,"#fff",900);
 ctx.fillStyle="#ffffffdc";ctx.beginPath();ctx.moveTo(190,460);ctx.lineTo(200,460);ctx.lineTo(205,469);ctx.lineTo(195,480);ctx.lineTo(185,469);ctx.closePath();ctx.fill();ctx.strokeStyle="#7c9db0";ctx.lineWidth=1;ctx.stroke();
 }
 function ring(now){
-const p=game.pitch,remain=p?(p.start+p.duration-now):9999,active=remain<280&&remain> -160;
-ctx.save();ctx.strokeStyle=active?"#ffec67":"#f9fdf4a8";ctx.lineWidth=active?5:3;ctx.shadowBlur=active?24:10;ctx.shadowColor=active?"#ffd942":"#fff";ctx.beginPath();ctx.ellipse(197,437,29+(active?Math.sin(now/65)*2:0),15,0,0,Math.PI*2);ctx.stroke();ctx.restore();
+ ctx.save();
+ ctx.strokeStyle="#ffffffb8";ctx.lineWidth=3;ctx.shadowBlur=7;ctx.shadowColor="#ffffff83";
+ ctx.beginPath();ctx.ellipse(195,437,30,17,0,0,Math.PI*2);ctx.stroke();
+ ctx.shadowBlur=0;ctx.strokeStyle="#ffffff6a";ctx.lineWidth=1.5;ctx.setLineDash([5,5]);
+ ctx.strokeRect(156,413,78,51);ctx.restore();
 }
 function drawPitch(now){
-const p=game.pitch;if(!p)return;
-let progress=Math.max(0,Math.min(1,(now-p.start)/p.duration));if(now<p.start)return;
-let e=progress*progress*(3-2*progress),x=195+Math.sin(progress*8)*p.curve*progress,y=284+(438-284)*e;
-ellipse(x,y+Math.max(6,20*(1-progress)),7+progress*8,3+progress*3,"#174c3755");
-baseball(x,y,4+progress*8,progress*7);
+ const p=game.pitch;if(!p||now<p.start)return;
+ const progress=Math.max(0,Math.min(1,(now-p.start)/p.duration));
+ let shift=p.curve*Math.sin(Math.PI*progress)*Math.pow(progress,.75);
+ if(p.kind==="SLIDER"&&progress>.55)shift+=p.curve*1.1*(progress-.55)/.45;
+ if(p.kind==="CURVEBALL"&&progress>.65)shift+=Math.abs(p.curve)*.35*(progress-.65)/.35;
+ const x=195+p.lane*Math.pow(progress,1.5)+shift;
+ const y=282+156*Math.pow(progress,1.35);
+ ellipse(x,y+Math.max(6,20*(1-progress)),7+progress*8,3+progress*3,"#174c3755");
+ baseball(x,y,4+progress*8,progress*7);
 }
 function drawFlight(now){
 const f=game.flight;if(!f)return;
@@ -297,15 +304,16 @@ function frame(now){if(document.hidden){requestAnimationFrame(frame);return}upda
 overlay.addEventListener("click",e=>{
 const b=e.target.closest("button[data-action]");if(!b||b.disabled)return;
 const act=b.dataset.action;
-if(act==="play")start(false);else if(act==="practice")start(true);else if(act==="home")home();else if(act==="resume")resume();
+if(act==="play")start("play");else if(act==="practice")start("practice");else if(act==="challenge")start("challenge");else if(act==="home")home();else if(act==="resume")resume();
 else if(act==="bat"||act==="eye"){let cost=coinPrice(act);if(saved[act]<5&&saved.coins>=cost){saved.coins-=cost;saved[act]++;store();sound(800,.18,"triangle");home();}}
 });
 canvas.addEventListener("pointerdown",e=>{e.preventDefault();swing()},{passive:false});
 $("swing").addEventListener("pointerdown",e=>{e.preventDefault();swing()},{passive:false});
-$("pause").addEventListener("click",()=>{if(game.mode==="play"||game.mode==="practice")pause()});
+$("pause").addEventListener("click",()=>{if(live())pause()});
+for(const style of ["contact","power"]){$(style).addEventListener("click",()=>{if(live()){game.swingStyle=style;updateHud();sound(style==="power"?390:580,.09,"triangle",.05)}})}
 $("sound").addEventListener("click",()=>{saved.sound=!saved.sound;store();updateHud();if(saved.sound)sound(640,.12)});
-document.addEventListener("keydown",e=>{if((e.code==="Space"||e.code==="Enter")&&(game.mode==="play"||game.mode==="practice")){e.preventDefault();swing()}if(e.code==="Escape"&&(game.mode==="play"||game.mode==="practice"))pause()});
-document.addEventListener("visibilitychange",()=>{if(document.hidden&&(game.mode==="play"||game.mode==="practice"))pause()});
+document.addEventListener("keydown",e=>{if((e.code==="Space"||e.code==="Enter")&&live()){e.preventDefault();swing()}if(e.code==="Escape"&&live())pause()});
+document.addEventListener("visibilitychange",()=>{if(document.hidden&&live())pause()});
 window.addEventListener("resize",resize);
 resize();home();requestAnimationFrame(frame);
 })();
