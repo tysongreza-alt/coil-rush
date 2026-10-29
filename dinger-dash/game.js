@@ -3,7 +3,7 @@
 const $=id=>document.getElementById(id);
 const canvas=$("field"),ctx=canvas.getContext("2d"),overlay=$("overlay"),banner=$("banner");
 const W=390,H=520,KEY="dinger-dash-v1";
-const initial={high:0,coins:0,homers:0,perfects:0,bat:0,eye:0,games:0,sound:true,daily:null,rival:0,careerWins:0};
+const initial={high:0,coins:0,homers:0,perfects:0,bat:0,eye:0,games:0,sound:true,daily:null,rival:0,careerWins:0,fielding:0,pitching:0,season:null};
 let saved;
 try{saved={...initial,...JSON.parse(localStorage.getItem(KEY)||"{}")}}catch(e){saved={...initial}}
 const dateKey=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-")};
@@ -19,7 +19,7 @@ function rivalAt(index){
  homers:Math.min(5,1+Math.floor(n/2)),
  limit:Math.min(15,10+Math.floor(n/1.4)),reward:100+n*30};
 }
-function live(){return game.mode==="play"||game.mode==="practice"||game.mode==="challenge"}
+function live(){return game.mode==="play"||game.mode==="practice"||game.mode==="challenge"||game.mode==="season"}
 let ac=null; const reduced=typeof matchMedia!=="undefined"&&matchMedia("(prefers-reduced-motion: reduce)").matches;
 function store(){try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}}
 function sound(freq=440,duration=.1,type="sine",volume=.09){
@@ -66,6 +66,233 @@ if(saved.daily.progress>=m.goal){saved.daily.claimed=true;saved.coins+=65;setTim
 }
 function coinPrice(type){return 65+(saved[type]||0)*55}
 function shopHtml(){return '<div class="shop-heading">TRAIN YOUR SLUGGER</div><div class="shop-row"><div class="up-icon">💪</div><div class="up-copy"><strong>POWER BAT <span>'+saved.bat+'/5</span></strong><small>Hit the ball farther</small></div><button class="small-btn" data-action="bat" '+(saved.bat>=5||saved.coins<coinPrice("bat")?"disabled":"")+'>'+(saved.bat>=5?"MAX":coinPrice("bat")+" 🪙")+'</button></div><div class="shop-row"><div class="up-icon">👀</div><div class="up-copy"><strong>EAGLE EYES <span>'+saved.eye+'/5</span></strong><small>More forgiving swing timing</small></div><button class="small-btn" data-action="eye" '+(saved.eye>=5||saved.coins<coinPrice("eye")?"disabled":"")+'>'+(saved.eye>=5?"MAX":coinPrice("eye")+" 🪙")+'</button></div><div class="shop-foot">Earn coins by hitting. Upgrades stay saved on this device.</div>'}
+
+const seasonTeams=[
+ ["Harbor Sharks",1,"FASTBALL"],["Maple Bears",1,"CURVEBALL"],["Thunder Bolts",2,"CHANGEUP"],["Canyon Coyotes",2,"FASTBALL"],
+ ["Rocket Runners",2,"CURVEBALL"],["Storm Chasers",3,"CHANGEUP"],["River Otters",2,"FASTBALL"],["Comet Crushers",3,"CURVEBALL"],
+ ["Fireball Foxes",3,"CHANGEUP"],["Diamond Dragons",4,"FASTBALL"],["Moonlight Wolves",3,"CURVEBALL"],["Blazing Bisons",4,"CHANGEUP"],
+ ["Lightning Lynx",4,"FASTBALL"],["Iron Eagles",5,"CURVEBALL"],["Meteor Monsters",5,"CHANGEUP"],["All-Star Aces",5,"FASTBALL"]
+];
+function seasonData(){
+ if(!saved.season||!Array.isArray(saved.season.results))saved.season={results:[],wins:0,losses:0,active:null,championships:0};
+ saved.season.wins=saved.season.results.filter(x=>x.won).length;
+ saved.season.losses=saved.season.results.length-saved.season.wins;
+ return saved.season;
+}
+function seasonOpponent(){return seasonTeams[Math.min(15,seasonData().results.length)]}
+function fieldPrice(type){return 75+(saved[type]||0)*65}
+function seasonTiles(){
+ const sd=seasonData();
+ return '<div class="season-results">'+seasonTeams.map((t,i)=>{
+ const result=sd.results[i],kind=result?(result.won?"won":"lost"):(i===sd.results.length?"next":"");
+ return '<div class="result-tile '+kind+'" title="'+t[0]+'">'+(result?(result.won?"W":"L"):(i+1))+'</div>'
+ }).join("")+'</div>'
+}
+function seasonShop(){
+ let html='<div class="shop-heading">BUILD YOUR BALLCLUB</div>';
+ for(const [type,name,description,emoji] of [["pitching","PITCHING","More accurate throws, fewer hard hits","⚾"],["fielding","FIELDING","Automatic catches and better defense","🧤"]]){
+  let price=fieldPrice(type),max=saved[type]>=5;
+  html+='<div class="shop-row"><div class="up-icon">'+emoji+'</div><div class="up-copy"><strong>'+name+' <span>'+saved[type]+'/5</span></strong><small>'+description+'</small></div><button class="small-btn" data-action="'+type+'" '+(max||saved.coins<price?"disabled":"")+'>'+(max?"MAX":price+" 🪙")+'</button></div>';
+ }
+ return html;
+}
+function seasonMenu(){
+ const sd=seasonData(),idx=sd.results.length,done=idx>=16,op=seasonOpponent();
+ game.mode="seasonMenu";game.phase="idle";game.pitch=null;updateHud();
+ overlay.className="overlay on";
+ overlay.innerHTML='<div class="menu-card"><div class="menu-badge">⚾ DINGER DASH · SEASON MODE</div><h2>THE PENNANT RACE</h2><div class="record-grid"><div><b>'+sd.wins+'</b><small>WINS</small></div><div><b>'+sd.losses+'</b><small>LOSSES</small></div><div><b>'+idx+'/16</b><small>GAMES PLAYED</small></div></div><div class="season-panel"><div class="season-title">'+(done?"SEASON COMPLETE":'GAME '+(idx+1)+' OF 16')+'</div><strong>'+(done?(sd.wins>=10?"CHAMPIONS!":"SEASON FINISHED"):("YOU vs "+op[0]))+'</strong><small>'+(done?('Final record: '+sd.wins+'–'+sd.losses+'. '+(sd.wins>=10?"You earned the pennant!":"Build a stronger club and try again.")):('Three innings · three outs per side · '+(sd.active?"Continue your saved game":"Play both offense and defense")+'. Scout tip: hitters struggle with '+op[2].toLowerCase()+'s.'))+'</small></div>'+seasonTiles()+'<div class="inning-detail">You bat <strong>second</strong> as the home team. On the mound, choose a pitch and its location, then tap THROW when the moving marker reaches green. Your fielders make plays automatically. Wins earn coins for building your team.</div><button class="primary-btn season-btn" data-action="'+(done?"newseason":"seasonStart")+'">'+(done?"START A NEW SEASON":sd.active?"RESUME GAME "+(idx+1):"PLAY GAME "+(idx+1))+' <span>›</span></button>'+seasonShop()+'<button class="ghost-btn" data-action="home">MAIN MENU</button></div>';
+}
+function seasonStart(){
+ const sd=seasonData();
+ if(sd.results.length>=16){seasonMenu();return}
+ game.mode="season";game.phase="rest";game.playMode="season";game.swingStyle="contact";
+ game.pitch=null;game.flight=null;game.particles=[];game.finishAt=0;game.lastKind="";game.lastTarget=1;
+ if(sd.active&&sd.active.match){
+  game.match=sd.active.match;
+  const st=sd.active.stats||{};
+  for(const k of ["outs","strikes","balls","score","hits","homers","perfects","pitchCount","streak"]){game[k]=st[k]||0}
+ } else {
+  game.match={index:sd.results.length,inning:1,offense:"cpu",scores:[0,0],bases:[false,false,false],pitchKind:"FASTBALL",pitchZone:"corner",pitchSeed:0,lastPitch:"",repeats:0,batters:0};
+  game.outs=0;game.strikes=0;game.balls=0;game.score=0;game.hits=0;game.homers=0;game.perfects=0;game.pitchCount=0;game.streak=0;
+ }
+ game.restUntil=performance.now()+850;
+ game.match.pitchSeed=game.restUntil;
+ overlay.className="overlay";overlay.innerHTML="";banner.className="banner";
+ $("cue").textContent=game.match.offense==="cpu"?"YOU ARE PITCHING":"YOU ARE BATTING";
+ seasonSave();updateHud();
+}
+function seasonSave(){
+ if(game.mode!=="season"||!game.match)return;
+ const st={};
+ for(const k of ["outs","strikes","balls","score","hits","homers","perfects","pitchCount","streak"])st[k]=game[k]||0;
+ seasonData().active={match:JSON.parse(JSON.stringify(game.match)),stats:st};
+ store();
+}
+function seasonSettleAtBat(){
+ game.strikes=0;game.balls=0;
+ game.match.batters++;
+}
+function seasonWalk(side){
+ const b=game.match.bases;
+ if(b[0]){if(b[1]){if(b[2])game.match.scores[side]++;b[2]=true}b[1]=true}
+ b[0]=true;
+}
+function seasonAdvance(side,steps){
+ const m=game.match,old=m.bases.slice(),next=[false,false,false];
+ let runs=steps===4?1:0;
+ for(let i=2;i>=0;i--){
+  if(!old[i])continue;
+  if(steps===4||i+steps>=3)runs++;
+  else if(steps===1&&i===1&&Math.random()<.48)runs++;
+  else next[i+steps]=true;
+ }
+ if(steps!==4)next[steps-1]=true;
+ m.bases=next;m.scores[side]+=runs;
+ return runs;
+}
+function seasonBatterOut(reason,now,play=true){
+ game.outs++;seasonSettleAtBat();
+ notify(reason,"miss");sound(205,.14,"triangle");
+ game.phase="seasonResult";game.match.resultUntil=now+(play?980:620);
+}
+function seasonAfterPitch(now){
+ if(game.mode!=="season")return;
+ const m=game.match;
+ if(m.offense==="you"&&m.inning>=3&&m.scores[0]>m.scores[1]){seasonFinish();return}
+ if(game.outs>=3){
+  game.outs=0;game.strikes=0;game.balls=0;m.bases=[false,false,false];m.lastPitch="";m.repeats=0;
+  if(m.offense==="cpu"){
+   m.offense="you";notify("BOTTOM "+m.inning+" · YOU BAT!","good");
+  }else{
+   if(m.inning>=3&&m.scores[0]!==m.scores[1]){seasonFinish();return}
+   m.inning++;m.offense="cpu";notify("TOP "+m.inning+" · YOU PITCH!","good");
+  }
+ }
+ game.phase="rest";game.pitch=null;game.flight=null;game.match.resultUntil=0;
+ game.restUntil=now+600;
+ seasonSave();updateHud();
+}
+function seasonFinish(){
+ const m=game.match,sd=seasonData(),won=m.scores[0]>m.scores[1];
+ const endScores=m.scores.slice(),reward=won?110:40;
+ const opponent=seasonTeams[m.index][0];
+ sd.results.push({won,score:endScores,opponent,innings:m.inning});
+ sd.active=null;sd.wins+=won?1:0;sd.losses+=won?0:1;
+ saved.coins+=reward+(won?Math.min(30,game.homers||0)*5:0);
+ if(sd.results.length===16&&sd.wins>=10){sd.championships=(sd.championships||0)+1;saved.coins+=300}
+ game.mode="seasonOver";game.phase="idle";game.pitch=null;game.flight=null;game.match=null;store();updateHud();
+ if(won)melody();else sound(220,.24,"triangle");
+ const done=sd.results.length===16;
+ overlay.className="overlay on";
+ overlay.innerHTML='<div class="menu-card over-card"><div class="menu-badge">'+(done?"16-GAME SEASON COMPLETE":"GAME "+sd.results.length+" OF 16")+'</div><h2>'+(won?"YOU WIN!":"TOUGH LOSS!")+'</h2><div class="final-score">'+endScores[0]+' – '+endScores[1]+'</div><div class="record-grid"><div><b>'+sd.wins+'</b><small>WINS</small></div><div><b>'+sd.losses+'</b><small>LOSSES</small></div><div><b>+'+reward+'</b><small>🪙 COINS</small></div></div><p class="replay-note">'+(done?(sd.wins>=10?"PENNANT CHAMPIONS! BONUS 300 COINS!":"Season complete. Build your club for next season."):("Next up: "+seasonOpponent()[0]))+'</p><button class="primary-btn season-btn" data-action="seasonMenu">'+(done?"VIEW SEASON RESULTS":"CONTINUE SEASON")+' <span>›</span></button><button class="ghost-btn" data-action="home">MAIN MENU</button></div>';
+}
+function seasonPlayerContact(type,now,sector,perfect,distance){
+ const m=game.match,cpuStrength=seasonTeams[m.index][1];
+ const steps={"SINGLE":1,"DOUBLE":2,"TRIPLE":3,"HOME RUN":4}[type]||0;
+ const caught=steps>0&&steps<4&&Math.random()<(type==="SINGLE"?.07:type==="DOUBLE"?.11:.09)+cpuStrength*.012;
+ game.swingAt=now;
+ game.flight={start:now,duration:900,distance,sector,kind:caught?"POP OUT":type,perfect,quality:perfect?"PERFECT":"HIT"};
+ if(steps===0||caught){
+  game.outs++;game.streak=0;notify(caught?"CAUGHT BY THE DEFENSE!":"POP FLY · OUT","miss");
+ }else{
+  const runs=seasonAdvance(0,steps);
+  game.hits++;game.streak++;
+  if(type==="HOME RUN"){game.homers++;saved.homers++;celebrate(195,185)}
+  if(perfect)game.perfects++;
+  game.score+=steps*30;
+  saved.coins+=steps===4?15:4;
+  notify((runs?runs+" RUN"+(runs>1?"S":"")+"! · ":"")+type,"good");
+  if(runs)sound(730,.2,"triangle");
+ }
+ seasonSettleAtBat();game.phase="flight";store();updateHud();
+}
+function seasonBatStrike(reason,now,foul=false){
+ if(!foul||game.strikes<2)game.strikes++;
+ if(game.strikes>=3){seasonBatterOut("STRIKE THREE! · OUT",now);return}
+ notify(reason||(foul?"FOUL BALL":"STRIKE"),"miss");
+ game.phase="seasonResult";game.match.resultUntil=now+700;updateHud();
+}
+function seasonBatTake(now){
+ if(game.pitch.isBall){
+  game.balls++;
+  if(game.balls>=4){
+   seasonWalk(0);seasonSettleAtBat();notify("BALL FOUR! TAKE YOUR BASE","good")
+  }else notify("BALL "+game.balls+" · GOOD EYE!","good");
+ }else seasonBatStrike("CALLED STRIKE!",now);
+ if(game.phase!=="seasonResult"){game.phase="seasonResult";game.match.resultUntil=now+690}
+ updateHud();
+}
+function seasonThrow(now){
+ if(game.mode!=="season"||game.phase!=="seasonPitch"||game.match.offense!=="cpu")return;
+ const m=game.match,team=seasonTeams[m.index],kind=m.pitchKind,zone=m.pitchZone;
+ const pos=.5+.5*Math.sin((now-m.pitchSeed)/350);
+ const accuracy=1-Math.abs(pos-.5)*2;
+ const control=Math.min(1,accuracy*.82+saved.pitching*.045);
+ const repeated=kind===m.lastPitch?m.repeats+1:1;m.repeats=repeated;m.lastPitch=kind;
+ const weakness=kind===team[2]?-.15:0;
+ const locationStrike=zone==="waste"?Math.random()<.11:Math.random()<(zone==="corner"?.74:.91)+control*.07;
+ const cpuSkill=team[1],chase=zone==="waste"?(.13+(cpuSkill-1)*.018):(.22+(cpuSkill-1)*.018);
+ const swingCpu=locationStrike?Math.random()<(.70+cpuSkill*.018):Math.random()<chase;
+ game.pitchCount++;
+ let result="",showHit=false;
+ if(!swingCpu){
+  if(locationStrike){game.strikes++;result="CALLED STRIKE!"}
+  else{game.balls++;result="BALL "+game.balls+" · GOOD EYE"}
+ }else{
+  const hitChance=Math.max(.12,Math.min(.76,.30+cpuSkill*.043+weakness+(1-control)*.22+(repeated>=3?.15:0)+(zone==="waste"?-.16:0)-(saved.pitching*.022)));
+  const v=Math.random();
+  if(v>hitChance+.12){game.strikes++;result="SWING & MISS!"}
+  else if(v>hitChance){if(game.strikes<2)game.strikes++;result="FOUL BALL!"}
+  else{
+   const power=Math.random(),big=power<(Math.max(.02,.10+(cpuSkill-3)*.02-saved.pitching*.008));
+   const hitType=big?"HOME RUN":power<.30?"DOUBLE":power<.34?"TRIPLE":"SINGLE";
+   const fieldChance=Math.min(.70,(hitType==="SINGLE"?.34:hitType==="DOUBLE"?.17:hitType==="TRIPLE"?.12:0)+saved.fielding*.09+control*.06);
+   if(Math.random()<fieldChance){
+    game.outs++;result="GREAT DEFENSIVE PLAY! · OUT";
+   }else{
+    const runs=seasonAdvance(1,{"SINGLE":1,"DOUBLE":2,"TRIPLE":3,"HOME RUN":4}[hitType]);
+    result=(runs?runs+" CPU RUN"+(runs>1?"S":"")+"! · ":"")+hitType;
+    showHit=true;
+    game.flight={start:now,duration:920,distance:hitType==="HOME RUN"?380:hitType==="TRIPLE"?290:hitType==="DOUBLE"?240:170,sector:Math.floor(Math.random()*3),kind:hitType,perfect:false};
+   }
+   seasonSettleAtBat();
+  }
+ }
+ if(!swingCpu||!showHit&&result!=="GREAT DEFENSIVE PLAY! · OUT"){
+  if(game.strikes>=3){game.outs++;result="STRIKE THREE! · OUT";seasonSettleAtBat()}
+  else if(game.balls>=4){seasonWalk(1);result="WALK · RUNNER ON BASE";seasonSettleAtBat()}
+ }
+ if(result==="GREAT DEFENSIVE PLAY! · OUT")seasonSettleAtBat();
+ if(result.includes("OUT")||result.includes("RUN"))game.streak=0;
+ notify(result,showHit?"gold":result.includes("OUT")?"good":"normal");
+ sound(showHit?610:result.includes("STRIKE")?390:260,.10,"triangle",.06);
+ game.phase="seasonResult";m.resultUntil=now+(showHit?1100:760);
+ seasonSave();updateHud();
+}
+function seasonUpdate(now){
+ const m=game.match;
+ if(!m)return;
+ if(game.phase==="rest"&&now>=game.restUntil){
+  if(m.offense==="you"){pitch(now)}
+  else{game.phase="seasonPitch";m.pitchSeed=now;game.pitch=null;updateHud()}
+ }
+ if(game.phase==="seasonPitch"){
+  const position=(.5+.5*Math.sin((now-m.pitchSeed)/350))*100;
+  $("meterDot").style.left=position+"%";
+  $("cue").textContent="PICK YOUR PITCH · TAP THROW";
+ }else if(game.phase==="seasonResult"){
+  if(now>=m.resultUntil)seasonAfterPitch(now)
+ }else if(game.phase==="pitch"&&game.pitch){
+  const remain=game.pitch.start+game.pitch.duration-now;
+  if(remain< -185){seasonBatTake(now)}
+  else $("cue").textContent=game.pitch.kind+" · "+game.pitch.mph+" MPH";
+ }else if(game.phase==="flight"&&game.flight&&now>=game.flight.start+game.flight.duration){
+  seasonAfterPitch(now)
+ }
+ for(let i=game.particles.length-1;i>=0;i--){
+  const q=game.particles[i];q.x+=q.vx;q.y+=q.vy;q.vy+=.13;q.life--;if(q.life<=0)game.particles.splice(i,1);
+ }
+}
 function home(){
  game.mode="home";game.phase="idle";game.pitch=null;game.finishAt=0;updateHud();overlay.className="overlay on";
  const rv=rivalAt(saved.rival);
