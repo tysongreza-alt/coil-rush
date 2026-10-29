@@ -60,3 +60,13 @@ Automated JavaScript tests exercised starter choice, navigation, saving, searchi
 - Genuine one-time ownership transfer or live trading (would require identity and server-side transactions).
 
 No Pokémon names, characters or assets are used. Wildkin creatures, names and setting are original.
+
+## Version 1.1: Battles with clarity
+
+- Creature moves happen in distinct phases with visible announcements, short pauses, and damage feedback.
+- Every attack explains elemental effectiveness: 1.4x strong, 0.74x resisted, and 1.0x neutral.
+- Once you land an attack on a species, its matchup is saved and displayed in subsequent fights.
+- Move Details explains Strike, Element Burst, Guard, and Bond, including energy, healing, protection, and critical chance.
+- Battle action history is available under Previous Actions.
+- All creatures received extra hand-drawn SVG detailing and battle background effects.
+- Version 1 saves and backups remain compatible. The PWA refreshes the updated version on return.
