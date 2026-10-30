@@ -114,6 +114,42 @@
     .replay-note{font-size:14px;color:#ceebf0;margin:19px 0}
     .bank-total{margin-top:18px;font-size:13px;font-weight:900;color:#fff09d}
     .pause-card{margin-top:min(15vh,90px);padding-top:35px;padding-bottom:45px}.pause-ball{font-size:82px;margin:20px auto 35px}
+    /* Phone play: reserve space for the action button before sizing the field. */
+    @media(max-width:599px){
+      .shell{height:100dvh;min-height:0;overflow:hidden}
+      .app-header{flex:none;padding:7px 12px 5px}
+      .brand{font-size:17px}.brand em{font-size:17px}
+      .circle-btn{height:32px;min-width:34px}
+      .scorebar{flex:none;padding:0 8px 6px;gap:4px}
+      .stat{padding:5px 2px;border-radius:9px}
+      .stat label{font-size:8px}.stat b{font-size:17px}
+      .pitch-info{flex:none;min-height:25px;padding:3px 10px 5px}
+      .field-area,.shell.season-bat .field-area,.shell.season-pitch .field-area{
+        flex:1 1 auto;min-height:0;width:100%;height:auto;aspect-ratio:auto;
+        align-self:stretch;overflow:hidden;
+      }
+      .field-area canvas{width:100%;height:100%}
+      .controls{flex:none;padding:6px 12px calc(7px + env(safe-area-inset-bottom));gap:6px}
+      .combo{min-height:13px}.heat{height:6px}
+      .style-btn{padding:7px 10px}
+      .swing-button{height:57px;font-size:24px;border-radius:14px;box-shadow:0 4px 0 #ae7419}
+      .mission{font-size:9px;line-height:1.2}
+      .footer-note{display:none}
+      .pitch-controls{gap:4px}.pitch-option{min-height:32px;padding:5px 2px}
+      .pitch-label{font-size:9px}.pitch-help{font-size:9px}
+      .pitch-meter{height:14px}
+      .cue{font-size:12px;padding:6px 9px}
+      .banner{font-size:17px;padding:8px 12px}
+    }
+    @media(max-width:599px) and (max-height:700px){
+      .app-header{padding-top:4px;padding-bottom:3px}
+      .scorebar{padding-bottom:3px}.stat{padding:3px 2px}
+      .controls{gap:4px;padding-top:4px}
+      .swing-button{height:48px;font-size:21px}
+      .style-btn{padding:5px 8px}
+      .combo,.mission{display:none}
+      .pitch-option{min-height:29px}
+    }
     @media(min-width:600px){body{padding:10px}.shell{border-radius:24px;min-height:calc(100dvh - 20px)}.overlay{border-radius:24px;max-height:calc(100dvh - 20px)}}
     @media(max-width:350px){h1{font-size:50px}h1 span{font-size:66px}.menu-card{padding:19px 13px}.scorebar{gap:3px;padding-inline:7px}.stat b{font-size:16px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
@@ -152,6 +188,6 @@
   </section>
   <section id="overlay" class="overlay on" aria-label="Game menu"></section>
 </main>
-<script src="./game.js?v=3" defer></script>
+<script src="./game.js?v=4" defer></script>
 </body>
 </html>
