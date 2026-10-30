@@ -1,3 +1,40 @@
+# Wildkin 3.0 development branch
+
+**Build: 3.0.0-dev.1. Not a finished release. The public GitHub Pages deployment has not been updated by this development work.**
+
+Read [docs/DEVELOPMENT_STATUS.md](docs/DEVELOPMENT_STATUS.md), [docs/QA_REPORT.md](docs/QA_REPORT.md), and the authoritative [RELEASE_SPEC_3_0.md](RELEASE_SPEC_3_0.md) before resuming. Release-blocking work remains, including campaign length/depth, final visual/audio polish, and physical-device/family acceptance.
+
+## Implemented development systems
+
+- Six linked regional arcs, 54 authored nodes across 18 routes, characters, choices, puzzles, secrets, skippable/re-readable dialogue, and an ending.
+- Telegraphed intentions, six Guardian cycles, a three-stage final encounter, 30 family passives, signature cooldowns, equipment charms, and regional level bands.
+- Full collection healing after every completed battle outcome; party-wide XP retained.
+- Four curated arena teams and three-match tournaments, expedition supplies/risk/extraction/battles, four research milestones, achievements, visible Aurora catch-up, habitat decorations and interactions, and four party presets.
+- Thirty individually authored evolved silhouette drawings, retained base forms, and six regional map landmark sets.
+- Save validation/migration, verified backups, corruption recovery, reset recovery/rollback, stale-window protection, safer cache scope and explicit update installation, comfort settings and optional melody.
+
+## Run checks
+
+From repository root, with Node 22 or newer:
+
+```sh
+node --test wildkin/tests/*.test.cjs
+node wildkin/tests/simulate.cjs
+node wildkin/tests/campaign.cjs
+```
+
+Tests use a deterministic DOM/storage adapter for the actual game engine. Service-worker tests use modeled Cache/Fetch APIs. These do not replace Safari or physical PWA acceptance. `tests/mobile.html` is a layout fixture; `tests/art.html` is an artwork review sheet. Neither is part of the offline shell.
+
+## Architecture additions
+
+`core.js` owns pure validation, migration, version comparison, damage rules, passive definitions, and deterministic randomness. `world.js` owns authored regional content and arena rosters. Both load before retained `game.js`, which integrates battle presentation, persistence, exploration, collection and interactions. No server or paid dependency was added.
+
+## Earlier public documentation
+
+The material below describes earlier builds and is retained for historical context. Use the development status and QA report for current release claims.
+
+---
+
 # Wildkin: The Living Wilds
 
 An original, free, family-friendly creature-collecting adventure for phone browsers. Single-player, installable as a home-screen web app, with no login or paid infrastructure.

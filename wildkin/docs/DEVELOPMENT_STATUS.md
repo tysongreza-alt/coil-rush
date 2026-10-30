@@ -1,0 +1,30 @@
+# Wildkin 3.0 development checkpoint
+
+Status: IN DEVELOPMENT. Not a finished release. Public deployment must remain unchanged.
+Baseline: development branch at 01be072 (fresh-start fix); public baseline 013d989.
+
+## Audit
+The retained 94 KB game contains collection, SVG renderer, sequential battles, localStorage/IndexedDB saves and six region data rows. Existing expansion screens are rudimentary. No committed automated tests exist. Update version validation incorrectly matches literal backslashes. Service worker deletes unrelated origin caches and activates immediately. Restore validates only a few creature fields. Reset may delete IndexedDB before localStorage fails. Wild opponents scale to highest party level, preventing clear growth. Signature charging can be repeated without energy cost. Guardians have HP changes but no distinct behavior. No campaign narrative, ending, equipment, tournament teams, true expedition encounters or rare-hunt catch-up.
+
+## Implementation order and acceptance
+1. Pure domain module and deterministic regression harness. Validate complete save shape, migrations, backups, counters, presets; prevent corrupt data replacement. Test persistence and reset failure paths.
+2. Retain sequential battle presentation. Integrate telegraphed intentions, six Guardian patterns, passives, signature cooldowns, encounter teams and fixed regional level bands. Test every outcome and full party XP/healing.
+3. Six authored regional arcs with three branching routes, replayable dialogue, environmental choices, puzzles, secrets, optional quests and finale. Test traversal from clean save and gate logic.
+4. Expeditions with supplies, route events, battles, extraction; arena with curated teams and tournaments. Research evolution, achievements, rare hunts, equipment and habitat interactions. Test rewards cannot duplicate.
+5. Cohesive mobile UI, art, sound, accessibility and offline/update delivery. Test safe-area layouts and cache lifecycle.
+6. Seeded simulation, browser QA, acceptance matrix, rollback notes. Do not publish unless all release blockers are closed.
+
+## Unfulfilled acceptance gates
+- 60 individually differentiated finished creature illustrations, six illustrated maps and cohesive visual/audio QA.
+- Observed 8–12-hour main-story pacing and family enjoyment tests. Simulated action counts are not observed playtime.
+- Physical iPhone Safari and installed Home Screen acceptance; Android where available.
+- All features must be integrated and tested before finished label or main deployment.
+
+## Resume
+Read this file, RELEASE_SPEC_3_0.md, docs/QA_REPORT.md and git log. Run `node --test wildkin/tests/*.test.cjs`. Work only on wildkin-3-development. Do not merge/publish partial work. Files outside wildkin are unrelated games.
+
+## Checkpoint outcome, October 30
+
+Implemented the integrated systems listed at the top of README.md. Added 30 evolution silhouettes and six regional landmark sets. 33 regression tests pass, 2,592 balance scenarios run, three starter-only campaign agents reach the ending, and cloud Chrome phone-width/UI checks executed. CI runs regression and traversal without deployment.
+
+The acceptance criteria are not met. In particular, the campaign currently takes only 39–45 battles in the recorded agent runs and cannot honestly be described as an 8–12-hour main story. Final creature/map polish, deeper route/quest consequences, endgame variety, audio/performance/accessibility QA, physical iPhone/Home Screen update testing and target-age enjoyment validation remain. See QA_REPORT.md for precise evidence and limitations. No ongoing unattended execution is configured.

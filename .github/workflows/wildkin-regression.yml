@@ -1,0 +1,20 @@
+name: Wildkin regression
+on:
+  push:
+    branches: [wildkin-3-development, main]
+    paths: ['wildkin/**', '.github/workflows/wildkin-regression.yml']
+  pull_request:
+    paths: ['wildkin/**', '.github/workflows/wildkin-regression.yml']
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test wildkin/tests/*.test.cjs
+      - run: node --check wildkin/game.js
+      - run: node wildkin/tests/campaign.cjs
