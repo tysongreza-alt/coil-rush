@@ -166,6 +166,18 @@ function svgKin(k,size='normal'){
 }
 function sceneStyle(zone){const z=ZONES[zone];return `--sky1:${z.sky1};--sky2:${z.sky2};--hill:${z.hill};--ground:${z.ground}`}
 
+async function resetJourneySafely(){
+ if(!document.getElementById('freshConfirm')?.checked){toast('Export your backup and check the confirmation box first.');return}
+ try{
+  await vaultWriteQueue.catch(()=>{});
+  const db=await openVaultDb();
+  if(db)await new Promise((resolve,reject)=>{const tx=db.transaction('progress','readwrite');tx.objectStore('progress').delete(KEY);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error||Error('Vault reset failed'));tx.onabort=()=>reject(Error('Vault reset aborted'))});
+  localStorage.removeItem(KEY);
+  battle=null;capture=null;modal=null;state=null;chosenStarter=0;
+  document.getElementById('modal')?.remove();
+  render();toast('New journey ready. Choose your starter.');
+ }catch(error){console.error('Wildkin fresh start failed',error);toast('Could not safely reset your save. No progress was intentionally cleared.')}
+}
 function expansionInit(){if(!state)return;state.research=state.research||{};state.arenaWins=state.arenaWins||0;state.expedition=state.expedition||null;state.habitat=state.habitat||0;state.teamPresets=state.teamPresets||[]}
 function recordResearch(id,kind){if(!state)return;expansionInit();const r=state.research[id]||{seen:0,won:0,caught:0,claimed:0};r[kind]=(r[kind]||0)+1;state.research[id]=r}
 function researchRank(id){const r=state.research[id]||{};return Number((r.seen||0)>=1)+Number((r.won||0)>=3)+Number((r.caught||0)>=2)}
@@ -501,7 +513,7 @@ if(a==='releaseask'){modal={type:'confirmrelease',uid:v};showModal();return}
 if(a==='release'){state.kin=state.kin.filter(k=>k.uid!==v);state.team=state.team.filter(id=>id!==v);if(state.team.length===0&&state.kin.length)state.team=[state.kin[0].uid];save();closeModal();render();toast('Companion released into the wild.');return}
 if(a==='buy'){buy(v);return}
 if(a==='freshStart'){modal={type:'newJourney'};showModal();return}
-if(a==='freshExecute'){if(!document.getElementById('freshConfirm')?.checked){toast('Export your backup and check the confirmation box first.');return}battle=null;capture=null;modal=null;state=null;chosenStarter=0;render();return}
+if(a==='freshExecute'){resetJourneySafely();return}
 if(a==='researchclaim'){const id=Number(v),r=state.research?.[id],pending=researchRank(id)-(r?.claimed||0);if(r&&pending>0){r.claimed=researchRank(id);state.coins+=pending*35;save();render()}return}
 if(a==='expstart'){state.expedition={step:0,loot:0,last:'Your journey begins.'};save();render();return}
 if(a==='expstep'){const e=state.expedition;if(!e)return;const risk=v==='risk',gain=risk?rand(15,100):rand(20,45);e.step++;e.loot+=gain;e.last='Found '+gain+' coins!';if(risk&&Math.random()<.16){state.orbs++;e.last+=' Bonus Bond orb!'}if(e.step>=5){state.coins+=e.loot;state.prisms++;state.expedition=null;toast('Expedition complete! Coins and Prism orb awarded.')}save();render();return}
