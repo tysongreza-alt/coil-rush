@@ -9,10 +9,10 @@ https://tysongreza-alt.github.io/coil-rush/wildkin/
 ## Player loop
 
 1. Choose Mosslet (Grove), Flintail (Ember), or Brookit (Tide).
-2. Search the current region to find a wild Wildkin or a supply cache.
-3. Battle using Strike, Element Burst, Guard, team switching, and recovery tonics.
+2. Pick from three trails in each region. Explore different locations to influence creature rarity, find caches, and earn first-discovery coins.
+3. Battle with Strike, Element Burst, Guard, 30 family-specific signature moves, teammate switches, and recovery tonics.
 4. Weaken a creature and try a timing-based bond with a Bond orb or stronger Prism orb.
-5. Capture, level, evolve at level 12, organize up to 3 battle teammates, and log discoveries in the KinDex.
+5. Capture and level creatures, evolve at level 12, and manage a three-member battle party plus a searchable, paged Sanctuary for all other creatures.
 6. Win enough battles to challenge one of six Guardians. Earn region seals to open the next region.
 7. Pursue all 30 creature families and 60 form entries, elusive Aurora color variants, daily quests, leveling up to 60, and repeatable scaling Guardian trials.
 
@@ -27,11 +27,11 @@ https://tysongreza-alt.github.io/coil-rush/wildkin/
 
 ## Progress and economy
 
-- Battles grant experience and coins; creature captures also grant coins and XP.
-- Coin sinks: Bond orbs, Prism orbs, recovery tonics.
+- Every completed fight gives each battle-party companion the full XP award, including fainted teammates. Captures earn XP, as do losses at reduced XP. Escapes do not earn XP. A newly captured creature joins after that battle's XP allocation. Result screens display every companion's individual award and level changes.
+- Coin sinks: Bond orbs, Prism orbs, recovery tonics. Guardians can be befriended free after victories.
 - Three daily quests give coins and bonus orbs.
 - Player's rank increases with total battle wins and catches.
-- Progress auto-saves locally using `localStorage` on each device/browser.
+- Progress auto-saves in IndexedDB on the current device/browser, with a localStorage mirror when space allows and automatic migration of earlier saves. There is no artificial 350-creature cap, but browser/device quotas still apply.
 - Camp → Export backup saves JSON that can be restored later.
 
 ## Family sharing
@@ -70,3 +70,12 @@ No Pokémon names, characters or assets are used. Wildkin creatures, names and s
 - Battle action history is available under Previous Actions.
 - All creatures received extra hand-drawn SVG detailing and battle background effects.
 - Version 1 saves and backups remain compatible. The PWA refreshes the updated version on return.
+
+## Version 1.3.1: Sanctuary, party XP and signature adventure
+
+- Sanctuary storage has three views (Stored, Party, All), search, type filtering, sorting, favorites and 24-creature pages. When the party is full, a single tap opens a swap chooser. No fixed in-game creature capacity.
+- All active teammates gain full XP after a win or successful capture, including fainted members. A reduced award is granted after defeat. Individual XP and level gains are shown after every resolved battle; fleeing earns none.
+- Thirty original creature signature attacks add six tactical mechanics: healing, heavy damage, energy charging, damage reduction, enemy weakening and possible staggering. Creatures have visible role labels and additional evolved SVG decorations.
+- Six regions each offer three explorable destinations, 18 total. Trail selection affects encounter rarity; first explorations provide coins and records of places visited.
+- Larger collections persist in an on-device IndexedDB vault where available. Older version-1 save data is still recognized and migrated. Export backups periodically, especially on iPhone.
+- Automated gameplay smoke tests cover parties with 600+ creatures, swaps, XP for fainted members, regular and Guardian victories, captures, defeat XP, and browsing the 18 trails. Actual iOS and Android device acceptance tests remain to be done.
