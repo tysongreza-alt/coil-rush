@@ -525,7 +525,7 @@ async function checkForUpdates(manual=false){
   if(!response.ok)throw Error('Update server unavailable');
   const info=await response.json();
   if(!/^\\d+\\.\\d+\\.\\d+$/.test(info.version||''))throw Error('Invalid update version');
-  const newer=info.version.split('.').map(Number).some((part,i)=>part>Number(APP_VERSION.split('.')[i])&&info.version.split('.').slice(0,i).every((x,j)=>Number(x)===Number(APP_VERSION.split('.')[j])));
+  const newer=info.version.split('.').map(Number).reduce((result,part,i)=>result!==0?result:Math.sign(part-Number(APP_VERSION.split('.')[i])),0)>0;
   if(newer){
    updateMessage='Update '+info.version+' found. Installing and restarting…';render();
    if('serviceWorker' in navigator){
