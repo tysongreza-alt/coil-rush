@@ -100,3 +100,6 @@
 .battle-actions .signature-btn small{color:#e4d5ff}
 @media(min-height:820px){.battle-scene{flex:1 0 200px}}
 @media(max-width:360px){.trail-choice{min-height:96px;padding:7px 3px}.trail-choice strong{font-size:11px}.trail-choice small{font-size:9px}.vault-panel{padding:12px 8px}.battle-actions .btn{min-height:47px}}
+
+/* v1.3.3 installed version and in-app update control */
+.app-version{display:inline-block;color:#b9d5db;font-size:11px;letter-spacing:.4px;margin-top:1px}.update-panel .btn{flex-shrink:0;white-space:nowrap}.update-panel .subtext{max-width:270px}
