@@ -7,13 +7,18 @@ The game is a private, free, mobile-browser creature collector. Keep the origina
 - Battle energy meter: 2/4 starting energy; Strike +1; Guard +2; Element Burst -2; maximum 4; no automatic regeneration.
 - Six named Guardian bosses. Defeating them earns a seal and an optional free post-victory capture of a crowned companion. Rematches are available.
 
-## v1.3: Core battle strategy and exploration
-1. Each creature family gets a distinct signature move, passive trait, role, and evolved illustration.
-2. New moves with simple effects: slow, shield, heal, damage-over-time, and stagger. Keep clear descriptions.
-3. Enemy intent indicator and ability to speed up or skip battle animation.
-4. Each region receives a small illustrated, tap-friendly map with 3-5 destinations and hidden discoveries.
-5. Team composition recommendations, role badges, and improved filters/favorites/protected release.
-6. Test capture probabilities, damage curves, healer usefulness, energy and rewards with real family playtests.
+## v1.3.1 released (code complete, device QA pending)
+- Added a Sanctuary with paged/searchable creature storage, quick active-party swaps, favorites, and on-device IndexedDB support for large collections.
+- All party members receive equal full XP on victories and captures, including fainted companions, plus reduced XP for losses. Every battle-result screen itemizes XP and level-ups.
+- All 30 families now have distinct named signature moves, six types of tactical effect, and combat role labels. Evolved models received role-based accessories.
+- 18 explorable trails (three per region) now influence rarity odds, track visits, and provide discovery rewards.
+- Retained old saves, Guardian capture, flee, familiar elemental matchups, and the single-player no-account model.
+
+### Remaining polish toward a fuller v1.3
+- Hand-authored, fully distinctive evolved character artwork per family rather than procedural variants.
+- Deeper enemy AI and telegraphed intentions, battle-speed settings, passives and more status effects.
+- Real illustrated branching area maps, characters and quests beyond the current three trail choices per region.
+- Full family phone/device QA, storage stress and save/restore acceptance tests.
 
 ## v1.4: Player attachment and collection mastery
 1. Species research goals and reward tiers for observing, catching, evolving and battling.
