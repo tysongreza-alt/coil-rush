@@ -1,5 +1,5 @@
-const CACHE='wildkin-v1.3.4';
-const ASSETS=['./','./index.html','./styles.css?v=1.3.4','./game.js?v=1.3.4','./icon.svg','./manifest.webmanifest','./version.json'];
+const CACHE='wildkin-v2.0.0';
+const ASSETS=['./','./index.html','./styles.css?v=2.0.0','./game.js?v=2.0.0','./icon.svg','./manifest.webmanifest','./version.json'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{
