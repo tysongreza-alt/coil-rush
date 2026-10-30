@@ -64,3 +64,16 @@
 .my-avatar.kin-impact{animation:player-shake .62s ease-out both!important}
 @keyframes player-shake{0%,100%{transform:translateX(0);filter:brightness(1)}24%{transform:translateX(-7px);filter:brightness(2)}55%{transform:translateX(5px);filter:brightness(1.3)}}
 @media(prefers-reduced-motion:reduce){.my-avatar.kin-impact{animation:none!important}}
+/* Wildkin 1.2: readable battle resources, escape option and guardian invitation */
+.energy-panel{margin:10px 0 6px;background:linear-gradient(115deg,#253d51,#193c48);border:1px solid #81cdef55;border-radius:16px;padding:11px 13px;box-shadow:inset 0 1px #ffffff15}
+.energy-panel strong{font-size:14px;color:#fff0a5}.energy-panel small{font-size:11px;color:#e2edee}
+.energy-pips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:8px 0}
+.energy-pip{height:11px;border-radius:9px;background:#061b2b;border:1px solid #a4d4d930;box-shadow:inset 0 1px 3px #05181b}
+.energy-pip.filled{background:linear-gradient(110deg,#fee996,#f8b95e);border-color:#fff0b0;box-shadow:0 0 9px #f3c96c66}
+.energy-rules{display:flex;justify-content:space-between;flex-wrap:wrap;gap:3px 10px;font-size:11px;color:#ecf4ee}
+.energy-rules b{color:#ffe8a4}.energy-rules span{color:#9fc1d0;font-size:11px}
+.battle-flee{margin:7px 0 5px;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;min-height:42px;border:1px solid #a5d1cf55;font-weight:800}
+.battle-flee small{color:#c6d8de;font-size:10px;font-weight:600}
+.flee-header{font-weight:850;min-height:36px;padding:5px 14px}
+.guardian-claim{min-height:52px;font-weight:900;font-size:15px;box-shadow:0 4px 22px #e3bb7540}
+@media(max-width:380px){.energy-rules{font-size:10px}.battle-flee{font-size:13px}.battle-flee small{font-size:10px}}
