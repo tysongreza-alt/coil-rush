@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const KEY=window.__WILDKIN_TEST__&&window.__WILDKIN_TEST_STORAGE__||'wildkin-save-v1',VERSION=1,APP_VERSION=WildkinCore.BUILD,ROOT=document.getElementById('app');
 const Core=WildkinCore,World=WildkinWorld,Adv=WildkinAdventures;
-let resetInProgress=false,updateRegistration=null,updateRequested=false,storageConflict=false;let saveGeneration='legacy';const unreadableSaves=[];
+let resetInProgress=false,updateRegistration=null,updateRequested=false,storageConflict=false;let saveGeneration='legacy',observedRevision=0,observedUpdatedAt=0;const unreadableSaves=[];
 let updateStatus='ready',updateMessage='';
 const ELEMENTS={leaf:{name:'Grove',color:'#9fe1a1',icon:'🌿',beats:'tide'},flame:{name:'Ember',color:'#ffb17c',icon:'🔥',beats:'leaf'},tide:{name:'Tide',color:'#80d5f8',icon:'💧',beats:'flame'},spark:{name:'Storm',color:'#f8df82',icon:'⚡',beats:'tide'},stone:{name:'Stone',color:'#dcc6a6',icon:'⛰️',beats:'spark'},lunar:{name:'Lunar',color:'#cfb3ff',icon:'🌙',beats:'stone'}};
 const ZONES=[
@@ -74,13 +74,27 @@ async function readVaultDb(){
   }catch{resolve(null)}
  });
 }
-async function writeVaultDb(snapshot){
+async function writeVaultDb(snapshot,protect=false){
+ if(protect&&storageConflict)return false;
  const db=await openVaultDb();if(!db)return false;
  return new Promise(resolve=>{
   try{
-   const tx=db.transaction('progress','readwrite');
-   tx.objectStore('progress').put(snapshot,KEY);
+   const tx=db.transaction('progress','readwrite'),store=tx.objectStore('progress');
    tx.oncomplete=()=>resolve(true);tx.onerror=()=>resolve(false);tx.onabort=()=>resolve(false);
+   if(!protect){store.put(snapshot,KEY);return}
+   // Compare and write inside one IndexedDB transaction, including when the local mirror is unavailable.
+   const request=store.get(KEY);request.onerror=()=>resolve(false);
+   request.onsuccess=()=>{
+    try{
+     const raw=request.result,latest=typeof raw==='string'?JSON.parse(raw):raw;
+     if(latest&&latest.writerId!==SESSION_ID&&((latest.revision||0)>observedRevision||((latest.revision||0)===observedRevision&&(latest.updatedAt||0)>observedUpdatedAt))){
+      storageConflict=true;
+      try{const mirror=localStorage.getItem(KEY);if(mirror&&JSON.parse(mirror).writerId===SESSION_ID)localStorage.setItem(KEY,typeof raw==='string'?raw:JSON.stringify(raw))}catch{}
+      toast('Another window saved progress. Export this copy, then load the latest save in Camp.');resolve(false);return;
+     }
+     store.put(snapshot,KEY);
+    }catch{storageConflict=true;toast('The stored adventure changed unexpectedly. Export this copy before reloading.');resolve(false)}
+   };
   }catch{resolve(false)}
  });
 }
@@ -92,8 +106,8 @@ function save(){
  state.schema=Core.SCHEMA;state.updatedAt=Date.now();
  const snapshot=JSON.stringify(state);let localSaved=true;
  try{localStorage.setItem(KEY,snapshot)}catch{localSaved=false}
- vaultWriteQueue=vaultWriteQueue.catch(()=>{}).then(()=>writeVaultDb(snapshot)).then(ok=>{
-  if(!ok&&!localSaved&&!storageAlerted){storageAlerted=true;toast('Device storage is full. Export a backup in Camp to protect your collection.')}
+ vaultWriteQueue=vaultWriteQueue.catch(()=>{}).then(()=>writeVaultDb(snapshot,true)).then(ok=>{
+  if(!ok&&!localSaved&&!storageConflict&&!storageAlerted){storageAlerted=true;toast('Device storage is full. Export a backup in Camp to protect your collection.')}
  }).catch(()=>{});
 }
 function dailyCheck(){if(!state)return;if(!state.daily||state.daily.day!==dstr())state.daily={day:dstr(),progress:{},claimed:[]};}
@@ -105,7 +119,7 @@ function teamKin(){return state.team.map(id=>state.kin.find(k=>k.uid===id)).filt
 function currentKin(){return teamKin().find(k=>k.hp>0)}
 function zoneSpecies(z){return SPEC.filter(s=>s.zone===z)}
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2700)}
-function sound(freq=440,duration=.09,kind='sine'){if(!state?.sound)return;try{const ctx=window.__wildAudio||(window.__wildAudio=new(window.AudioContext||window.webkitAudioContext)());const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type=kind;osc.frequency.setValueAtTime(freq,ctx.currentTime);osc.frequency.exponentialRampToValueAtTime(freq*.8,ctx.currentTime+duration);gain.gain.setValueAtTime(.055,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+duration);osc.connect(gain).connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+duration)}catch{}}
+function sound(freq=440,duration=.09,kind='sine'){if(!state?.sound)return;try{const ctx=audioContext();if(!ctx)return;const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type=kind;osc.frequency.setValueAtTime(freq,ctx.currentTime);osc.frequency.exponentialRampToValueAtTime(freq*.8,ctx.currentTime+duration);gain.gain.setValueAtTime(.055,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+duration);osc.connect(gain).connect(ctx.destination);osc.onended=()=>{osc.disconnect();gain.disconnect()};osc.start();osc.stop(ctx.currentTime+duration)}catch{}}
 
 const EVOLUTION_MODELS=[
  ['M38 116Q45 91 85 103L99 65 115 47 139 65 142 104Q165 116 160 142L147 163H131L134 135 85 140 72 169H56L57 130 34 145Z','M105 58 88 26 108 40 114 14 127 40 152 23 139 61M48 120Q4 91 16 62 42 70 60 110',121,78,11],
@@ -208,7 +222,7 @@ async function resetJourneySafely(){
  }finally{resetInProgress=false}
 }
 function nav(){return `<nav class="tabbar" aria-label="Game tabs">${[['explore','🧭','Explore'],['team','🐾','Team'],['dex','📖','KinDex'],['camp','🏕️','Camp'],['research','📚','Research'],['expedition','🗺️','Quest'],['arena','🏆','Arena'],['habitat','🌼','Habitat']].map(([id,icon,text])=>`<button class="navitem ${state.screen===id?'active':''}" data-a="nav" data-v="${id}"><span class="nav-icon">${icon}</span>${text}</button>`).join('')}</nav>`}
-function render(){document.documentElement.classList.toggle('reduced-motion',!!state?.settings?.reduced);if(!state){ROOT.innerHTML=unreadableSaves.length?recoveryScreen():intro();return}dailyCheck();const current=state.screen;ROOT.innerHTML=`<header class="topbar"><div class="logo">✦</div><div class="brand"><div class="eyebrow">The Living Wilds</div><h1>WILDKIN</h1><span class="app-version">v${APP_VERSION}</span></div><div class="currency">🪙 <b>${state.coins.toLocaleString()}</b></div><button class="iconbtn" data-a="sound" aria-label="Toggle sound">${state.sound?'🔊':'🔇'}</button></header><main class="content">${storageConflict?'<section class="panel"><h3>Another window saved progress</h3><p class="subtext">This copy is paused to protect your latest adventure. Export it if needed before loading the latest save.</p><button class="btn secondary block mt12" data-a="backup">Export this copy</button><button class="btn primary block mt12" data-a="loadlatest">Load latest save</button></section>':''}${current==='team'?teamScreen():current==='dex'?dexScreen():current==='camp'?campScreen()+settingsPanel():current==='research'?researchScreen():current==='expedition'?expeditionScreen():current==='arena'?arenaScreen():current==='habitat'?habitatScreen():exploreScreen()}</main>${nav()}`;if(modal)showModal();if(battle)renderBattle()}
+function render(){ROOT.inert=!!modal||!!capture;document.documentElement.classList.toggle('reduced-motion',!!state?.settings?.reduced);if(!state){ROOT.innerHTML=unreadableSaves.length?recoveryScreen():intro();return}dailyCheck();const current=state.screen;ROOT.innerHTML=`<header class="topbar"><div class="logo">✦</div><div class="brand"><div class="eyebrow">The Living Wilds</div><h1>WILDKIN</h1><span class="app-version">v${APP_VERSION}</span></div><div class="currency">🪙 <b>${state.coins.toLocaleString()}</b></div><button class="iconbtn" data-a="sound" aria-label="Toggle sound">${state.sound?'🔊':'🔇'}</button></header><main class="content">${storageConflict?'<section class="panel"><h3>Another window saved progress</h3><p class="subtext">This copy is paused to protect your latest adventure. Export it if needed before loading the latest save.</p><button class="btn secondary block mt12" data-a="backup">Export this copy</button><button class="btn primary block mt12" data-a="loadlatest">Load latest save</button></section>':''}${current==='team'?teamScreen():current==='dex'?dexScreen():current==='camp'?campScreen()+settingsPanel():current==='research'?researchScreen():current==='expedition'?expeditionScreen():current==='arena'?arenaScreen():current==='habitat'?habitatScreen():exploreScreen()}</main>${nav()}`;ROOT.inert=!!modal||!!capture;if(modal)showModal();if(battle)renderBattle()}
 function intro(){return `<div class="intro-cover"><div class="intro-title"><div class="eyebrow">An adventure that grows with you</div><h1>WILD<span style="color:var(--mint)">KIN</span></h1><p>Explore forgotten places. Befriend extraordinary creatures. Build a team that's yours alone.</p></div><div class="scene" style="${sceneStyle(0)};height:205px"><div class="scene-stars"></div><div class="scene-hill"></div><div class="scene-hill right"></div><div class="scene-kin" style="top:10px">${svgKin(makePreview(chosenStarter))}</div></div><div class="section-line"><h2>Choose your first companion</h2></div><div class="starter-grid">${[0,1,2].map(i=>`<button class="starter ${chosenStarter===i?'selected':''}" data-a="starter" data-v="${i}">${svgKin(makePreview(i))}<h3>${SPEC[i].name}</h3><small>${ELEMENTS[SPEC[i].type].icon} ${ELEMENTS[SPEC[i].type].name}</small></button>`).join('')}</div><div class="intro-feature"><span>✦</span><div>60 forms to discover, 6 regions, team battles, daily challenges and giftable creatures.</div></div><button class="btn primary block" data-a="begin">Begin my journey →</button><p class="footer-note center">Autosaves on this device. No account or purchases needed.</p></div>`}
 function makePreview(sp){return{sp,level:5,evo:false,aurora:false}}
 function svgSmall(k){return `<span style="display:inline-flex;width:39px;height:39px;flex:0 0 39px;align-items:center;justify-content:center;background:#ffffff12;border-radius:12px;overflow:hidden">${svgKin(k)}</span>`}
@@ -440,24 +454,24 @@ async function useTonic(){
  await pause(900);if(!battleAlive(b))return;await foeAttack();
 }
 function renderBattle(){
- if(!battle)return;
+ if(!battle)return;for(const el of ROOT.querySelectorAll?.(':scope > header,:scope > main,:scope > nav')||[])el.inert=true;
  const b=battle,foe=b.foe,mine=state.kin.find(k=>k.uid===b.active),fmax=foe.guardHp||hpMax(foe),fper=foe.hp/fmax*100,mper=mine.hp/hpMax(mine)*100,at=SPEC[mine.sp].type,dt=SPEC[foe.sp].type,mult=typemult(at,dt),known=knownFoe(),n=b.notice;
  const advice=known?(mult>1?'ADVANTAGE':mult<1?'DISADVANTAGE':'EVEN MATCHUP'):'NEW OPPONENT';
  const matchColor=!known?'new':mult>1?'strong':mult<1?'weak':'neutral';
  const nEffect=n?.effect||'neutral';
  const effectiveness=n&&n.amount>0&&(n.actor==='foe'||n.actor==='player')&&nEffect!=='guard'?`<span class="damage-label ${nEffect}">${nEffect==='strong'?'↗ Super effective!':nEffect==='weak'?'↘ Not very effective':'• Normal effectiveness'}</span>`:'';
  const hist=(b.events||[]).slice(1,4);
- const h=`<div class="battle-cover"><div class="battle" aria-label="Creature battle"><div class="battle-top"><span class="pill">${b.boss?'👑 GUARDIAN BOSS':'⚔️ WILD ENCOUNTER'}</span><button class="btn secondary tiny flee-header" data-a="flee" ${b.doing?'disabled':''}>🏃 Flee</button></div>
- <div class="battle-scene" style="${sceneStyle(state.zone)}"><div class="battle-scenery glimmer glimmer-one"></div><div class="battle-scenery glimmer glimmer-two"></div><div class="battle-horizon"></div><div class="battle-platform"></div>
+ const h=`<div class="battle-cover"><div class="battle" role="dialog" aria-modal="true" aria-label="Creature battle"><div class="battle-top"><span class="pill">${b.boss?'👑 GUARDIAN':b.tournament?'🏆 TOURNAMENT':b.expedition?'🧭 EXPEDITION':b.field?'🐾 FIELD CHALLENGE':'⚔️ WILD ENCOUNTER'}</span><button class="btn secondary tiny flee-header" data-a="flee" ${b.doing?'disabled':''}>🏃 Flee</button></div>
+ <div class="battle-scene" style="${sceneStyle(b.region)}"><div class="battle-scenery glimmer glimmer-one"></div><div class="battle-scenery glimmer glimmer-two"></div><div class="battle-horizon"></div><div class="battle-platform"></div>
  <div class="enemy-data"><div class="row between gap6"><strong>${foe.aurora?'✨ ':''}${esc(nameOf(foe))}</strong><div class="row gap6">${typeLabel(dt)}<span class="pill">Lv ${foe.level}</span></div></div><div class="hp ${fper<30?'low':''}"><div style="width:${fper}%"></div></div><small>${foe.hp} / ${fmax} HP</small></div>
  <div class="battle-art detailed-art ${b.fx==='foe-hit'?'kin-impact':b.fx==='foe-windup'?'kin-attack':''}">${svgKin(foe)}</div>${b.fx==='foe-hit'?`<div class="hit-number ${nEffect}">−${n?.amount||0}</div>`:''}</div>
  <div class="my-kin"><div class="my-avatar detailed-art ${b.fx==='ally-hit'?'kin-impact':b.fx==='ally-windup'?'kin-attack':b.fx==='guard'?'kin-guard':''}">${svgKin(mine)}</div><div class="grow"><div class="row between gap6"><strong>${esc(nameOf(mine))}</strong><small>Lv ${mine.level} · ${ELEMENTS[at].icon}</small></div><div class="hp ${mper<30?'low':''}"><div style="width:${mper}%"></div></div><div class="row between mt8"><small>${mine.hp}/${hpMax(mine)} HP</small><small class="energy-score">⚡ Energy ${b.energy}/4</small></div></div>${b.fx==='ally-hit'?`<div class="player-hit">−${n?.amount||0}</div>`:''}</div>
- <div class="intent-panel"><strong>Next: ${esc(Core.INTENTS[b.intent||'strike'][0])}</strong><small>${esc(Core.INTENTS[b.intent||'strike'][1])}${b.foeQueue?.length?' · '+(b.foeQueue.length+1)+' opponents left':''}</small>${state.settings.hints?`<small>${b.boss?esc(Core.GUARDIANS[b.region].hint):esc(Core.PASSIVES[mine.sp][0]+': '+Core.PASSIVES[mine.sp][1])}</small>`:''}${b.field?'<small>Trail: '+esc(Adv.REGIONS[b.region].effectText)+'</small>':''}${b.playerWeakTurns?'<small>Your attacks weakened: '+b.playerWeakTurns+' attacks</small>':''}${b.weakenTurns?'<small>Enemy weakened: '+b.weakenTurns+' attacks</small>':''}</div><div class="energy-panel" role="status" aria-label="Battle energy: ${b.energy} out of 4. Strike adds 1, Guard adds 2, Burst costs 2."><div class="row between gap6"><strong>⚡ Energy ${b.energy} / 4</strong><small>Starts at 2 each battle</small></div><div class="energy-pips">${Array.from({length:4},(_,i)=>`<span class="energy-pip ${i<b.energy?'filled':''}"></span>`).join('')}</div><div class="energy-rules">Strike <b>+1</b> · Guard <b>+2</b> · Burst <b>−2</b><span>No automatic recharge</span></div></div>
+ <div class="intent-panel"><strong>Next: ${esc(Core.INTENTS[b.intent||'strike'][0])}</strong><small>${esc(Core.INTENTS[b.intent||'strike'][1])}${b.foeQueue?.length?' · '+(b.foeQueue.length+1)+' opponents left':''}</small>${state.settings.hints?`<small>${b.boss?esc(Core.GUARDIANS[b.region].hint):esc(Core.PASSIVES[mine.sp][0]+': '+Core.PASSIVES[mine.sp][1])}</small>`:''}${b.field?'<small>Trail: '+esc(Adv.REGIONS[b.region].effectText)+'</small>':b.expedition?'<small>'+esc(World.EXPEDITION_THEMES[b.region].rule)+'</small>':''}${b.playerWeakTurns?'<small>Your attacks weakened: '+b.playerWeakTurns+' attacks</small>':''}${b.weakenTurns?'<small>Enemy weakened: '+b.weakenTurns+' attacks</small>':''}</div><div class="energy-panel" role="status" aria-label="Battle energy: ${b.energy} out of 4. Strike adds 1, Guard adds 2, Burst costs 2."><div class="row between gap6"><strong>⚡ Energy ${b.energy} / 4</strong><small>Starts at 2 each battle</small></div><div class="energy-pips">${Array.from({length:4},(_,i)=>`<span class="energy-pip ${i<b.energy?'filled':''}"></span>`).join('')}</div><div class="energy-rules">Strike <b>+1</b> · Guard <b>+2</b> · Burst <b>−2</b><span>No automatic recharge</span></div></div>
  <div class="matchup-strip ${matchColor}"><span class="matchup-icon">${known?(mult>1?'↗':mult<1?'↘':'◆'):'?'}</span><span>${advice}</span><span class="matchup-value">${known?`${ELEMENTS[at].name} → ${ELEMENTS[dt].name}: ${affinityHint(at,dt)}`:'Attack once to discover this matchup'}</span></div>
  <div class="battle-announcer ${nEffect}" role="status" aria-live="polite"><div class="battle-act"><span class="phase-dot ${b.doing?'busy':''}"></span><strong>${esc(n?.title||b.log)}</strong></div><div class="battle-detail">${esc(n?.detail||(b.doing?'Action in progress…':'Choose your next move below.'))}</div>${effectiveness}</div>
  ${b.showMoves?battleMoveHelp(mine,foe):''}
  <div class="battle-actions"><button class="btn primary move-btn" data-a="attack" data-v="strike" ${b.doing?'disabled':''}><span>⚔️ Strike</span><small>+1 ⚡ → ${Math.min(4,b.energy+1)}/4</small></button><button class="btn amber move-btn" data-a="attack" data-v="burst" ${b.doing||b.energy<2?'disabled':''}><span>✨ Element burst</span><small>−2 ⚡ → ${Math.max(0,b.energy-2)}/4</small></button><button class="btn secondary move-btn signature-btn" data-a="attack" data-v="signature" ${b.doing||b.energy<1||(b.cooldowns[mine.uid]||0)>0?'disabled':''}><span>🌟 ${esc(signatureOf(mine)[0])}</span><small>−1 ⚡ · ${(b.cooldowns[mine.uid]||0)>0?'Ready in '+b.cooldowns[mine.uid]+' actions':esc(signatureOf(mine)[2])}</small></button><button class="btn secondary move-btn" data-a="attack" data-v="guard" ${b.doing?'disabled':''}><span>🛡️ Guard</span><small>+2 ⚡ → ${Math.min(4,b.energy+2)}/4 · shield</small></button><button class="btn secondary move-btn" data-a="catchmenu" ${b.boss||b.arena||b.expedition||(b.field&&!b.field.nest)||b.doing?'disabled':''}><span>🟢 Bond</span><small>${b.boss?'Win to befriend boss for free':`${state.orbs+state.prisms} orbs · capture`}</small></button></div>
- <button class="btn secondary block battle-flee" data-a="flee" ${b.doing?'disabled':''}>🏃 Flee encounter <small>Always succeeds · no penalty</small></button><div class="battle-footer"><button class="btn ghost tiny" data-a="tonic" ${state.tonics<1||b.doing?'disabled':''}>🧪 Tonic +${Math.max(50,Math.ceil(hpMax(mine)*.7))} HP (${state.tonics})</button><button class="btn ghost tiny info-toggle" data-a="moves" aria-expanded="${!!b.showMoves}">${b.showMoves?'✕ Hide moves':'ⓘ Move details'}</button><div class="battle-switch">${teamKin().map((k,i)=>`<button class="${k.uid===mine.uid?'active':''}" data-a="switch" data-v="${k.uid}" ${k.hp<=0||b.doing?'disabled':''} aria-label="Switch to ${esc(nameOf(k))}">${i+1} ${ELEMENTS[SPEC[k.sp].type].icon}</button>`).join('')}</div></div>
+ <button class="btn secondary block battle-flee" data-a="flee" ${b.doing?'disabled':''}>🏃 Flee encounter <small>Always succeeds${b.expedition?' · unsecured pack lost':b.tournament?' · ends this bracket':' · companions fully heal'}</small></button><div class="battle-footer"><button class="btn ghost tiny" data-a="tonic" ${state.tonics<1||b.doing?'disabled':''}>🧪 Tonic +${Math.max(50,Math.ceil(hpMax(mine)*.7))} HP (${state.tonics})</button><button class="btn ghost tiny info-toggle" data-a="moves" aria-expanded="${!!b.showMoves}">${b.showMoves?'✕ Hide moves':'ⓘ Move details'}</button><div class="battle-switch">${teamKin().map((k,i)=>`<button class="${k.uid===mine.uid?'active':''}" data-a="switch" data-v="${k.uid}" ${k.hp<=0||b.doing?'disabled':''} aria-label="Switch to ${esc(nameOf(k))}">${i+1} ${ELEMENTS[SPEC[k.sp].type].icon}</button>`).join('')}</div></div>
  ${hist.length?`<details class="battle-history"><summary>Previous actions (${b.events.length})</summary>${(b.events||[]).map(e=>`<div class="battle-history-line"><b>${esc(e.title)}</b><small>${esc(e.detail)}</small></div>`).join('')}</details>`:''}
  </div></div>`;
  ROOT.insertAdjacentHTML('beforeend',h);if(capture)renderCapture();
@@ -469,7 +483,7 @@ async function switchKin(uid){
  announce(`Go, ${nameOf(k)}!`,'A fresh companion joins your side. The opponent gets a turn next.','player',0,'player','enter');
  await pause(900);if(!battleAlive(b))return;await foeAttack();
 }
-function renderCapture(){if(!capture||!battle)return;const c=capture;document.getElementById('capture')?.remove();document.body.insertAdjacentHTML('beforeend',`<div class="capture-center" id="capture"><div class="capture-card"><div class="kicker">Bonding ritual</div><h2>Find the perfect moment</h2><div class="subtext">Tap when the golden pointer crosses the glowing green arc.</div><div class="capture-circle"><div class="sweep"></div><div class="inner">${c.kind==='prism'?'🔮':'🟢'}</div></div><button class="btn primary block" data-a="seal">✦ SEAL THE BOND</button><button class="btn ghost tiny mt16" data-a="cancelcapture">Cancel</button><div class="subtext mt12">Weaken wild kin for a stronger bond. Prism orbs give an extra boost.</div></div></div>`)}
+function renderCapture(){if(!capture||!battle)return;ROOT.inert=true;const c=capture;document.getElementById('capture')?.remove();document.body.insertAdjacentHTML('beforeend',`<div class="capture-center" id="capture"><div class="capture-card" role="dialog" aria-modal="true" aria-label="Bonding ritual"><div class="kicker">Bonding ritual</div><h2>Find the perfect moment</h2><div class="subtext">Tap when the golden pointer crosses the glowing green arc.</div><div class="capture-circle"><div class="sweep"></div><div class="inner">${c.kind==='prism'?'🔮':'🟢'}</div></div><button class="btn primary block" data-a="seal">✦ SEAL THE BOND</button><button class="btn ghost tiny mt16" data-a="cancelcapture">Cancel</button><div class="subtext mt12">Weaken wild kin for a stronger bond. Prism orbs give an extra boost.</div></div></div>`)}
 function openCapture(kind){if(!battle||battle.boss||battle.arena||battle.expedition||(battle.field&&!battle.field.nest)||battle.doing)return;if(kind==='orb'&&state.orbs<1||kind==='prism'&&state.prisms<1){toast('You are out of those orbs.');return}closeModal();capture={kind,start:performance.now()};render();renderCapture();sound(740,.12)}
 async function sealCapture(){
  if(!capture||!battle||battle.doing)return;
@@ -479,13 +493,13 @@ async function sealCapture(){
  const fmax=foe.guardHp||hpMax(foe),hpRatio=foe.hp/fmax,rar=SPEC[foe.sp].rarity;
  const firstBond=state.kin.length<3&&state.totalCatches<3;
  const odds=firstBond?1:clamp(.17+(1-hpRatio)*.53+(c.kind==='prism'?.22:0)+(good?.18:0)+(perfect?.12:0)-rar*.065,.08,.97);
- capture=null;document.getElementById('capture')?.remove();b.doing=true;
+ capture=null;ROOT.inert=!!modal;document.getElementById('capture')?.remove();b.doing=true;
  announce(`${c.kind==='prism'?'Prism':'Bond'} orb released!`,perfect?'Perfect timing! The bond is strengthening…':good?'Great timing! The bond is forming…':'The orb is struggling to connect…','player',0,'player','ally-windup');
  await pause(850);if(!battleAlive(b))return;
  if(Math.random()<odds){learnFoe();finishBattle(true);toast(perfect?'Perfect timing! Bond formed!':'Bond formed!')}
  else{announce('The bond slipped away!',good?'Almost! The creature broke free. Your opponent acts next.':'The timing was off. The creature broke free and will attack.','incoming',0,'foe','foe-windup');sound(165,.25,'sawtooth');save();await pause(950);if(!battleAlive(b))return;await foeAttack()}
 }
-function renderModal(content=''){if(!modal)return;document.getElementById('modal')?.remove();document.body.insertAdjacentHTML('beforeend',`<div class="modal-backdrop" id="modal"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">${content}</div></div>`);document.querySelector('#modal button')?.focus({preventScroll:true})}
+function renderModal(content=''){if(!modal)return;ROOT.inert=true;document.getElementById('modal')?.remove();document.body.insertAdjacentHTML('beforeend',`<div class="modal-backdrop" id="modal"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">${content}</div></div>`);document.querySelector('#modal button')?.focus({preventScroll:true})}
 function showModal(){if(!modal)return;const m=modal;let title='',html='';
 if(m.type==='story'){renderModal(`<div class="modal-head"><h2 id="modalTitle">${esc(m.title)}</h2><button class="iconbtn" data-a="close" aria-label="Close dialogue">×</button></div><p class="story-copy">${esc(m.text)}</p>${m.extra||''}<button class="btn ghost block mt12" data-a="close">Return to the map</button>`);return;}
 if(m.type==='newJourney'){title='Start fresh';html='<p>This starts a new game and replaces the current save on this device. Export your backup first to keep your creatures and progress.</p><button class="btn secondary block mt12" data-a="backup">Export current save</button><label class="row gap6 mt12"><input id="freshConfirm" type="checkbox"> I saved my backup and understand this replaces my progress.</label><button class="btn primary block mt12" data-a="freshExecute">Start new adventure</button>'}
@@ -508,7 +522,7 @@ function drawQr(url){const el=document.getElementById('giftqr');if(!el)return;if
  el.textContent='Copy the link below. QR display is optional and requires internet.';
  if(navigator.onLine&&!qrLoading){qrLoading=true;const script=document.createElement('script');script.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';script.onload=()=>drawQr(url);script.onerror=()=>{qrLoading=false};document.head.appendChild(script)}
 }}
-function closeModal(){modal=null;document.getElementById('modal')?.remove()}
+function closeModal(){modal=null;ROOT.inert=!!capture;document.getElementById('modal')?.remove()}
 function teamToggle(uid){
  const k=state.kin.find(x=>x.uid===uid);if(!k)return;
  if(state.team.includes(uid)){
@@ -546,7 +560,7 @@ function restoreBackup(){
   restored.revision=(state?.revision||0)+1;restored.updatedAt=Date.now();restored.writerId=SESSION_ID;const snapshot=JSON.stringify(restored);let stored=await writeVaultDb(snapshot);
   try{localStorage.setItem(KEY,snapshot);stored=true}catch{}
   if(!stored)throw Error('Device storage could not save this backup.');
-  stopMusic();state=restored;unreadableSaves.length=0;battle=null;modal=null;capture=null;expansionInit();healCollectionAfterBattle();save();render();toast('Verified backup restored.');
+  stopMusic();state=restored;observedRevision=restored.revision;observedUpdatedAt=restored.updatedAt;storageConflict=false;unreadableSaves.length=0;battle=null;modal=null;capture=null;expansionInit();healCollectionAfterBattle();save();render();toast('Verified backup restored.');
  }catch(error){toast(error.message||'That is not a valid Wildkin backup.');}
  };f.click();
 }
@@ -554,7 +568,7 @@ function restoreBackup(){
 function expansionInit(){
  if(!state)return;
  state.adventure=state.adventure||Adv.blankState();
- state.schema=Core.SCHEMA;state.research=state.research||{};state.arenaWins=state.arenaWins||0;state.arenaTier=state.arenaTier||0;state.arenaMedals=state.arenaMedals||[];state.expedition=state.expedition||null;state.habitat=state.habitat||0;state.teamPresets=state.teamPresets||[];
+ state.schema=Core.SCHEMA;state.research=state.research||{};state.arenaWins=state.arenaWins||0;state.arenaTier=state.arenaTier||0;state.arenaMedals=state.arenaMedals||[];state.expedition=state.expedition||null;state.expeditionRecords=state.expeditionRecords||{};state.habitat=state.habitat||0;state.teamPresets=state.teamPresets||[];
  state.story=state.story||{};state.story.completed=state.story.completed||[];state.story.choices=state.story.choices||{};state.story.journal=state.story.journal||[];
  state.hunt=state.hunt||{};state.achievements=state.achievements||{};state.equipment=state.equipment||{};state.decor=state.decor||[];state.affection=state.affection||{};state.settings=state.settings||{speed:1,reduced:false,hints:true,music:false};
  if(!state._researchMigrated){for(const k of state.kin){const r=state.research[k.sp]||(state.research[k.sp]={seen:0,won:0,caught:0,claimed:0,evolved:0});r.seen=Math.max(1,r.seen||0);r.caught=Math.max(1,r.caught||0);if(k.evo)r.evolved=Math.max(1,r.evolved||0)}state._researchMigrated=true;}
@@ -610,25 +624,80 @@ function recordResearch(id,kind){if(!state)return;expansionInit();const r=state.
 function researchRank(id){return Core.researchRank(state.research[id])}
 const ACHIEVEMENTS=[['first','First friendship',s=>s.totalCatches>=2,80],['explorer','Six paths',s=>s.story.completed.length>=18,180],['keeper','Living beacon',s=>s.badges.length>=3,250],['ending','Room to grow',s=>s.story.ending,500],['collector','Thirty families',s=>new Set(s.caught.map(x=>x.split(':')[0])).size>=30,600],['forms','Living library',s=>new Set(s.caught).size>=60,1000],['aurora','Another light',s=>s.kin.some(k=>k.aurora),250],['arena','A crown earned',s=>s.arenaMedals.length>=4,750]];
 function researchScreen(){return `<div class="kicker">Field research</div><h2>The living record</h2><p class="subtext mt8">Observe, win three encounters, bond once, and evolve each family. Four milestones, each rewarding 45 coins.</p><div class="section-line"><h3>Achievements</h3></div>${ACHIEVEMENTS.map(([id,title,check,reward])=>`<div class="panel mt8 row between gap6"><div><strong>${title}</strong><small>${state.achievements[id]?'✓ Reward claimed':check(state)?'Ready to claim': 'Keep exploring'}</small></div><button class="btn secondary tiny" data-a="achievement" data-v="${id}" ${!check(state)||state.achievements[id]?'disabled':''}>${reward} coins</button></div>`).join('')}${SPEC.map(x=>{const r=state.research[x.id]||{},rank=researchRank(x.id);return `<div class="panel mt12"><div class="row between"><strong>${r.seen?esc(x.name):'Unknown family'}</strong><span class="pill">${rank}/4</span></div><div class="subtext mt8">Observe ${Math.min(1,r.seen||0)}/1 · Win ${Math.min(3,r.won||0)}/3 · Bond ${Math.min(1,r.caught||0)}/1 · Evolve ${Math.min(1,r.evolved||0)}/1</div>${rank>(r.claimed||0)?`<button class="btn primary tiny mt8" data-a="researchclaim" data-v="${x.id}">Claim ${(rank-(r.claimed||0))*45} coins</button>`:''}</div>`}).join('')}`}
-function expeditionScreen(){const e=state.expedition;return `<div class="kicker">No timers · every route stays available</div><h2>Beyond the beacons</h2><div class="panel mt12"><p class="subtext">Travel six stages with five supplies. Take a safe route, risk a contested cache, or forage. Sentinels challenge you at stages 2, 4 and 6. Contested caches add an extra battle. Battles protect your haul. A defeat or escape loses the unsecured haul. Extract at any time to keep half; finish to keep everything and earn two Prism orbs.</p>${e?`<h3 class="mt12">Stage ${e.step+1}/6 · ${e.supplies} supplies</h3><strong>${e.loot} coins in your pack</strong><p class="subtext mt8">${esc(e.last)}</p><div class="stack mt12"><button class="btn primary" data-a="expchoice" data-v="safe">Ridge path · 1 supply · modest cache</button><button class="btn amber" data-a="expchoice" data-v="risk">Contested cache · 1 supply · battle for more</button><button class="btn secondary" data-a="expchoice" data-v="forage">Forage · regain supplies · uncertain discovery</button><button class="btn ghost" data-a="extract">Extract · bank ${Math.floor(e.loot/2)} coins</button></div>`:'<button class="btn primary block mt12" data-a="expbegin">Begin expedition</button>'}</div>`}
-function expeditionChoice(choice){const e=state.expedition;if(!e||battle)return;const rng=Core.seeded(e.seed+e.step*103),roll=rng();e.step++;
- if(choice==='forage'){e.supplies=Math.min(8,e.supplies+2);e.loot+=15;e.last=roll<.35?'A field researcher trades a map for a spare orb.': 'You gather food and chart a sheltered path.';if(roll<.35)state.orbs++;if(e.step%2===0)startExpeditionEncounter();else finishExpeditionStep();return}
- if(e.supplies<1){e.step--;toast('No supplies. Forage or extract your haul.');return}
- e.supplies--;const gain=choice==='risk'?95+Math.floor(roll*70):30+Math.floor(roll*35);e.loot+=gain;
- e.last=choice==='risk'?'A rival guards the cache. Win to keep your expedition moving.':roll<.5?'A sheltered bridge leads to an untouched cache.':'You guide a lost traveler to safety and share the supplies.';
- if(choice==='risk'||e.step%2===0){startExpeditionEncounter();return}
- finishExpeditionStep();
+function expeditionScreen(){
+ const e=state.expedition,records=Object.values(state.expeditionRecords),wins=records.reduce((sum,r)=>sum+r.wins,0);
+ const header=`<div class="kicker">Six stages · no timers</div><h2>Beyond the beacons</h2><p class="subtext mt8">Read the route, prepare your companions and bring the discoveries home. Your collection fully heals after each battle. A defeat or escape loses the unsecured pack. Extract any time to bank half.</p><p class="subtext mt8">${wins} completed expeditions · ${records.length}/18 regional challenge marks</p>`;
+ if(!e)return header+World.EXPEDITION_THEMES.map((t,z)=>`<section class="panel mt12"><h3>${esc(t.name)}</h3><p class="subtext mt8">${esc(ZONES[z].name)} · ${esc(t.rule)}</p><div class="stack mt12">${['Wanderer · even levels','Ranger · +2 levels','Pathfinder · +4 levels'].map((label,d)=>`<button class="btn ${d===0?'primary':'secondary'}" data-a="expbegin" data-v="${z}:${d}" ${!unlocked(z)||(d>0&&!state.story.ending)?'disabled':''}>${state.expeditionRecords[z+':'+d]?'✓ ':''}${esc(label)}${!unlocked(z)?' · region locked':d>0&&!state.story.ending?' · after the ending':''}</button>`).join('')}</div></section>`).join('');
+ const event=World.expeditionEvent(e);return header+`<section class="panel mt12"><div class="row between gap6"><span class="pill">Stage ${Math.min(6,e.step+1)}/6</span><strong>${e.supplies}/8 supplies</strong></div><h3 class="mt12">${esc(event.title)}</h3><p class="story-copy">${esc(event.text)}</p><p class="subtext">${esc(event.rule)}</p><p class="subtext mt8">${event.checkpoint?'Checkpoint: two opponents on Wanderer, three on higher trails.':'Sheltered choices avoid combat here. Challenging a cache always starts a fight.'} Foes stay at Lv ${Math.min(60,e.level+e.difficulty*2)} throughout this run.</p><div class="row gap6 mt12" aria-label="Regional opponent families">${event.team.map(sp=>svgSmall({sp,level:e.level,evo:e.level>=12,aurora:false})).join('')}</div><p class="subtext mt8">Next-battle preparations: ${e.boons.shield} shields · ${e.boons.energy} energy sparks. Preparations are used when a battle begins.</p><div class="stack mt12">${event.options.map(o=>`<button class="btn ${o.id==='safe'?'primary':o.id==='risk'?'amber':'secondary'}" data-a="expchoice" data-v="${o.id}" ${o.cost>e.supplies?'disabled':''}>${esc(o.label)}<small>${o.cost<0?'Regain 2 supplies':o.cost+' '+(o.cost===1?'supply':'supplies')} · ${o.coins*(e.difficulty+1)} pack coins${o.perk?' · prepare '+o.perk:''}${o.id==='risk'?' · battle':''}</small></button>`).join('')}<button class="btn ghost" data-a="extract">Extract · bank ${Math.floor(e.loot/2)} coins</button></div><strong class="block mt12">${e.loot} coins in your pack</strong><p class="subtext mt8">${esc(e.last)}</p></section>`;
 }
-function startExpeditionEncounter(){const e=state.expedition;if(!e)return;startEncounter(false,false,'expedition');if(battle){const level=clamp(Math.round(teamKin().reduce((sum,k)=>sum+k.level,0)/state.team.length),1,60),families=SPEC.filter(s=>unlocked(s.zone)),rng=Core.seeded(e.seed+e.step);battle.foe=makeKin(families[Math.floor(rng()*families.length)].id,level,false,level>=12);observeFoe(battle.foe);battle.intent=Core.intent(battle,battle.foe);battle.expedition=true;e.pending=true;battle.log='An expedition sentinel challenges your route. Win to secure your pack.';save();render()}}
-function finishExpeditionStep(){const e=state.expedition;if(!e)return;if(e.step>=6){state.coins+=e.loot;state.prisms+=2;state.expedition=null;toast('Expedition complete! Haul secured and two Prism orbs earned.')}save();render()}
-function arenaScreen(){return `<div class="kicker">Curated three-companion teams</div><h2>The living crown</h2><p class="subtext mt8">Win three consecutive matches to earn a tier medal. Your party heals after each match. Escaping or losing ends the bracket; retry freely. Opponents use recovery, charging and counter strategies.</p>${World.ARENA.map((a,i)=>`<div class="panel mt12"><div class="row between"><h3>${esc(a.name)}</h3><span>${state.arenaMedals.includes(i)?'🏅':''}</span></div><p class="subtext mt8">${esc(a.theme)} · Lv ${[10,20,32,44][i]}</p><div class="row gap6 mt8">${a.team.map(sp=>svgSmall({sp,level:20,evo:i>0,aurora:false})).join('')}</div><button class="btn primary block mt12" data-a="tournament" data-v="${i}" ${state.badges.length<i+1?'disabled':''}>${state.badges.length<i+1?'Earn '+(i+1)+' seals to enter':'Enter three-match tournament'}</button></div>`).join('')}<section class="panel mt16"><h3>Party presets</h3><button class="btn secondary block mt12" data-a="presetsave">Save current party · four slots</button>${state.teamPresets.map((p,i)=>`<button class="btn secondary block mt8" data-a="presetload" data-v="${i}">Party ${i+1}: ${p.map(id=>esc(nameOf(state.kin.find(k=>k.uid===id)))).join(', ')}</button>`).join('')}</section>`}
+function beginExpedition(value){
+ if(battle||state.expedition)return;const [z,d]=/^[0-5]:[0-2]$/.test(value||'')?value.split(':').map(Number):[state.zone,0];
+ if(!unlocked(z)||(d>0&&!state.story.ending))return;
+ const level=clamp(Math.round(teamKin().reduce((sum,k)=>sum+k.level,0)/state.team.length),1,60);
+ state.expedition={step:0,loot:0,supplies:5,seed:rand(1,0x7fffffff),zone:z,difficulty:d,level,boons:{shield:0,energy:0},last:'The trail opens. Your opponents stay at this level until you return.'};save();render();
+}
+function expeditionChoice(choice){
+ const e=state.expedition;if(!e||battle||e.pending||e.step>=6)return;
+ const event=World.expeditionEvent(e),option=event.options.find(o=>o.id===choice);if(!option)return;
+ if(option.cost>e.supplies){toast('Gather supplies or extract your haul.');return}
+ e.supplies=clamp(e.supplies-option.cost,0,8);e.loot+=option.coins*(e.difficulty+1);
+ if(option.perk)e.boons[option.perk]=Math.min(3,e.boons[option.perk]+1);
+ e.step++;e.last=event.title+' · '+option.label+'.';
+ if(choice==='risk'||event.checkpoint){startExpeditionEncounter(event,choice);return}finishExpeditionStep();
+}
+function startExpeditionEncounter(event,choice){
+ const e=state.expedition;if(!e)return;startEncounter(false,false,'expedition');if(!battle)return;
+ const level=clamp(e.level+e.difficulty*2,1,60),count=e.step%2===0?(e.difficulty>0?3:2):1;
+ const roster=Array.from({length:count},(_,i)=>{const k=makeKin(event.team[(i+e.seed+e.step)%3],level,false,level>=12);k.aiCycle=choice==='risk'?['charge','heavy','root','strike']:['ward','strike','drain','charge','heavy'];return k});
+ battle.foe=roster.shift();observeFoe(battle.foe);battle.foeQueue=roster;battle.intent=Core.intent(battle,battle.foe);battle.expedition=true;battle.terrain=event.terrain;battle.region=e.zone;
+ battle.energy=Math.min(4,2+e.boons.energy);if(e.boons.shield)battle.guard=Math.max(.2,.6-e.boons.shield*.1);e.boons={shield:0,energy:0};
+ e.pending=true;battle.log=event.title+' · '+(choice==='risk'?'Cache challenge':'Regional checkpoint');save();render();
+}
+function finishExpeditionStep(){
+ const e=state.expedition;if(!e)return;if(e.step>=6&&!e.pending){
+  const key=e.zone+':'+e.difficulty,record=state.expeditionRecords[key],first=!record;state.expeditionRecords[key]={wins:(record?.wins||0)+1,best:Math.max(record?.best||0,e.loot)};
+  state.coins+=e.loot;state.prisms+=2+(first?e.difficulty:0);state.hunt[e.zone]=Math.min(24,(state.hunt[e.zone]||0)+3+e.difficulty);state.expedition=null;
+  toast('Haul secured! Two Prism orbs, Aurora signs'+(first?' and a new regional challenge mark.':'.'));
+ }save();render();
+}
+function arenaScreen(){return `<div class="kicker">Curated three-companion teams</div><h2>The living crown</h2><p class="subtext mt8">Win three consecutive matches to earn a tier medal. Your party heals after each match. Escaping or losing ends the bracket; retry freely. Opponents use recovery, charging and counter strategies.</p>${World.ARENA.map((a,i)=>`<div class="panel mt12"><div class="row between"><h3>${esc(a.name)}</h3><span>${state.arenaMedals.includes(i)?'🏅':''}</span></div><p class="subtext mt8">${esc(a.theme)} · Lv ${[10,20,32,44][i]}</p><div class="row gap6 mt8">${World.BRACKETS[i][2].team.map(sp=>svgSmall({sp,level:20,evo:i>0,aurora:false})).join('')}</div><details class="mt12"><summary>Scout all three matches</summary>${World.BRACKETS[i].map((t,j)=>`<p class="subtext mt8">${j+1}. ${esc(t.name)}: ${t.team.map(sp=>esc(SPEC[sp][i>0?'evolved':'name'])).join(', ')}<br>${t.cycle.map(c=>esc(Core.INTENTS[c][0])).join(' → ')}</p>`).join('')}</details><button class="btn primary block mt12" data-a="tournament" data-v="${i}" ${state.badges.length<i+1?'disabled':''}>${state.badges.length<i+1?'Earn '+(i+1)+' seals to enter':'Enter three-match tournament'}</button></div>`).join('')}<section class="panel mt16"><h3>Party presets</h3><button class="btn secondary block mt12" data-a="presetsave">Save current party · four slots</button>${state.teamPresets.map((p,i)=>`<button class="btn secondary block mt8" data-a="presetload" data-v="${i}">Party ${i+1}: ${p.map(id=>esc(nameOf(state.kin.find(k=>k.uid===id)))).join(', ')}</button>`).join('')}</section>`}
 let tournament=null;
-function startTournament(tier,index=0){if(state.badges.length<tier+1)return;tournament={tier,index};startEncounter(false,true);if(!battle)return;const a=World.ARENA[tier],level=[10,20,32,44][tier]+index;const roster=a.team.map((_,i)=>makeKin(a.team[(i+index)%3],Math.min(60,level),false,level>=12));battle.foe=roster.shift();observeFoe(battle.foe);battle.foeQueue=roster;battle.region=state.zone;battle.intent=Core.intent(battle,battle.foe);battle.log=a.name+' · Match '+(index+1)+'/3';battle.tournament={...tournament};render()}
+function startTournament(tier,index=0){
+ if(battle||!Number.isInteger(tier)||tier<0||tier>3||!Number.isInteger(index)||index<0||index>2||state.badges.length<tier+1)return;
+ tournament={tier,index};startEncounter(false,true);if(!battle)return;
+ const a=World.ARENA[tier],trainer=World.BRACKETS[tier][index],level=[10,20,32,44][tier]+index;
+ const roster=trainer.team.map(sp=>{const k=makeKin(sp,Math.min(60,level),false,level>=12);k.aiCycle=trainer.cycle;return k});
+ battle.foe=roster.shift();observeFoe(battle.foe);battle.foeQueue=roster;battle.region=state.zone;battle.intent=Core.intent(battle,battle.foe);battle.log=a.name+' · '+trainer.name+' · '+(index+1)+'/3';battle.tournament={...tournament};render();
+}
 function habitatScreen(){const names=['Sunlit Garden','Coral Cove','Ember Terrace','Moonlit Grove'],limits=[0,8,20,35],lead=state.kin.find(k=>k.uid===state.team[0]),decor=['🌷','🪨','🏮','🍄','🐚','🌠'];return `<div class="kicker">A home with room to grow</div><h2>Your habitat</h2><div class="panel mt12 center habitat-theme-${state.habitat}"><div class="habitat-garden"><div class="habitat-friend">${svgKin(lead)}</div><div class="decorations">${state.decor.map(i=>`<span>${decor[i]}</span>`).join('')}</div></div><h3>${names[state.habitat]}</h3><p class="subtext mt8">${esc(nameOf(lead))} · ${state.affection[lead.uid]||0} shared moments</p><button class="btn primary block mt12" data-a="companion">Spend a moment together</button></div><div class="habitat-options mt12">${names.map((n,i)=>`<button class="btn ${state.habitat===i?'primary':'secondary'}" data-a="habitat" data-v="${i}" ${state.totalCatches<limits[i]?'disabled':''}>${n}${state.totalCatches<limits[i]?' · '+limits[i]+' bonds':''}</button>`).join('')}</div><div class="panel mt12"><h3>Earned decorations</h3><p class="subtext mt8">Each regional seal unlocks a decoration. Tap to place or remove.</p><div class="row wrap gap6 mt12">${decor.map((d,i)=>`<button class="btn secondary" data-a="decoration" data-v="${i}" ${!state.badges.includes(i)?'disabled':''}>${d} ${state.decor.includes(i)?'✓':''}</button>`).join('')}</div></div>`}
-let musicTimer=null,musicStep=0;
-function stopMusic(){clearInterval(musicTimer);musicTimer=null}
-function startMusic(){if(musicTimer||!state?.settings?.music||!state.sound)return;const notes=[261.63,329.63,392,493.88,440,392,329.63,293.66];musicTimer=setInterval(()=>{if(!document.hidden&&state?.sound)sound(notes[(musicStep++ +state.zone*2)%notes.length],.65,'sine')},850)}
-function settingsPanel(){return `<div class="panel mt16"><h3>Comfort and accessibility</h3><div class="stack mt12"><button class="btn secondary" data-a="speed">Battle speed · ${state.settings.speed}×</button><button class="btn secondary" data-a="motion">Reduced motion · ${state.settings.reduced?'on':'off'}</button><button class="btn secondary" data-a="music">Ambient melody · ${state.settings.music?'on':'off'}</button><button class="btn secondary" data-a="hinttoggle">Battle hints · ${state.settings.hints?'on':'off'}</button></div>${updateStatus==='available'?'<button class="btn primary block mt12" data-a="applyupdate">Install downloaded update</button>':''}</div>`}
+// Original note scores, synthesized locally with no downloaded recordings.
+const MUSIC_SCORES=[
+ {root:60,beat:660,notes:[0,4,7,12,9,7,4,null,2,5,9,7,4,2,0,null,4,7,12,16,14,12,9,7,5,9,7,4,2,4,0,null]},
+ {root:57,beat:790,notes:[0,3,7,10,7,null,5,3,2,5,8,7,3,2,0,null,7,10,14,12,10,7,5,null,8,7,3,5,2,3,0,null]},
+ {root:62,beat:720,notes:[0,7,9,4,2,7,4,null,5,9,12,9,7,4,2,null,0,4,7,11,12,9,7,null,5,2,4,7,2,0,null,null]},
+ {root:55,beat:620,notes:[0,7,3,7,10,7,5,null,0,5,8,7,3,2,0,null,7,10,12,15,12,10,7,5,8,7,5,3,2,3,0,null]},
+ {root:62,beat:570,notes:[0,4,7,11,14,11,7,null,2,6,9,12,9,6,2,null,4,7,11,14,16,14,11,7,6,9,7,4,2,4,0,null]},
+ {root:60,beat:850,notes:[0,7,11,14,16,null,14,11,7,9,12,16,14,11,7,null,4,7,12,19,16,14,11,9,5,9,12,7,4,2,0,null]}
+];
+let musicTimer=null,musicStep=0,musicBus=null;
+function audioContext(){
+ try{const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return null;const ctx=window.__wildAudio||(window.__wildAudio=new Ctx());if(ctx.state==='suspended')ctx.resume().catch(()=>{});return ctx}catch{return null}
+}
+function stopMusic(){clearTimeout(musicTimer);musicTimer=null;if(musicBus){try{const ctx=window.__wildAudio;musicBus.gain.cancelScheduledValues(ctx.currentTime);musicBus.gain.setValueAtTime(0,ctx.currentTime);musicBus.disconnect()}catch{}musicBus=null}}
+function musicTone(ctx,midi,time,duration,volume,type='sine'){
+ const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type=type;osc.frequency.setValueAtTime(440*2**((midi-69)/12),time);gain.gain.setValueAtTime(.0001,time);gain.gain.exponentialRampToValueAtTime(volume,time+.06);gain.gain.exponentialRampToValueAtTime(.0001,time+duration);osc.connect(gain).connect(musicBus);osc.onended=()=>{osc.disconnect();gain.disconnect()};osc.start(time);osc.stop(time+duration+.03);
+}
+function musicBeat(){
+ musicTimer=null;if(!state?.sound||!state.settings.music||document.hidden){stopMusic();return}
+ const ctx=audioContext();if(!ctx)return;
+ if(!musicBus){musicBus=ctx.createGain();musicBus.gain.value=.55;musicBus.connect(ctx.destination)}
+ const score=MUSIC_SCORES[state.zone],step=musicStep++%32,note=score.notes[step],beat=(battle?Math.max(430,score.beat*.82):score.beat),duration=beat/1000*.9;
+ if(note!==null)musicTone(ctx,score.root+note,ctx.currentTime,duration,.035,battle?'triangle':'sine');
+ if(step%4===0){const chord=[0,5,3,7][Math.floor(step/8)];musicTone(ctx,score.root-24+chord,ctx.currentTime,duration*3,.028);musicTone(ctx,score.root-12+chord+7,ctx.currentTime,duration*3,.012)}
+ musicTimer=setTimeout(musicBeat,beat);
+}
+function startMusic(){if(musicTimer||!state?.settings?.music||!state.sound||document.hidden)return;musicBeat()}
+function settingsPanel(){return `<div class="panel mt16"><h3>Comfort and accessibility</h3><div class="stack mt12"><button class="btn secondary" data-a="speed">Battle speed · ${state.settings.speed}×</button><button class="btn secondary" data-a="motion">Reduced motion · ${state.settings.reduced?'on':'off'}</button><button class="btn secondary" data-a="music">Regional music · ${state.settings.music?'on':'off'}</button><button class="btn secondary" data-a="hinttoggle">Battle hints · ${state.settings.hints?'on':'off'}</button></div>${updateStatus==='available'?'<button class="btn primary block mt12" data-a="applyupdate">Install downloaded update</button>':''}</div>`}
 function recoveryScreen(){return '<div class="intro-cover"><h2>Protect your adventure</h2><p class="story-copy">Your stored save could not be read safely. It has been kept intact. Download the original data for recovery, or restore a verified backup.</p><button class="btn secondary block mt12" data-a="rawbackup">Download recovery data</button><button class="btn primary block mt12" data-a="restore">Restore a backup</button></div>'}
 function downloadRecovery(){const blob=new Blob([JSON.stringify({game:'WILDKIN-RECOVERY',copies:unreadableSaves})],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='wildkin-recovery.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),4000)}
 function featureAction(a,v,btn){
@@ -643,7 +712,7 @@ function featureAction(a,v,btn){
  if(a==='wildtrail'){state.trailSpot=state.trailSpot||{};state.trailSpot[state.zone]=Number(v);searchWilds();return true}
  if(a==='researchclaim'){const id=Number(v),r=state.research[id],pending=researchRank(id)-(r?.claimed||0);if(r&&pending>0){r.claimed=researchRank(id);state.coins+=pending*45;save();render()}return true}
  if(a==='achievement'){const achievement=ACHIEVEMENTS.find(x=>x[0]===v);if(achievement&&!state.achievements[v]&&achievement[2](state)){state.achievements[v]=true;state.coins+=achievement[3];save();render()}return true}
- if(a==='expbegin'){if(!state.expedition)state.expedition={step:0,loot:0,supplies:5,seed:rand(1,0x7fffffff),last:'The trail opens. Choose what to carry home.'};save();render();return true}
+ if(a==='expbegin'){beginExpedition(v);return true}
  if(a==='expchoice'){expeditionChoice(v);return true}
  if(a==='extract'){if(state.expedition){state.coins+=Math.floor(state.expedition.loot/2);state.expedition=null;save();render();toast('Extracted safely. Half the haul secured.')}return true}
  if(a==='tournament'){startTournament(Number(v));return true}
@@ -723,12 +792,13 @@ function adventureAction(a,v,btn){if(!a.startsWith('field'))return false;
  return true;
 }
 
-function combatBonus(mine,kind,b){const passive=Core.PASSIVES[mine.sp],type=passive[2],value=passive[3];let bonus=1;const actions=b.acts[mine.uid]||0;if(type==='opener'&&actions===0)bonus+=value;if(type==='burst'&&kind==='burst')bonus+=value;if(type==='resolve'&&mine.hp<hpMax(mine)/2)bonus+=value;if(type==='afflict'&&b.weakenTurns>0)bonus+=value;if(type==='patient'&&b.prepared===mine.uid)bonus+=value;if(type==='entryhit'&&b.entry===mine.uid)bonus+=value;if(state.equipment[mine.uid]==='power')bonus+=.1;if(b.field){const effect=b.field.effect;if(effect==='patient'&&b.prepared===mine.uid)bonus+=.15;if(effect==='variety'&&b.lastKind&&b.lastKind!==kind)bonus+=.15;if(effect==='tide'&&b.turn%3===2&&kind==='burst')bonus+=.2;if(effect==='relay'&&b.entry===mine.uid&&b.lastAttackElement&&b.lastAttackElement!==SPEC[mine.sp].type)bonus+=.2;}return bonus;}
+function combatBonus(mine,kind,b){const passive=Core.PASSIVES[mine.sp],type=passive[2],value=passive[3];let bonus=1;const actions=b.acts[mine.uid]||0;if(type==='opener'&&actions===0)bonus+=value;if(type==='burst'&&kind==='burst')bonus+=value;if(type==='resolve'&&mine.hp<hpMax(mine)/2)bonus+=value;if(type==='afflict'&&b.weakenTurns>0)bonus+=value;if(type==='patient'&&b.prepared===mine.uid)bonus+=value;if(type==='entryhit'&&b.entry===mine.uid)bonus+=value;if(state.equipment[mine.uid]==='power')bonus+=.1;if(b.field||b.terrain){const effect=b.terrain||b.field.effect;if(effect==='patient'&&b.prepared===mine.uid)bonus+=.15;if(effect==='variety'&&b.lastKind&&b.lastKind!==kind)bonus+=.15;if(effect==='tide'&&b.turn%3===2&&kind==='burst')bonus+=.2;if(effect==='relay'&&b.entry===mine.uid&&b.lastAttackElement&&b.lastAttackElement!==SPEC[mine.sp].type)bonus+=.2;}return bonus;}
 function observeFoe(foe){recordResearch(foe.sp,'seen');state.seen=[...new Set([...state.seen,foe.sp+':'+Number(foe.evo)])]}
 function initializeBattle(b){b.region=state.zone;b.acts={};b.hits={};b.cooldowns={};b.intent=Core.intent(b,b.foe);b.entry=b.active;if(b.boss&&Object.hasOwn(state.adventure.requests,b.region)){if(state.adventure.requests[b.region]===0)b.guard=.5;else b.energy=3;}return b}
 
 function handleClick(e){const btn=e.target.closest('[data-a]');if(!btn)return;const a=btn.dataset.a,v=btn.dataset.v;try{
 if(resetInProgress)return;
+if(state?.settings?.music&&state.sound&&!musicTimer)startMusic();
 if(a==='rawbackup'){downloadRecovery();return}
 if(a==='begin'&&unreadableSaves.length){toast('Restore your save before beginning. Your unreadable data is protected.');return}
 if(featureAction(a,v,btn))return;
@@ -782,7 +852,7 @@ if(a==='tonic'){useTonic();return}
 if(a==='switch'){switchKin(v);return}
 if(a==='catchmenu'){if(!battle||battle.doing||battle.boss||battle.arena||battle.expedition||(battle.field&&!battle.field.nest))return;if(state.orbs+state.prisms===0){toast('Buy more Bond or Prism orbs at camp!');return}modal={type:'catchmenu'};showModal();return}
 if(a==='chooseorb'){if(!battle?.doing)openCapture(v);return}
-if(a==='cancelcapture'){capture=null;document.getElementById('capture')?.remove();return}
+if(a==='cancelcapture'){capture=null;ROOT.inert=!!modal;document.getElementById('capture')?.remove();return}
 if(a==='seal'){sealCapture();return}
 }catch(ex){console.error('Wildkin action error',ex);toast('Something went wrong. Your progress is safe.')}}
 function manualCopy(txt){const area=document.createElement('textarea');area.value=txt;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();try{document.execCommand('copy');toast('Gift link copied!')}catch{toast('Select the gift link above to copy it.')}area.remove()}
@@ -819,6 +889,7 @@ async function startGame(){
  let interrupted=null;try{interrupted=localStorage.getItem(KEY+'-reset');if(interrupted){const recovery=Core.normalize(JSON.parse(interrupted));localStorage.setItem(KEY,JSON.stringify(recovery));await writeVaultDb(JSON.stringify(recovery));localStorage.removeItem(KEY+'-reset')}}catch{toast('A reset was interrupted. Keep a backup before retrying.')}
  const local=load(),vault=await readVaultDb();
  state=vault&&(!local||(vault.revision||0)>(local.revision||0)||(vault.revision||0)===(local.revision||0)&&(vault.updatedAt||0)>(local.updatedAt||0))?vault:local;
+ observedRevision=state?.revision||0;observedUpdatedAt=state?.updatedAt||0;
  if(state){
   state.kin=state.kin.filter(k=>k&&SPEC[k.sp]);
   state.team=state.team.filter(uid=>state.kin.some(k=>k.uid===uid)).slice(0,3);
@@ -827,14 +898,14 @@ async function startGame(){
   if(!state.trailSpot)state.trailSpot={};if(!state.trailVisits)state.trailVisits={};
   if(!vault||state===local&&((local.updatedAt||0)>(vault.updatedAt||0)))save();
  }
- expansionInit();if(state){healCollectionAfterBattle();save()}render();if(state)giftsFromURL();setTimeout(()=>checkForUpdates(false),3500);
+ observedRevision=state?.revision||0;observedUpdatedAt=state?.updatedAt||0;expansionInit();if(state){healCollectionAfterBattle();save()}render();if(state)giftsFromURL();setTimeout(()=>checkForUpdates(false),3500);
 }
 document.addEventListener('click',handleClick);
 document.addEventListener('change',handleChange);
-document.addEventListener('keydown',event=>{const dialog=document.querySelector('#modal .modal');if(!dialog)return;if(event.key==='Escape'){closeModal();return}if(event.key==='Tab'){const buttons=Array.from(dialog.querySelectorAll('button:not(:disabled),input,select,textarea,a[href]'));if(!buttons.length)return;const first=buttons[0],last=buttons[buttons.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}});
+document.addEventListener('keydown',event=>{const dialog=document.querySelector('#capture .capture-card')||document.querySelector('#modal .modal')||document.querySelector('.battle');if(!dialog)return;if(event.key==='Escape'){if(capture){capture=null;ROOT.inert=!!modal;document.getElementById('capture')?.remove()}else if(modal)closeModal();return}if(event.key==='Tab'){const buttons=Array.from(dialog.querySelectorAll('button:not(:disabled),input,select,textarea,a[href]'));if(!buttons.length)return;const first=buttons[0],last=buttons[buttons.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}});
 ROOT.innerHTML='<div class="intro-cover" style="text-align:center;padding-top:30vh"><h2>✦ WILDKIN</h2><p>Opening your creature vault…</p></div>';
 const boot=startGame().catch(error=>{console.error('Wildkin startup',error);state=load();render()});if(!window.__WILDKIN_TEST__&&'serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').then(reg=>{updateRegistration=reg}).catch(()=>{}));
 let reloadForUpdate=false;navigator.serviceWorker?.addEventListener('controllerchange',()=>{if(!updateRequested||reloadForUpdate)return;reloadForUpdate=true;location.reload()});
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){if(state)save();stopMusic()}else{if(storageConflict)render();checkForUpdates(false);if(state?.settings?.music)startMusic()}});
-if(window.__WILDKIN_TEST__)window.WILDKIN_TEST_API={ready:boot,getState:()=>state,getBattle:()=>battle,getModal:()=>modal,handleClick,svgKin,Adv,adventureCount,beginAdventure,moveAdventure,clearAdventureRoom,startAdventureBattle,adventurePuzzleAction,resolveFieldRequest,currentAdventure,fieldReports,setState:value=>{state=value;expansionInit()},newState,makeKin,save,flush:()=>vaultWriteQueue,startGame,readVaultDb,writeVaultDb,resetJourneySafely,restoreBackup,exportBackup,startEncounter,searchWilds,actionAttack,foeAttack,finishBattle,claimGuardian,tryFlee,useTonic,switchKin,openCapture,sealCapture,gainXp,teamToggle,swapKin,completeStory,enterNode,guardianReady,featureAction,startTournament,expeditionChoice,finishExpeditionStep,render,showModal,healCollectionAfterBattle,checkForUpdates,applyUpdate,decodeGift,giftCode,recordResearch,researchRank,Core,World};
+if(window.__WILDKIN_TEST__)window.WILDKIN_TEST_API={ready:boot,getState:()=>state,getBattle:()=>battle,getModal:()=>modal,handleClick,svgKin,Adv,adventureCount,beginAdventure,moveAdventure,clearAdventureRoom,startAdventureBattle,adventurePuzzleAction,resolveFieldRequest,currentAdventure,fieldReports,setState:value=>{state=value;expansionInit()},newState,makeKin,save,flush:()=>vaultWriteQueue,startGame,readVaultDb,writeVaultDb,resetJourneySafely,restoreBackup,exportBackup,startEncounter,searchWilds,actionAttack,foeAttack,finishBattle,claimGuardian,tryFlee,useTonic,switchKin,openCapture,sealCapture,gainXp,teamToggle,swapKin,completeStory,enterNode,guardianReady,featureAction,startTournament,beginExpedition,expeditionChoice,finishExpeditionStep,render,showModal,healCollectionAfterBattle,checkForUpdates,applyUpdate,decodeGift,giftCode,recordResearch,researchRank,startMusic,stopMusic,musicBeat,MUSIC_SCORES,Core,World};
 })();

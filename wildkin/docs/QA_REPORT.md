@@ -1,5 +1,38 @@
 # Current development QA, October 30, 2026
 
+Build: **3.0.0-dev.3**, schema 5. Not a final release. Main/public deployment remains unchanged.
+
+## Implemented and verified in this pass
+
+- 36 authored expedition events across six regional circuits. Three difficulty tiers, fixed entry-level snapshot, visible regional terrain, preparation shields/energy, supply and pack decisions, two/three-opponent checkpoints, extraction and 18 persistent challenge records. Higher tiers unlock after the ending, with first-completion bonuses and Aurora signs. No timers or entry fees.
+- 12 distinct arena trainer rosters across four brackets. Each has its own telegraphed intention cycle, available in the scouting panel before entry.
+- Six original 32-step regional scores with gentle bass harmony and a faster battle variation. Synthesized locally, optional and muted through existing controls. Stops scheduling when hidden; iOS-style suspended audio contexts resume on a gesture. Automated audio graph/timer checks pass. Audible musical quality has not been reviewed through these tools.
+- Dedicated local PNG icons for iPhone Home Screen and Android manifests; all cached with the atomic shell. Removed remote web-font import and adopted rounded system fonts. Sound nodes disconnect after playback.
+- Background controls become inert while battle, bonding or modal screens are open. Dialog semantics and keyboard containment apply to battles/bonding. Fresh-start onboarding explicitly restores interactivity. Reduced motion is retained. This is not a physical VoiceOver acceptance claim.
+- IndexedDB compare-and-write protection rejects a foreign revision in the same read/write transaction. Paused copies remain exportable, the mirror is repaired only when it belongs to this session, and loading latest resumes saving. The real Chrome fixture uses two separate game windows with actual IndexedDB and localStorage unavailable. Five stale queued writes could not replace committed coins (1111); the stale in-memory copy (2222) remained exportable; reload and subsequent write (3333) succeeded.
+- Cloud Chrome UI at 305 px content width: expedition selection, choice costs, cache challenge, arena scouting and battle verified without horizontal page/control overflow. Accessibility tree confirmed background navigation disappears during battles. Screenshot review found HP card obscuring creature faces, corrected by reserving portrait space. No physical device testing occurred.
+
+## Automated and simulation evidence
+
+**56 regression tests pass.** New coverage includes all 18 expedition challenges, supplies/preparations, interrupted encounters, locked tiers, invalid choices/records, migrations, all arena rosters/cycles, regional scores, mute/background audio lifecycle, offline icons, and IndexedDB-only stale writes. Existing capture/healing/XP/evolution/reset/backup/large-collection/offline/update/campaign tests pass.
+
+`campaign-results.json` was regenerated on dev.3: all three starters complete through either main approach, and the completionist agent covers all 216 field locations, all 54 optional story nodes and six requests. These results do not validate human pacing.
+
+`strategy-results.json`: 2,700 real-engine equal-level battles across every family leading mixed teams, six Guardian rematches and four final arena matches. Three seeds and three policies, no tonics. Burst policy wins 851/900; signatures 842/900; adaptive policy with guards/switches 833/900, including 559 switches. The lowest family-led team wins 78/90 across policies. This shows several viable synthetic strategies and broader family coverage. It does not establish optimal balance, family-specific causality, or human fun. The report discloses fixed supports and the absence of finale echoes in the rematch fixtures.
+
+## Remaining release blockers
+
+1. Main story is complete and traversable, but its shortest routes remain too short to substantiate the requested 8–12-hour experience. Observed human pacing and target-age onboarding/enjoyment tests have not happened. Add meaningful main-story depth where observation justifies it, not repeated mandatory encounters or delays.
+2. Final visual, audio, animation, accessibility and device performance/battery acceptance remains open. New art is original and integrated; final cohesion and audible scores still need acceptance. Endgame synthetic coverage is stronger but sustained human replay enjoyment is unmeasured.
+3. Physical iPhone Safari and installed Home Screen acceptance, updates from the public v2 worker, iOS backup download/restore, offline cold launch and Android acceptance remain unavailable. The HTTP cloud preview cannot substitute for the required HTTPS/device checks.
+4. Actual browser quota saturation and interruption testing remain incomplete. Two-window real-browser IndexedDB conflict protection is now exercised, improving the previous modeled-only evidence.
+
+No final publication or finished label until RELEASE_SPEC_3_0.md acceptance. Previous dev.2 GitHub CI completed successfully. This pass must also pass CI after commit. No unattended development is configured.
+
+---
+
+# Earlier dev.2 checkpoint
+
 Build: **3.0.0-dev.2**. Not a final release. Main/public deployment remains unchanged.
 
 ## Implemented and verified in this pass

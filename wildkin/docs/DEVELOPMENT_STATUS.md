@@ -33,3 +33,10 @@ The acceptance criteria are not met. In particular, the campaign currently takes
 ## Latest checkpoint: 3.0.0-dev.2
 
 18 mapped adventures / 216 authored locations, six puzzle engines with hints and alternate approaches, six regional requests, objective-based Guardian access, guaranteed diverse first bonds, and 60 individual form silhouettes are implemented. Schema 4 migrates earlier progress. Tests and browser evidence are in the current QA_REPORT.md; progression evidence is in campaign-results.json. Main remains unchanged. Work next on remaining pacing/depth and final product acceptance, not another count-based expansion. Real iPhone/target-age acceptance and final publication remain undone.
+
+
+## Latest checkpoint: 3.0.0-dev.3
+
+Six regional expedition circuits (36 events, three tiers, fixed level snapshot, preparation/terrain and checkpoint teams), 12 unique arena trainers with scouting, six synthesized scores, local mobile icons/system fonts, battle/bond accessibility isolation, and atomic IndexedDB foreign-write protection are integrated. 56 regressions pass. 2,700 all-family strategy fixtures and actual Chrome two-window IndexedDB testing pass. Main/public unchanged. See current QA_REPORT.md and strategy-results.json.
+
+The shortest campaign routes still do not substantiate 8–12 hours. Target-age enjoyment, final audible/visual/performance acceptance, physical iPhone Safari/Home Screen/update/offline/backup acceptance and browser quota saturation remain incomplete. These are release blockers, not completed tests. No unattended development continues after the turn.

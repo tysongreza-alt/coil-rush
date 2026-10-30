@@ -1,17 +1,23 @@
 # Wildkin 3.0 development branch
 
-**Build: 3.0.0-dev.2. Not a finished release. The public GitHub Pages deployment has not been updated by this development work.**
+**Build: 3.0.0-dev.3. Not a finished release. The public GitHub Pages deployment has not been updated by this development work.**
 
 Read [docs/DEVELOPMENT_STATUS.md](docs/DEVELOPMENT_STATUS.md), [docs/QA_REPORT.md](docs/QA_REPORT.md), and the authoritative [RELEASE_SPEC_3_0.md](RELEASE_SPEC_3_0.md) before resuming. Release-blocking work remains, including campaign length/depth, final visual/audio polish, and physical-device/family acceptance.
+
+## Current endgame and reliability pass
+
+Development build dev.3 adds 36 authored expedition events across six regional trails, three free difficulty tiers, preparation choices, checkpoint teams and persistent challenge records. Every arena match now has its own roster and visible trainer intention cycle. Six original synthesized regional scores run entirely offline, with sound/mute and background suspension. Local iPhone/Android PNG icons and system typography remove launch-time font requests. Schema 5 retains earlier saves. IndexedDB compares foreign revisions inside the write transaction, protecting saves even if localStorage is unavailable. Battle/bond dialogs isolate background controls.
+
+Verification: 56 regression checks, all starter campaign traversals, 2,700 all-family strategy fixtures, and real Chrome IndexedDB conflict checks. See `docs/QA_REPORT.md`. This remains development work. Physical iPhone, target-age enjoyment, observed campaign length and final product acceptance are incomplete, so the public version is unchanged.
 
 ## Implemented development systems
 
 - Six linked regional arcs, 54 authored nodes across 18 routes, characters, choices, puzzles, secrets, skippable/re-readable dialogue, and an ending.
 - Telegraphed intentions, six Guardian cycles, a three-stage final encounter, 30 family passives, signature cooldowns, equipment charms, and regional level bands.
 - Full collection healing after every completed battle outcome; party-wide XP retained.
-- Four curated arena teams and three-match tournaments, expedition supplies/risk/extraction/battles, four research milestones, achievements, visible Aurora catch-up, habitat decorations and interactions, and four party presets.
+- Four brackets with 12 curated trainer teams and scouting, expedition supplies/risk/extraction/battles, four research milestones, achievements, visible Aurora catch-up, habitat decorations and interactions, and four party presets.
 - Sixty individually authored base/evolved silhouette drawings, and six regional map landmark sets.
-- Save validation/migration, verified backups, corruption recovery, reset recovery/rollback, stale-window protection, safer cache scope and explicit update installation, comfort settings and optional melody.
+- Save validation/migration, verified backups, corruption recovery, reset recovery/rollback, stale-window protection, safer cache scope and explicit update installation, comfort settings and optional regional scores.
 
 ## Run checks
 
@@ -20,6 +26,7 @@ From repository root, with Node 22 or newer:
 ```sh
 node --test wildkin/tests/*.test.cjs
 node wildkin/tests/simulate.cjs
+node wildkin/tests/strategy-sim.cjs
 node wildkin/tests/campaign.cjs
 ```
 

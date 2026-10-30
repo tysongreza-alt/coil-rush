@@ -1,7 +1,7 @@
 /* Wildkin domain rules. Original code, no runtime dependencies. */
 (function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./adventures.js'):root.WildkinAdventures);if(typeof module==='object'&&module.exports)module.exports=api;else root.WildkinCore=api;})(typeof globalThis!=='undefined'?globalThis:this,function(Adventures){
 'use strict';
-const BUILD='3.0.0-dev.2',SCHEMA=4;
+const BUILD='3.0.0-dev.3',SCHEMA=5;
 const BASE_LEVELS=[5,11,17,23,29,35],GUARDIAN_LEVELS=[9,15,21,27,33,40];
 const PASSIVES=[
  ['Verdant care','Guard restores 10% HP.','rest',.10],['First spark','First attack deals 25% more damage.','opener',.25],['River shelter','First incoming hit is 30% weaker.','shell',.30],['Honey reserve','Gain one energy after every third attack.','battery',3],['Patient stone','After guarding, the next attack is 25% stronger.','patient',.25],
@@ -65,6 +65,7 @@ function normalize(input){
  a.arenaWins=int(a.arenaWins,0,1e9)?a.arenaWins:0;
  a.arenaTier=int(a.arenaTier,0,3)?a.arenaTier:0;
  a.arenaMedals=Array.isArray(a.arenaMedals)?a.arenaMedals.filter(n=>int(n,0,3)):[];
+ a.expeditionRecords=obj(a.expeditionRecords)?a.expeditionRecords:{};for(const [key,r] of Object.entries(a.expeditionRecords))insist(/^[0-5]:[0-2]$/.test(key)&&obj(r)&&int(r.wins,1,1e9)&&int(r.best,0,100000),'Invalid expedition record');
  a.habitat=int(a.habitat,0,3)?a.habitat:0;
  a.decor=Array.isArray(a.decor)?a.decor.filter(n=>int(n,0,5)).slice(0,6):[];
  a.affection=obj(a.affection)?a.affection:{};for(const [id,n] of Object.entries(a.affection))insist(ids.has(id)&&int(n,0,1e9),'Invalid companion memories');
@@ -73,13 +74,13 @@ function normalize(input){
  a.settings={speed:[1,1.5,2].includes(a.settings?.speed)?a.settings.speed:1,reduced:!!a.settings?.reduced,hints:a.settings?.hints!==false,music:!!a.settings?.music};
  a.sound=a.sound!==false;
  // No unfinished combat is serialized. An interrupted run keeps only secured loot.
- if(a.expedition){const e=a.expedition;insist(obj(e)&&int(e.step,0,6)&&int(e.loot,0,100000)&&int(e.supplies??5,0,8),'Invalid expedition');e.supplies=e.supplies??5;e.seed=int(e.seed,0,0xffffffff)?e.seed:1;e.last=typeof e.last==='string'?e.last:'Expedition resumed.';if(e.pending){e.loot=0;e.step=Math.max(0,e.step-1);e.last='The encounter was interrupted. Your companions recovered, but the unsecured haul was lost.';}e.pending=false;}
+ if(a.expedition){const e=a.expedition;insist(obj(e)&&int(e.step,0,6)&&int(e.loot,0,100000)&&int(e.supplies??5,0,8),'Invalid expedition');e.supplies=e.supplies??5;e.seed=int(e.seed,0,0xffffffff)?e.seed:1;e.last=typeof e.last==='string'?e.last:'Expedition resumed.';if(e.pending){e.loot=0;e.step=Math.max(0,e.step-1);e.last='The encounter was interrupted. Your companions recovered, but the unsecured haul was lost.';}e.pending=false;e.zone=int(e.zone,0,5)?e.zone:a.zone;e.difficulty=int(e.difficulty,0,2)?e.difficulty:0;e.level=int(e.level,1,60)?e.level:Math.max(...a.team.map(id=>a.kin.find(k=>k.uid===id).level));e.boons={shield:int(e.boons?.shield,0,3)?e.boons.shield:0,energy:int(e.boons?.energy,0,3)?e.boons.energy:0};e.last=String(e.last).slice(0,500);}
  a.revision=int(a.revision,0,1e12)?a.revision:0;a.writerId=typeof a.writerId==='string'?a.writerId.slice(0,100):'';a.updatedAt=Number.isFinite(a.updatedAt)?a.updatedAt:0;return a;
 }
 function backup(data){const clean=normalize(data);return JSON.stringify({game:'WILDKIN',format:2,saved:new Date().toISOString(),data:clean},null,2);}
 function restore(text){const raw=JSON.parse(text);insist(raw.game==='WILDKIN'&&(!raw.format||raw.format<=2),'Not a supported Wildkin backup');return normalize(raw.data);}
 function researchRank(r={}){return Number((r.seen||0)>=1)+Number((r.won||0)>=3)+Number((r.caught||0)>=1)+Number((r.evolved||0)>=1);}
-function intent(b,foe){if(b.boss)return GUARDIANS[b.region??0].cycle[(b.turn||0)%GUARDIANS[b.region??0].cycle.length];const style=foe.sp%5;return [ ['strike','charge','heavy'],['ward','strike','strike'],['root','strike','recover'],['strike','drain','strike'],['mirror','charge','heavy'] ][style][(b.turn||0)%3];}
+function intent(b,foe){if(foe.aiCycle)return foe.aiCycle[(b.turn||0)%foe.aiCycle.length];if(b.boss)return GUARDIANS[b.region??0].cycle[(b.turn||0)%GUARDIANS[b.region??0].cycle.length];const style=foe.sp%5;return [ ['strike','charge','heavy'],['ward','strike','strike'],['root','strike','recover'],['strike','drain','strike'],['mirror','charge','heavy'] ][style][(b.turn||0)%3];}
 function damage({attacker,defender,kind='strike',mult=1,roll=1,guard=1,weak=1,bonus=1}){const p=11+attacker.level*2+(attacker.evo?8:0),d=6+Math.floor(defender.level*1.2)+(defender.evo?5:0);const base={strike:12,signature:17,heavy:24,burst:28}[kind]||12;const scale=kind==='burst'?1.25:kind==='strike'?.83:1.05;return Math.max(3,Math.floor((base+p*scale-d*.45)*mult*roll*guard*weak*bonus));}
 return {BUILD,SCHEMA,BASE_LEVELS,GUARDIAN_LEVELS,PASSIVES,GUARDIANS,INTENTS,seeded,normalize,backup,restore,researchRank,intent,damage,validVersion,newerVersion};
 });

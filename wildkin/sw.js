@@ -1,7 +1,7 @@
 /* Atomic offline shell. A new build waits until the player installs it. */
-const CACHE='wildkin-shell-3.0.0-dev.2';
+const CACHE='wildkin-shell-3.0.0-dev.3';
 const ROOT=new URL('./',self.location.href).href;
-const ASSETS=['./index.html','./styles.css?v=3.0.0-dev.2','./adventures.js?v=3.0.0-dev.2','./core.js?v=3.0.0-dev.2','./world.js?v=3.0.0-dev.2','./game.js?v=3.0.0-dev.2','./icon.svg','./manifest.webmanifest'];
+const ASSETS=['./index.html','./styles.css?v=3.0.0-dev.3','./adventures.js?v=3.0.0-dev.3','./core.js?v=3.0.0-dev.3','./world.js?v=3.0.0-dev.3','./game.js?v=3.0.0-dev.3','./icon.svg','./icon-192.png','./icon-512.png','./apple-touch-icon.png','./manifest.webmanifest'];
 self.addEventListener('install',event=>event.waitUntil((async()=>{
  const cache=await caches.open(CACHE);
  try{await cache.addAll(ASSETS.map(path=>new Request(new URL(path,ROOT),{cache:'reload'})))}
