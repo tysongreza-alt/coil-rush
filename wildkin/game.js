@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const KEY='wildkin-save-v1',VERSION=1,APP_VERSION='1.3.3',ROOT=document.getElementById('app');
+const KEY='wildkin-save-v1',VERSION=1,APP_VERSION='1.3.4',ROOT=document.getElementById('app');
 let updateStatus='ready',updateMessage='';
 const ELEMENTS={leaf:{name:'Grove',color:'#9fe1a1',icon:'🌿',beats:'tide'},flame:{name:'Ember',color:'#ffb17c',icon:'🔥',beats:'leaf'},tide:{name:'Tide',color:'#80d5f8',icon:'💧',beats:'flame'},spark:{name:'Storm',color:'#f8df82',icon:'⚡',beats:'tide'},stone:{name:'Stone',color:'#dcc6a6',icon:'⛰️',beats:'spark'},lunar:{name:'Lunar',color:'#cfb3ff',icon:'🌙',beats:'stone'}};
 const ZONES=[
@@ -260,7 +260,7 @@ async function foeAttack(){
  if(mine.hp===0){
   const next=teamKin().find(k=>k.hp>0);
   if(next){b.active=next.uid;b.energy=2;announce(`${nameOf(mine)} fainted!`,`${nameOf(next)} steps in to continue the battle.`,'neutral',0,'player','enter');await pause(850);if(!battleAlive(b))return;}
-  else{const lossXp=Math.max(8,Math.round((33+foe.level*6)*.3));const experience=grantPartyXp(teamKin(),lossXp);battle=null;modal={type:'result',win:false,title:'Back to camp',message:'Your team fought bravely! Everyone earns practice XP, including companions that fainted.',bonus:'Rest at camp before the next fight.',experience};save();render();return;}
+  else{const lossXp=Math.max(8,Math.round((33+foe.level*6)*.3));const experience=grantPartyXp(teamKin(),lossXp);healCollectionAfterBattle();battle=null;modal={type:'result',win:false,title:'Battle finished',message:'Your team fought bravely! Everyone earns practice XP, including companions that fainted. Your entire collection is fully healed.',bonus:'All companions restored to full HP.',experience};save();render();return;}
  }
  endTurn(b);
 }
@@ -317,6 +317,7 @@ function renderXpRows(rows){
  if(!rows?.length)return '';
  return `<section class="xp-report"><div class="row between gap6"><strong>⭐ Party experience</strong><span class="pill">All ${rows.length} companions</span></div><div class="subtext mt8">Every party member gets the full amount, even if fainted. Stored companions do not gain battle XP.</div>${rows.map(k=>`<div class="xp-entry"><span class="xp-avatar">${svgSmall({sp:k.sp,level:k.levelAfter,evo:k.levelAfter>=12,aurora:false})}</span><div class="grow"><strong>${esc(k.name)}</strong><div class="subtext">Lv ${k.levelBefore}${k.levelAfter!==k.levelBefore?' → '+k.levelAfter:''}${k.evolved?' · Evolved!':''}</div></div><strong class="xp-gain">${k.wasMax?'MAX':'+ '+k.points+' XP'}</strong></div>`).join('')}</section>`;
 }
+function healCollectionAfterBattle(){if(!state)return;for(const k of state.kin){if(k&&SPEC[k.sp])k.hp=hpMax(k)}}
 function finishBattle(caught){
  const b=battle;if(!b)return;
  const z=state.zone,foe=b.foe,isGuardian=!!b.boss,firstSeal=isGuardian&&!state.badges.includes(z);
@@ -342,6 +343,7 @@ function finishBattle(caught){
  if(firstSeal){message+=' You earned a region seal and opened the next trail!';if(z<5)state.zone=z+1}
  if(offerGuardian)message+=` ${ZONES[z].guardian} is ready to join you. No orb is needed!`;
  message+=levelText;
+ healCollectionAfterBattle();message+=' Your entire collection is fully healed.';
  battle=null;capture=null;
  modal={type:'result',win:true,title,message,bonus:`🪙 +${payout} coins${firstSeal?' · 🔮 +2 prism orbs':''}`,experience,foe,guardianOffer:offerGuardian?z:null};
  save();render();sound(850,.25,'sine');
@@ -366,7 +368,7 @@ async function tryFlee(){
  const b=battle;b.doing=true;
  announce('Retreating safely…',b.boss?'You leave the Guardian trial. You can challenge this boss again.':'Your team leaves the encounter. No penalty, no enemy attack.','player',0,'player','enter');
  await pause(550);if(!battleAlive(b))return;
- battle=null;capture=null;save();render();toast('Escaped safely!');
+ healCollectionAfterBattle();battle=null;capture=null;save();render();toast('Escaped safely! Everyone is fully healed.');
 }
 async function useTonic(){
  if(!battle||battle.doing||state.tonics<=0){if(!battle?.doing)toast('No Recovery tonics left.');return}
