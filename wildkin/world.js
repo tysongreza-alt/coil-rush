@@ -65,5 +65,13 @@ function expeditionEvent(e){
  return {title,text,terrain:theme.terrain,rule:theme.rule,team:theme.team,checkpoint:(step+1)%2===0,
  options:[safe,option('risk',place===1?'Defend the rescue cache':'Challenge the cache keepers',2,120,null),option('forage','Gather supplies and read the tracks',-2,10,place===3?'energy':null)]};
 }
-return {REGIONS,ENDING,ARENA,BRACKETS,EXPEDITION_THEMES,expeditionEvent};
+const HOMECOMINGS=[
+ 'Tamsin hangs the cracked seed-bell above the new bridge. Its missing note is now a harmony, answered by young companions from both banks. She leaves a planting bed empty for seeds the river has yet to bring.',
+ 'Orin draws a path out of the forest instead of another circle. Ione sends him a blank map, and he laughs: for the first time, he is glad there are places he has not charted. The lanterns mark a welcome, never a boundary.',
+ 'Neri turns the lighthouse lamp by hand at sunset. Some boats go out and others come home. The reef shelters both arrivals and departures, and the smallest lantern shell shines as brightly as the great beacon.',
+ 'Fenn builds a bridge with joints that can bend. He teaches his apprentice to listen to the cooling metal. On the first cold evening, the village bath steams gently beneath a mountain finally allowed to sleep.',
+ 'Sola takes the repaired glider above a moving storm. The pilots paint alternate routes on the landing stones and leave a place for tomorrow’s weather. From the meadow, children watch the clouds change shape.',
+ 'Ione sets Aster’s unfinished book beside a fresh stack of paper. The last archivist becomes the first teacher of an open school. Your companions leave muddy footprints across the first page, and nobody wipes them away.'
+];
+return {REGIONS,ENDING,ARENA,HOMECOMINGS,BRACKETS,EXPEDITION_THEMES,expeditionEvent};
 });

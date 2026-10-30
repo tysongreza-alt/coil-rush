@@ -1,3 +1,11 @@
+# Current development QA: 3.0.0-dev.4
+
+59 regression tests pass, including three new tests for owned-companion release cleanup, recovery of older orphaned habitat records, and all six regional homecomings with both request resolutions. Ending and journal replay retain choices without paying duplicate rewards. Full campaign traversal rerun on this build.
+
+No physical iPhone, family playtest, audible review or human duration claim. All release blockers described below still apply, especially shortest-route pacing and final device/quality acceptance. Main/public remains unchanged.
+
+---
+
 # Current development QA, October 30, 2026
 
 Build: **3.0.0-dev.3**, schema 5. Not a final release. Main/public deployment remains unchanged.

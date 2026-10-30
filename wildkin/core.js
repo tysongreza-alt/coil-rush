@@ -1,7 +1,7 @@
 /* Wildkin domain rules. Original code, no runtime dependencies. */
 (function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./adventures.js'):root.WildkinAdventures);if(typeof module==='object'&&module.exports)module.exports=api;else root.WildkinCore=api;})(typeof globalThis!=='undefined'?globalThis:this,function(Adventures){
 'use strict';
-const BUILD='3.0.0-dev.3',SCHEMA=5;
+const BUILD='3.0.0-dev.4',SCHEMA=5;
 const BASE_LEVELS=[5,11,17,23,29,35],GUARDIAN_LEVELS=[9,15,21,27,33,40];
 const PASSIVES=[
  ['Verdant care','Guard restores 10% HP.','rest',.10],['First spark','First attack deals 25% more damage.','opener',.25],['River shelter','First incoming hit is 30% weaker.','shell',.30],['Honey reserve','Gain one energy after every third attack.','battery',3],['Patient stone','After guarding, the next attack is 25% stronger.','patient',.25],
@@ -68,7 +68,7 @@ function normalize(input){
  a.expeditionRecords=obj(a.expeditionRecords)?a.expeditionRecords:{};for(const [key,r] of Object.entries(a.expeditionRecords))insist(/^[0-5]:[0-2]$/.test(key)&&obj(r)&&int(r.wins,1,1e9)&&int(r.best,0,100000),'Invalid expedition record');
  a.habitat=int(a.habitat,0,3)?a.habitat:0;
  a.decor=Array.isArray(a.decor)?a.decor.filter(n=>int(n,0,5)).slice(0,6):[];
- a.affection=obj(a.affection)?a.affection:{};for(const [id,n] of Object.entries(a.affection))insist(ids.has(id)&&int(n,0,1e9),'Invalid companion memories');
+ a.affection=obj(a.affection)?a.affection:{};for(const [id,n] of Object.entries(a.affection)){insist(int(n,0,1e9),'Invalid companion memories');if(!ids.has(id))delete a.affection[id];}
  if(!obj(a.daily)||typeof a.daily.day!=='string'||!obj(a.daily.progress)||!Array.isArray(a.daily.claimed)||!Object.values(a.daily.progress).every(n=>int(n,0,1e9)))delete a.daily;
  else a.daily.claimed=a.daily.claimed.filter(id=>['search','win','catch'].includes(id));
  a.settings={speed:[1,1.5,2].includes(a.settings?.speed)?a.settings.speed:1,reduced:!!a.settings?.reduced,hints:a.settings?.hints!==false,music:!!a.settings?.music};
