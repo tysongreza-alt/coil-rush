@@ -1,3 +1,37 @@
+# Current development QA, October 30, 2026
+
+Build: **3.0.0-dev.2**. Not a final release. Main/public deployment remains unchanged.
+
+## Implemented and verified in this pass
+
+- 18 mapped field adventures, with 216 authored locations, alternate direct/puzzle approaches, fog/progress, two- and three-companion patrols, optional nests and hidden reports. Guardians now unlock through two restored relays, not repeated wild wins. The existing 54 regional story nodes remain optional and replayable.
+- Six untimed puzzle engines: channels, echo phrases, vessel measures, cooling panels, wind navigation and sliding star tiles. All 18 starts are unsolved and solvable. Deterministic hints solve all 512 furnace layouts, every valid vessel state and every safe wind position. Invalid tile parity and inconsistent saved objectives are rejected.
+- Six optional regional requests, each with two persistent resolutions and Guardian preparation rewards. Completion/rewards are idempotent. All 18 adventures and all six requests complete in tests.
+- Sixty separate base/evolution model definitions in the retained original SVG style. All portraits parsed as XML. Six regional art sheets reviewed in cloud Chrome; five evolution silhouettes revised after review. Final art-direction acceptance remains open.
+- Cloud Chrome UI: migrated earlier save retained coins/story progress; map travel, route choice, helper interaction and puzzle persistence checked. All six puzzle types solved through visible controls at nominal 320 px (305 px content viewport with desktop scrollbar), with no horizontal control/page overflow. Isolated QA scenes use a separate save key and vault.
+- Additional regression covers battle tonics, explicit update installation after combat, controller-change reload protection, waiting-worker activation, and version/cache manifest consistency. Full suite: 47 tests after correcting a test that omitted evolved HP.
+
+## Progression evidence
+
+`campaign-results.json` records six clean main campaigns, every starter through each approach, plus one completionist run. No levels, HP, XP or coins were injected. The puzzle agent uses hints and the battle agent uses a simple tactical policy.
+
+Direct approach: 30/36/36 battles with 0/1/1 defeats. Puzzle approach: 18/24/18 battles with 0/1/0 defeats. A defeat triggers five training encounters in this test policy, so these counts do not establish required grinding. Completionist: 71 battles, zero defeats, all 216 field locations, all 54 regional story nodes, and all six requests.
+
+These are traversal/progression checks, not observed human playtime or enjoyment. The added exploration and puzzles materially expand the adventure, but the 8–12-hour target is still not validated and the shortest routes remain a concern. Do not inflate length through repeated mandatory fights.
+
+## Remaining release blockers
+
+1. Validate and, where needed, deepen main-story pacing and encounter decisions. Real target-age playtesting has not occurred.
+2. Final visual, animation, audio, accessibility and device performance/battery acceptance remains incomplete. The melody is basic. Endgame variety and strategy coverage need further validation.
+3. Physical iPhone Safari and installed Home Screen testing, updates from the public v2 worker, iOS backup download/restore and Android acceptance have not occurred. HTTP preview cannot validate the deployed HTTPS PWA path.
+4. Save failures/quota and service workers have modeled automated coverage; exhaustive real-browser quota/concurrent-window testing remains outstanding.
+
+No final publication is authorized by passing these checks alone. Follow RELEASE_SPEC_3_0.md and RELEASE_AND_ROLLBACK.md. No unattended development is configured.
+
+---
+
+## Earlier checkpoint evidence (historical)
+
 # Development QA, October 30, 2026
 
 Build: **3.0.0-dev.1**. Release decision: **DO NOT PUBLISH AS FINISHED 3.0**.

@@ -28,3 +28,8 @@ Read this file, RELEASE_SPEC_3_0.md, docs/QA_REPORT.md and git log. Run `node --
 Implemented the integrated systems listed at the top of README.md. Added 30 evolution silhouettes and six regional landmark sets. 33 regression tests pass, 2,592 balance scenarios run, three starter-only campaign agents reach the ending, and cloud Chrome phone-width/UI checks executed. CI runs regression and traversal without deployment.
 
 The acceptance criteria are not met. In particular, the campaign currently takes only 39–45 battles in the recorded agent runs and cannot honestly be described as an 8–12-hour main story. Final creature/map polish, deeper route/quest consequences, endgame variety, audio/performance/accessibility QA, physical iPhone/Home Screen update testing and target-age enjoyment validation remain. See QA_REPORT.md for precise evidence and limitations. No ongoing unattended execution is configured.
+
+
+## Latest checkpoint: 3.0.0-dev.2
+
+18 mapped adventures / 216 authored locations, six puzzle engines with hints and alternate approaches, six regional requests, objective-based Guardian access, guaranteed diverse first bonds, and 60 individual form silhouettes are implemented. Schema 4 migrates earlier progress. Tests and browser evidence are in the current QA_REPORT.md; progression evidence is in campaign-results.json. Main remains unchanged. Work next on remaining pacing/depth and final product acceptance, not another count-based expansion. Real iPhone/target-age acceptance and final publication remain undone.

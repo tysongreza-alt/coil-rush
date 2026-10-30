@@ -1,7 +1,7 @@
 /* Wildkin domain rules. Original code, no runtime dependencies. */
-(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.WildkinCore=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
+(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./adventures.js'):root.WildkinAdventures);if(typeof module==='object'&&module.exports)module.exports=api;else root.WildkinCore=api;})(typeof globalThis!=='undefined'?globalThis:this,function(Adventures){
 'use strict';
-const BUILD='3.0.0-dev.1',SCHEMA=3;
+const BUILD='3.0.0-dev.2',SCHEMA=4;
 const BASE_LEVELS=[5,11,17,23,29,35],GUARDIAN_LEVELS=[9,15,21,27,33,40];
 const PASSIVES=[
  ['Verdant care','Guard restores 10% HP.','rest',.10],['First spark','First attack deals 25% more damage.','opener',.25],['River shelter','First incoming hit is 30% weaker.','shell',.30],['Honey reserve','Gain one energy after every third attack.','battery',3],['Patient stone','After guarding, the next attack is 25% stronger.','patient',.25],
@@ -47,6 +47,7 @@ function normalize(input){
  insist(int(a.zone,0,5),'Invalid region');
  for(const key of ['seen','caught'])insist(Array.isArray(a[key])&&a[key].every(v=>typeof v==='string'&&/^(?:[0-9]|[12][0-9]):[01]$/.test(v)),'Invalid KinDex');
  for(const k of a.kin){const form=k.sp+':'+Number(k.evo);if(!a.caught.includes(form))a.caught.push(form);if(!a.seen.includes(form))a.seen.push(form);}
+ a.adventure=Adventures.normalize(a.adventure);
  a.schema=SCHEMA;a.screen=['explore','team','dex','camp','research','expedition','arena','habitat'].includes(a.screen)?a.screen:'explore';
  a.battled=Array.isArray(a.battled)?a.battled.filter(v=>int(v,0,29)):[];
  a.teamPresets=Array.isArray(a.teamPresets)?a.teamPresets.filter(p=>Array.isArray(p)).map(p=>[...new Set(p.filter(id=>ids.has(id)))].slice(0,3)).filter(p=>p.length).slice(-4):[];

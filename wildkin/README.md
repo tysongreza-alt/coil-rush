@@ -1,6 +1,6 @@
 # Wildkin 3.0 development branch
 
-**Build: 3.0.0-dev.1. Not a finished release. The public GitHub Pages deployment has not been updated by this development work.**
+**Build: 3.0.0-dev.2. Not a finished release. The public GitHub Pages deployment has not been updated by this development work.**
 
 Read [docs/DEVELOPMENT_STATUS.md](docs/DEVELOPMENT_STATUS.md), [docs/QA_REPORT.md](docs/QA_REPORT.md), and the authoritative [RELEASE_SPEC_3_0.md](RELEASE_SPEC_3_0.md) before resuming. Release-blocking work remains, including campaign length/depth, final visual/audio polish, and physical-device/family acceptance.
 
@@ -10,7 +10,7 @@ Read [docs/DEVELOPMENT_STATUS.md](docs/DEVELOPMENT_STATUS.md), [docs/QA_REPORT.m
 - Telegraphed intentions, six Guardian cycles, a three-stage final encounter, 30 family passives, signature cooldowns, equipment charms, and regional level bands.
 - Full collection healing after every completed battle outcome; party-wide XP retained.
 - Four curated arena teams and three-match tournaments, expedition supplies/risk/extraction/battles, four research milestones, achievements, visible Aurora catch-up, habitat decorations and interactions, and four party presets.
-- Thirty individually authored evolved silhouette drawings, retained base forms, and six regional map landmark sets.
+- Sixty individually authored base/evolved silhouette drawings, and six regional map landmark sets.
 - Save validation/migration, verified backups, corruption recovery, reset recovery/rollback, stale-window protection, safer cache scope and explicit update installation, comfort settings and optional melody.
 
 ## Run checks
@@ -27,7 +27,7 @@ Tests use a deterministic DOM/storage adapter for the actual game engine. Servic
 
 ## Architecture additions
 
-`core.js` owns pure validation, migration, version comparison, damage rules, passive definitions, and deterministic randomness. `world.js` owns authored regional content and arena rosters. Both load before retained `game.js`, which integrates battle presentation, persistence, exploration, collection and interactions. No server or paid dependency was added.
+`adventures.js` owns 18 field maps, 216 authored locations, regional requests, six puzzle engines and deterministic hints. `core.js` owns pure validation, migration, version comparison, damage rules, passive definitions, and deterministic randomness. `world.js` owns authored regional content and arena rosters. Both load before retained `game.js`, which integrates battle presentation, persistence, exploration, collection and interactions. No server or paid dependency was added.
 
 ## Earlier public documentation
 
