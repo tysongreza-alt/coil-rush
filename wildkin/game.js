@@ -129,6 +129,26 @@ function kinDetail(k){
  return `<ellipse cx="80" cy="89" rx="26" ry="13" fill="#fff" opacity=".12" transform="rotate(-27 80 89)"/>${extras}<path d="M66 155q32 16 66 0" stroke="#fff" stroke-width="3" opacity=".20" stroke-linecap="round" fill="none"/>${marks}${motif}${e?`<path d="m38 87-12-8 5 17m133-9 12-8-5 17" fill="${q}" stroke="#ffffff65" stroke-width="2"/>`:''}`;
 }
 
+function evolvedArt(k){
+ if(!k.evo)return '';
+ const s=SPEC[k.sp],q=k.aurora?'#a8f8ee':s.secondary,p=k.aurora?'#e9c7ff':s.primary,kind=signatureOf(k)[1],v=k.sp%5;
+ const extras=[
+  `<path d="M28 123Q4 98 22 74Q39 79 53 116 M170 123q27-24 6-49-18 9-29 42" fill="${q}" stroke="#ffffff64" stroke-width="3"/>`,
+  `<path d="m36 138-24 12 18-31m137 19 24 12-18-31" fill="${p}" stroke="#ffffff74" stroke-width="3"/>`,
+  `<circle cx="32" cy="99" r="8" fill="${q}" stroke="#ffffff99" stroke-width="2"/><circle cx="167" cy="99" r="8" fill="${q}" stroke="#ffffff99" stroke-width="2"/>`,
+  `<path d="M50 78Q29 48 46 30Q67 38 74 70m76 8q21-30 4-48-21 8-28 40" fill="${q}" stroke="#ffffff6c" stroke-width="3"/>`,
+  `<path d="m39 145-19 8 6-20 10 6m125 6 19 8-6-20-10 6" fill="${p}" stroke="#ffffff6c" stroke-width="3"/>`
+ ][v];
+ const role={
+  heal:`<path d="M55 162q45 25 90 0" fill="none" stroke="#b7ffca" stroke-width="7" stroke-linecap="round"/><path d="M54 163q-9-18-22-15 1 18 22 15m91 0q9-18 22-15-1 18-22 15" fill="#b7ffca"/>`,
+  heavy:`<path d="m65 77-24-26 34 8m50 18 34-26-34 8" fill="${q}" stroke="#ffffff77" stroke-width="3"/>`,
+  shield:`<path d="M50 147l-18 0 6 17 20 7m92-24 18 0-6 17-20 7" fill="${p}" stroke="#fff9cf" stroke-width="3"/>`,
+  weaken:`<circle cx="26" cy="95" r="7" fill="none" stroke="#ffd5ff" stroke-width="3"/><path d="m26 79 0-10m-16 26-10 0m176 0 10 0m-10-16 0-10" stroke="#e6cbfc" stroke-width="3"/>`,
+  stagger:`<path d="m26 69 4-13 4 13 13 4-13 4-4 13-4-13-13-4Zm143 0 4-13 4 13 13 4-13 4-4 13-4-13-13-4Z" fill="#f4ddff"/>`,
+  charge:`<path d="m47 151-20 22 15-3-4 16 24-28-15 2Zm107 0 20 22-15-3 4 16-24-28 15 2Z" fill="#f9ef9c" stroke="#b69254" stroke-width="2"/>`
+ }[kind];
+ return extras+role;
+}
 function svgKin(k,size='normal'){
  const s=SPEC[k.sp],e=!!k.evo,aur=!!k.aurora,p=aur?'#c4a8ff':s.primary,q=aur?'#83e9e8':s.secondary,id=`g${s.id}${e?1:0}${aur?1:0}`;
  const ears={fox:`<path d="M59 74 48 ${e?10:30}l51 28L151 ${e?10:30}l-11 44" fill="${q}" stroke="#213b45" stroke-width="4"/><path d="M62 61 55 39 81 60M138 61l7-22-26 21" fill="#ffe5d1" opacity=".7"/>`,bunny:`<ellipse cx="73" cy="38" rx="17" ry="41" fill="${q}" transform="rotate(-14 73 38)"/><ellipse cx="129" cy="38" rx="17" ry="41" fill="${q}" transform="rotate(14 129 38)"/><ellipse cx="73" cy="36" rx="8" ry="30" fill="#ffe3dc" opacity=".7"/><ellipse cx="129" cy="36" rx="8" ry="30" fill="#ffe3dc" opacity=".7"/>`,frog:`<circle cx="62" cy="72" r="26" fill="${q}"/><circle cx="137" cy="72" r="26" fill="${q}"/>`,bird:`<path d="M49 83Q6 37 30 21l57 56M151 83q42-46 19-62l-57 56" fill="${q}"/>`,moth:`<ellipse cx="42" cy="107" rx="36" ry="51" fill="${q}" transform="rotate(-25 42 107)"/><ellipse cx="157" cy="107" rx="36" ry="51" fill="${q}" transform="rotate(25 157 107)"/><path d="M82 63Q54 11 67 12M117 63q27-52 14-51" fill="none" stroke="${p}" stroke-width="8" stroke-linecap="round"/>`,bug:`<path d="M74 65 49 31M123 65l25-34" stroke="#243e45" stroke-width="7" stroke-linecap="round"/><circle cx="49" cy="31" r="9" fill="${p}"/><circle cx="148" cy="31" r="9" fill="${p}"/>`,rock:`<path d="m58 88-22-34 30-13 12 37m45 0 12-37 30 13-22 34" fill="${q}" stroke="#243e46" stroke-width="4"/>`,dragon:`<path d="m63 80-23-51 42 31m55 20 23-51-42 31" fill="${q}"/><path d="m87 55 11-35 13 35" fill="${p}"/>`,turtle:`<ellipse cx="100" cy="125" rx="74" ry="69" fill="${q}" stroke="#264750" stroke-width="6"/><path d="M43 120h114M64 78l36 88 36-88" stroke="#d9f9de" opacity=".35" stroke-width="6" fill="none"/>`,plant:`<path d="M84 77Q19 57 40 19q44 11 44 58M116 77q65-20 44-58-44 11-44 58" fill="${q}"/><path d="M97 81V24" stroke="${p}" stroke-width="8"/>`,fish:`<path d="m135 114 60-42-4 76-56-15" fill="${q}"/><path d="m89 76 12-43 29 48" fill="${p}"/>`,jelly:`<path d="M45 124Q26 80 62 59Q108 21 149 66Q180 102 153 129" fill="${q}"/>`};
@@ -141,7 +161,7 @@ function svgKin(k,size='normal'){
  const wings=['moth','bird','bug'].includes(s.shape)?`<path d="M58 124Q12 90 20 142Q48 175 68 142M140 124q48-34 40 18-29 33-48 0" fill="${q}" opacity=".8"/>`:'';
  const evolve=e?`<path d="m65 48-9-25 27 14 17-30 15 30 29-14-9 25" fill="${aur?'#fbf0a7':q}" stroke="#ffffff77" stroke-width="2"/><circle cx="100" cy="28" r="6" fill="#fff6b0"/>`:'';
  const spots=e?`<circle cx="53" cy="132" r="8" fill="${q}" opacity=".8"/><circle cx="145" cy="132" r="8" fill="${q}" opacity=".8"/>`:`<circle cx="53" cy="131" r="5" fill="${q}" opacity=".7"/><circle cx="146" cy="131" r="5" fill="${q}" opacity=".7"/>`;
- return `<svg viewBox="0 0 200 200" role="img" aria-label="${esc(nameOf(k))}"><defs><radialGradient id="${id}" cx="35%" cy="18%" r="85%"><stop stop-color="${p}"/><stop offset="1" stop-color="${q}"/></radialGradient></defs><ellipse cx="102" cy="181" rx="51" ry="11" fill="#16313b" opacity=".35"/>${append}${ears[s.shape]||''}${wings}${body}${evolve}${spots}${kinDetail(k)}${Number.isInteger(k.guardianZone)?'<path d="M64 43 58 22 82 29 99 12 116 29 140 22 134 43Z" fill="#ffe38f" stroke="#9b6339" stroke-width="3"/><circle cx="99" cy="28" r="5" fill="#fff5c1"/>':''}${eyes}<circle cx="78" cy="102" r="3.5" fill="#fff"/><circle cx="125" cy="102" r="3.5" fill="#fff"/><path d="m93 127 7 5 7-5" stroke="#564c58" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><ellipse cx="62" cy="124" rx="8" ry="5" fill="#fc9f9e" opacity=".48"/><ellipse cx="137" cy="124" rx="8" ry="5" fill="#fc9f9e" opacity=".48"/>${aur?'<path d="m19 49 4-14 4 14 14 4-14 4-4 14-4-14-14-4Zm151 1 3-10 3 10 10 3-10 3-3 10-3-10-10-3Z" fill="#ffeeb6"/>':''}</svg>`;
+ return `<svg viewBox="0 0 200 200" role="img" aria-label="${esc(nameOf(k))}"><defs><radialGradient id="${id}" cx="35%" cy="18%" r="85%"><stop stop-color="${p}"/><stop offset="1" stop-color="${q}"/></radialGradient></defs><ellipse cx="102" cy="181" rx="51" ry="11" fill="#16313b" opacity=".35"/>${append}${ears[s.shape]||''}${wings}${body}${evolve}${spots}${kinDetail(k)}${evolvedArt(k)}${Number.isInteger(k.guardianZone)?'<path d="M64 43 58 22 82 29 99 12 116 29 140 22 134 43Z" fill="#ffe38f" stroke="#9b6339" stroke-width="3"/><circle cx="99" cy="28" r="5" fill="#fff5c1"/>':''}${eyes}<circle cx="78" cy="102" r="3.5" fill="#fff"/><circle cx="125" cy="102" r="3.5" fill="#fff"/><path d="m93 127 7 5 7-5" stroke="#564c58" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><ellipse cx="62" cy="124" rx="8" ry="5" fill="#fc9f9e" opacity=".48"/><ellipse cx="137" cy="124" rx="8" ry="5" fill="#fc9f9e" opacity=".48"/>${aur?'<path d="m19 49 4-14 4 14 14 4-14 4-4 14-4-14-14-4Zm151 1 3-10 3 10 10 3-10 3-3 10-3-10-10-3Z" fill="#ffeeb6"/>':''}</svg>`;
 }
 function sceneStyle(zone){const z=ZONES[zone];return `--sky1:${z.sky1};--sky2:${z.sky2};--hill:${z.hill};--ground:${z.ground}`}
 function nav(){return `<nav class="tabbar" aria-label="Game tabs">${[['explore','🧭','Explore'],['team','🐾','Team'],['dex','📖','KinDex'],['camp','🏕️','Camp']].map(([id,icon,text])=>`<button class="navitem ${state.screen===id?'active':''}" data-a="nav" data-v="${id}"><span class="nav-icon">${icon}</span>${text}</button>`).join('')}</nav>`}
@@ -200,7 +220,7 @@ function searchWilds(){
   save();render();
  }else{save();startEncounter(false)}
 }
-function gainXp(k,amount){let leveled=0,evolved=false;k.xp+=amount;while(k.level<60&&k.xp>=expNeed(k.level)){k.xp-=expNeed(k.level);const old=hpMax(k);k.level++;k.hp=clamp(k.hp+hpMax(k)-old+8,1,hpMax(k));leveled++}if(k.level>=60)k.xp=0;if(!k.evo&&k.level>=12){k.evo=true;k.hp=clamp(k.hp+22,1,hpMax(k));state.caught=[...new Set([...state.caught,`${k.sp}:1`])];state.seen=[...new Set([...state.seen,`${k.sp}:1`])];evolved=true}return{leveled,evolved}}
+function gainXp(k,amount){let leveled=0,evolved=false;k.xp+=amount;while(k.level<60&&k.xp>=expNeed(k.level)){k.xp-=expNeed(k.level);const old=hpMax(k),wasFainted=k.hp<=0;k.level++;k.hp=wasFainted?0:clamp(k.hp+hpMax(k)-old+8,1,hpMax(k));leveled++}if(k.level>=60)k.xp=0;if(!k.evo&&k.level>=12){k.evo=true;k.hp=clamp(k.hp+22,1,hpMax(k));state.caught=[...new Set([...state.caught,`${k.sp}:1`])];state.seen=[...new Set([...state.seen,`${k.sp}:1`])];evolved=true}return{leveled,evolved}}
 function typemult(at,dt){return ELEMENTS[at].beats===dt?1.4:ELEMENTS[dt].beats===at?.74:1}
 
 // Battle presentation v1.2: turn phases are sequential, never simultaneous.
@@ -330,14 +350,14 @@ function claimGuardian(){
  const z=modal.guardianOffer;
  if(state.kin.some(k=>k.guardianZone===z)){toast('You have already befriended this Guardian.');return}
  
- const foe=modal.foe;if(!foe||!SPEC[foe.sp])return;
+ const rewardRows=modal.experience;const foe=modal.foe;if(!foe||!SPEC[foe.sp])return;
  const k=makeKin(foe.sp,foe.level,foe.aurora,true);
  k.guardianZone=z;k.nickname=ZONES[z].guardian;
  state.kin.push(k);state.totalCatches++;activity('catch');
  state.caught=[...new Set([...state.caught,`${foe.sp}:1`])];
  state.seen=[...new Set([...state.seen,`${foe.sp}:1`])];
  if(state.team.length<3)state.team.push(k.uid);
- modal={type:'result',win:true,title:'A legendary friendship!',foe:k,message:`${ZONES[z].guardian} is now yours! It has a unique golden crown and can join your battle team.`,bonus:`👑 ${ZONES[z].short} Guardian · Lv ${k.level}`,guardianOffer:null};
+ modal={type:'result',win:true,title:'A legendary friendship!',foe:k,message:`${ZONES[z].guardian} is now yours! It has a unique golden crown and can join your battle team.`,bonus:`👑 ${ZONES[z].short} Guardian · Lv ${k.level}`,guardianOffer:null,experience:rewardRows};
  save();render();sound(980,.3,'triangle');
 }
 async function tryFlee(){
