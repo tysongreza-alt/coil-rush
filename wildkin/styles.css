@@ -103,3 +103,12 @@
 
 /* v1.3.3 installed version and in-app update control */
 .app-version{display:inline-block;color:#b9d5db;font-size:11px;letter-spacing:.4px;margin-top:1px}.update-panel .btn{flex-shrink:0;white-space:nowrap}.update-panel .subtext{max-width:270px}
+
+/* Expanded navigation */
+.tabbar{justify-content:flex-start;overflow-x:auto;scrollbar-width:none;gap:2px;-webkit-overflow-scrolling:touch}
+.tabbar::-webkit-scrollbar{display:none}
+.tabbar .navitem{flex:0 0 70px;min-width:70px;font-size:10px;white-space:nowrap}
+.tabbar .navitem .nav-icon{font-size:20px}
+.habitat-scene{min-height:200px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,#5cb58c,#1b3c59);overflow:hidden}
+.habitat-scene svg{max-width:200px;max-height:200px}
+.habitat-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
