@@ -60,3 +60,8 @@ Integrated finale preparation and persistent shelter/relay approach selection. T
 ## Release candidate 3.0.0-rc.1
 
 Integrated all 18 field missions and one selected story arc per region into main progression. Existing seals grandfathered; secrets, other stories and requests remain optional. 64 regression checks; fresh starter campaigns complete at 30–48 battles without defeats. Chrome narrow-layout review covers all eight screens. Candidate and remaining acceptance differences are explicit in RELEASE_CANDIDATE.md. No claim of 8–12-hour duration or physical/human acceptance. Public/main unchanged.
+
+
+## Approved public release: 3.0.0
+
+Owner approved publishing the reviewed candidate with unverified duration and unavailable human/device acceptance disclosed. Final release metadata/version/cache references updated together. See RELEASE_NOTES_3_0.md for approved limitations and rollback. Earlier development holds are historical and superseded by this explicit approval.

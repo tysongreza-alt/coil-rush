@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-31T03:08:49.989Z",
-  "build": "3.0.0-rc.1",
+  "generated": "2026-10-31T07:49:04.841Z",
+  "build": "3.0.0",
   "method": "Six clean main campaigns: every starter through either encounter or puzzle approaches, all 18 field routes and one story arc per region; plus a completionist run through all 54 story nodes and six requests. Actual newState and two ordinary starter bonds, no injected levels, HP, XP or coins. Battles use a simple tactical policy; puzzle agent uses deterministic hints. Animations accelerated.",
   "limitation": "This establishes traversal and progression, not observed human enjoyment or 8–12-hour pacing. Action and room counts cannot establish a human completion time.",
   "routes": [

@@ -1,3 +1,9 @@
+# Release verification: 3.0.0
+
+The owner approved publication on October 31, 2026 with the release-candidate limitations explicitly disclosed. See ../RELEASE_NOTES_3_0.md. Runtime/version/cache references finalized to 3.0.0. Tests rerun on the release source. This approval supersedes earlier publication holds; historical evidence and unperformed checks below remain accurately identified.
+
+---
+
 # Candidate QA: 3.0.0-rc.1
 
 64 tests pass. Six fresh main campaigns now traverse all three regional missions plus one chosen story arc per region, finishing with 30–48 battles and zero defeats. Completionist traversal retains all 216 locations, 54 story nodes and six requests. All-family 2,700-encounter strategy report regenerated. Chrome review covers all eight main screens at 305 px content width with no horizontal overflow, opening dialogue and guided practice. Detailed move help is now opt-in during practice.

@@ -1,8 +1,8 @@
-# Wildkin 3.0 development branch
+# Wildkin: The Living Wilds 3.0.0
 
-**Build: 3.0.0-rc.1. Not a finished release. The public GitHub Pages deployment has not been updated by this development work.**
+Public release approved by the owner on October 31, 2026, with the limitations in [RELEASE_NOTES_3_0.md](RELEASE_NOTES_3_0.md). Retains the existing save origin and key. All owned companions heal after every completed battle.
 
-Read [docs/DEVELOPMENT_STATUS.md](docs/DEVELOPMENT_STATUS.md), [docs/QA_REPORT.md](docs/QA_REPORT.md), and the authoritative [RELEASE_SPEC_3_0.md](RELEASE_SPEC_3_0.md) before resuming. Release-blocking work remains, including campaign length/depth, final visual/audio polish, and physical-device/family acceptance.
+To update an installed copy, open Camp, choose Check updates, then install the downloaded update. To begin fresh, export a backup, choose Start a fresh adventure, check the confirmation and select your starter.
 
 ## Current narrative and save repair
 
