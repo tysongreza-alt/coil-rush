@@ -45,3 +45,8 @@ The shortest campaign routes still do not substantiate 8–12 hours. Target-age 
 ## Latest checkpoint: 3.0.0-dev.4
 
 Fixed a release-blocking persistence bug: releasing a companion with habitat memories left an orphaned affection record that prevented validation on reload/export. Release now clears its memory and migration safely removes valid orphaned records from older affected saves. Invalid memory values still reject. New regressions exercise release, export, reload and migration. Added six authored regional homecomings and integrated saved regional request choices into the ending, replayable journal and companion interactions. This improves narrative consequences; it does not establish the 8–12-hour pacing target. Physical-device/family and final quality acceptance remain open. Public/main unchanged.
+
+
+## Latest checkpoint: 3.0.0-dev.5
+
+Integrated saved-progress chapter guidance covering first companions, unfinished mapped routes, Guardian preparation and postgame. Added optional guided practice from the opening and a six-technique workshop in Camp. Technique records require executed actions and survive backups; no extra progression gates. Regression suite: 61 checks. Campaign traversal rerun. This improves onboarding/navigation, not the main-story duration. Existing release criteria and pacing/quality limitations remain in force. Public/main unchanged.

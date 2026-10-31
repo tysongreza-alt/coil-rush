@@ -1,3 +1,9 @@
+# Current development QA: 3.0.0-dev.5
+
+61 regression checks pass. Added actual guided-practice actions, duplicate/invalid technique protection, technique backup migration, skip/replay, chapter routing through bonds/field objectives/Guardians and all-seals postgame. The chapter guide derives its state from earned objectives, with no artificial timers or additional grind gates. Main campaign traversal rerun. These changes do not establish 8–12-hour pacing or replace final quality/device acceptance.
+
+---
+
 # Current development QA: 3.0.0-dev.4
 
 59 regression tests pass, including three new tests for owned-companion release cleanup, recovery of older orphaned habitat records, and all six regional homecomings with both request resolutions. Ending and journal replay retain choices without paying duplicate rewards. Full campaign traversal rerun on this build.
