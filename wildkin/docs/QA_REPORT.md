@@ -1,3 +1,11 @@
+# Candidate QA: 3.0.0-rc.1
+
+64 tests pass. Six fresh main campaigns now traverse all three regional missions plus one chosen story arc per region, finishing with 30–48 battles and zero defeats. Completionist traversal retains all 216 locations, 54 story nodes and six requests. All-family 2,700-encounter strategy report regenerated. Chrome review covers all eight main screens at 305 px content width with no horizontal overflow, opening dialogue and guided practice. Detailed move help is now opt-in during practice.
+
+This is a reviewed candidate, not evidence that all original release criteria passed. RELEASE_CANDIDATE.md states the unresolved human duration, family, audible review and physical-device acceptance limitations. The pre-3.0 public source is protected on branch wildkin-public-before-3-0 at b715f7d3105f273afcb4eab17a8e7abe5857fc6c. Public/main remains unchanged pending the release decision.
+
+---
+
 # Current development QA: 3.0.0-dev.6
 
 63 regression checks pass. Two new finale tests cover three distinct phase cycles, all shelter/relay and regional resolution combinations, once-per-phase expedition recovery, backup retention, escape, final-only rewards/ending, and ordinary Guardian rematches. Initial test assertions were corrected to treat an absent legacy ending flag as false, matching the existing save behavior. Clean starter campaigns rerun with the new cycles. Physical-device and human pacing/enjoyment acceptance have not occurred; the existing release gates remain open.

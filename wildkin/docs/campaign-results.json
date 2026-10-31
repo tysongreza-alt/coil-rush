@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-31T02:23:37.216Z",
-  "build": "3.0.0-dev.6",
-  "method": "Six clean main campaigns: every starter through either direct encounters or puzzle approaches, plus one completionist campaign including all 18 field routes, 54 optional stories and six requests. Actual newState and two ordinary starter bonds, no injected levels, HP, XP or coins. Battles use a simple tactical policy; puzzle agent uses deterministic hints. Animations accelerated.",
+  "generated": "2026-10-31T03:08:49.989Z",
+  "build": "3.0.0-rc.1",
+  "method": "Six clean main campaigns: every starter through either encounter or puzzle approaches, all 18 field routes and one story arc per region; plus a completionist run through all 54 story nodes and six requests. Actual newState and two ordinary starter bonds, no injected levels, HP, XP or coins. Battles use a simple tactical policy; puzzle agent uses deterministic hints. Animations accelerated.",
   "limitation": "This establishes traversal and progression, not observed human enjoyment or 8–12-hour pacing. Action and room counts cannot establish a human completion time.",
   "routes": [
     {
@@ -10,84 +10,84 @@
       "regions": [
         {
           "region": 0,
-          "battles": 5,
+          "battles": 8,
           "levels": [
-            10,
-            10,
-            11
+            11,
+            11,
+            12
           ],
-          "coins": 797,
+          "coins": 1102,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 1,
-          "battles": 5,
+          "battles": 8,
           "levels": [
-            14,
-            14,
-            15
+            17,
+            17,
+            17
           ],
-          "coins": 1535,
+          "coins": 2170,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 2,
-          "battles": 5,
-          "levels": [
-            18,
-            18,
-            18
-          ],
-          "coins": 2408,
-          "orbs": 9,
-          "tonics": 3
-        },
-        {
-          "region": 3,
-          "battles": 5,
+          "battles": 8,
           "levels": [
             22,
             22,
             22
           ],
-          "coins": 3468,
+          "coins": 3552,
           "orbs": 9,
           "tonics": 3
+        },
+        {
+          "region": 3,
+          "battles": 8,
+          "levels": [
+            27,
+            26,
+            27
+          ],
+          "coins": 5084,
+          "orbs": 11,
+          "tonics": 4
         },
         {
           "region": 4,
-          "battles": 5,
+          "battles": 8,
           "levels": [
-            26,
-            26,
-            26
+            31,
+            31,
+            32
           ],
-          "coins": 4678,
-          "orbs": 9,
-          "tonics": 3
+          "coins": 6949,
+          "orbs": 13,
+          "tonics": 5
         },
         {
           "region": 5,
-          "battles": 5,
+          "battles": 8,
           "levels": [
-            30,
-            30,
-            30
+            36,
+            36,
+            36
           ],
-          "coins": 6060,
-          "orbs": 9,
-          "tonics": 3
+          "coins": 9002,
+          "orbs": 13,
+          "tonics": 5
         }
       ],
-      "battles": 30,
-      "actions": 276,
+      "battles": 48,
+      "actions": 369,
       "losses": 0,
-      "travelMoves": 72,
-      "storyNodes": 0,
-      "relays": 12,
-      "fieldRooms": 84
+      "travelMoves": 108,
+      "storyNodes": 18,
+      "relays": 18,
+      "fieldRooms": 126
     },
     {
       "approach": "upper",
@@ -95,84 +95,84 @@
       "regions": [
         {
           "region": 0,
-          "battles": 11,
+          "battles": 8,
           "levels": [
-            12,
-            12,
+            11,
+            11,
             12
           ],
-          "coins": 963,
+          "coins": 1095,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 1,
-          "battles": 5,
+          "battles": 8,
           "levels": [
-            15,
-            15,
-            16
+            17,
+            17,
+            17
           ],
-          "coins": 1693,
+          "coins": 2160,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 2,
-          "battles": 5,
+          "battles": 8,
           "levels": [
-            19,
-            19,
-            20
+            22,
+            22,
+            22
           ],
-          "coins": 2564,
+          "coins": 3539,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 3,
-          "battles": 5,
-          "levels": [
-            23,
-            23,
-            23
-          ],
-          "coins": 3624,
-          "orbs": 9,
-          "tonics": 3
-        },
-        {
-          "region": 4,
-          "battles": 5,
+          "battles": 8,
           "levels": [
             27,
             27,
             27
           ],
-          "coins": 4861,
-          "orbs": 9,
-          "tonics": 3
+          "coins": 5090,
+          "orbs": 11,
+          "tonics": 4
+        },
+        {
+          "region": 4,
+          "battles": 8,
+          "levels": [
+            31,
+            31,
+            32
+          ],
+          "coins": 6939,
+          "orbs": 13,
+          "tonics": 5
         },
         {
           "region": 5,
-          "battles": 5,
+          "battles": 8,
           "levels": [
-            30,
-            30,
-            31
+            36,
+            36,
+            36
           ],
-          "coins": 6248,
-          "orbs": 9,
-          "tonics": 3
+          "coins": 8990,
+          "orbs": 13,
+          "tonics": 5
         }
       ],
-      "battles": 36,
-      "actions": 289,
-      "losses": 1,
-      "travelMoves": 72,
-      "storyNodes": 0,
-      "relays": 12,
-      "fieldRooms": 84
+      "battles": 48,
+      "actions": 359,
+      "losses": 0,
+      "travelMoves": 108,
+      "storyNodes": 18,
+      "relays": 18,
+      "fieldRooms": 126
     },
     {
       "approach": "upper",
@@ -180,84 +180,84 @@
       "regions": [
         {
           "region": 0,
-          "battles": 5,
+          "battles": 8,
           "levels": [
-            10,
-            10,
-            11
+            11,
+            11,
+            12
           ],
-          "coins": 796,
+          "coins": 1078,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 1,
-          "battles": 5,
+          "battles": 8,
           "levels": [
-            14,
-            14,
-            15
+            17,
+            17,
+            17
           ],
-          "coins": 1510,
+          "coins": 2164,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 2,
-          "battles": 5,
-          "levels": [
-            18,
-            18,
-            18
-          ],
-          "coins": 2398,
-          "orbs": 9,
-          "tonics": 3
-        },
-        {
-          "region": 3,
-          "battles": 5,
+          "battles": 8,
           "levels": [
             22,
             22,
             22
           ],
-          "coins": 3454,
+          "coins": 3536,
           "orbs": 9,
           "tonics": 3
+        },
+        {
+          "region": 3,
+          "battles": 8,
+          "levels": [
+            27,
+            26,
+            27
+          ],
+          "coins": 5113,
+          "orbs": 11,
+          "tonics": 4
         },
         {
           "region": 4,
-          "battles": 11,
-          "levels": [
-            28,
-            28,
-            28
-          ],
-          "coins": 4980,
-          "orbs": 9,
-          "tonics": 3
-        },
-        {
-          "region": 5,
-          "battles": 5,
+          "battles": 8,
           "levels": [
             31,
             31,
             32
           ],
-          "coins": 6370,
-          "orbs": 9,
-          "tonics": 3
+          "coins": 6957,
+          "orbs": 13,
+          "tonics": 5
+        },
+        {
+          "region": 5,
+          "battles": 8,
+          "levels": [
+            36,
+            36,
+            36
+          ],
+          "coins": 8991,
+          "orbs": 13,
+          "tonics": 5
         }
       ],
-      "battles": 36,
-      "actions": 332,
-      "losses": 1,
-      "travelMoves": 72,
-      "storyNodes": 0,
-      "relays": 12,
-      "fieldRooms": 84
+      "battles": 48,
+      "actions": 388,
+      "losses": 0,
+      "travelMoves": 108,
+      "storyNodes": 18,
+      "relays": 18,
+      "fieldRooms": 126
     },
     {
       "approach": "lower",
@@ -265,85 +265,85 @@
       "regions": [
         {
           "region": 0,
-          "battles": 3,
+          "battles": 5,
           "levels": [
-            10,
-            10,
-            11
+            11,
+            11,
+            12
           ],
-          "coins": 745,
+          "coins": 983,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 1,
-          "battles": 3,
+          "battles": 5,
           "levels": [
-            14,
-            14,
-            15
+            17,
+            17,
+            17
           ],
-          "coins": 1383,
+          "coins": 1959,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 2,
-          "battles": 3,
-          "levels": [
-            18,
-            18,
-            18
-          ],
-          "coins": 2180,
-          "orbs": 9,
-          "tonics": 3
-        },
-        {
-          "region": 3,
-          "battles": 3,
+          "battles": 5,
           "levels": [
             22,
             22,
             22
           ],
-          "coins": 3135,
+          "coins": 3186,
           "orbs": 9,
           "tonics": 3
+        },
+        {
+          "region": 3,
+          "battles": 5,
+          "levels": [
+            27,
+            27,
+            27
+          ],
+          "coins": 4593,
+          "orbs": 11,
+          "tonics": 4
         },
         {
           "region": 4,
-          "battles": 3,
+          "battles": 5,
           "levels": [
-            26,
-            26,
-            26
+            31,
+            31,
+            32
           ],
-          "coins": 4239,
-          "orbs": 9,
-          "tonics": 3
+          "coins": 6276,
+          "orbs": 13,
+          "tonics": 5
         },
         {
           "region": 5,
-          "battles": 3,
+          "battles": 5,
           "levels": [
-            30,
-            30,
-            30
+            36,
+            36,
+            36
           ],
-          "coins": 5481,
-          "orbs": 9,
-          "tonics": 3
+          "coins": 8120,
+          "orbs": 13,
+          "tonics": 5
         }
       ],
-      "battles": 18,
-      "actions": 205,
+      "battles": 30,
+      "actions": 258,
       "losses": 0,
-      "travelMoves": 72,
-      "puzzleMoves": 76,
-      "storyNodes": 0,
-      "relays": 12,
-      "fieldRooms": 84
+      "travelMoves": 108,
+      "puzzleMoves": 128,
+      "storyNodes": 18,
+      "relays": 18,
+      "fieldRooms": 126
     },
     {
       "approach": "lower",
@@ -351,85 +351,85 @@
       "regions": [
         {
           "region": 0,
-          "battles": 9,
+          "battles": 5,
           "levels": [
-            12,
+            11,
             11,
             12
           ],
-          "coins": 884,
+          "coins": 998,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 1,
-          "battles": 3,
+          "battles": 5,
           "levels": [
-            15,
-            15,
-            16
+            17,
+            17,
+            17
           ],
-          "coins": 1535,
+          "coins": 1966,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 2,
-          "battles": 3,
+          "battles": 5,
           "levels": [
-            19,
-            19,
-            20
+            22,
+            22,
+            22
           ],
-          "coins": 2347,
+          "coins": 3202,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 3,
-          "battles": 3,
+          "battles": 5,
           "levels": [
-            23,
-            23,
-            23
+            27,
+            26,
+            27
           ],
-          "coins": 3293,
-          "orbs": 9,
-          "tonics": 3
+          "coins": 4607,
+          "orbs": 11,
+          "tonics": 4
         },
         {
           "region": 4,
-          "battles": 3,
+          "battles": 5,
           "levels": [
-            27,
-            27,
-            27
+            31,
+            31,
+            32
           ],
-          "coins": 4404,
-          "orbs": 9,
-          "tonics": 3
+          "coins": 6275,
+          "orbs": 13,
+          "tonics": 5
         },
         {
           "region": 5,
-          "battles": 3,
+          "battles": 5,
           "levels": [
-            30,
-            30,
-            31
+            36,
+            36,
+            36
           ],
-          "coins": 5660,
-          "orbs": 9,
-          "tonics": 3
+          "coins": 8152,
+          "orbs": 13,
+          "tonics": 5
         }
       ],
-      "battles": 24,
-      "actions": 215,
-      "losses": 1,
-      "travelMoves": 72,
-      "puzzleMoves": 76,
-      "storyNodes": 0,
-      "relays": 12,
-      "fieldRooms": 84
+      "battles": 30,
+      "actions": 256,
+      "losses": 0,
+      "travelMoves": 108,
+      "puzzleMoves": 128,
+      "storyNodes": 18,
+      "relays": 18,
+      "fieldRooms": 126
     },
     {
       "approach": "lower",
@@ -437,85 +437,85 @@
       "regions": [
         {
           "region": 0,
-          "battles": 3,
+          "battles": 5,
           "levels": [
-            10,
-            10,
-            11
+            11,
+            11,
+            12
           ],
-          "coins": 741,
+          "coins": 1009,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 1,
-          "battles": 3,
+          "battles": 5,
           "levels": [
-            14,
-            14,
-            15
+            17,
+            17,
+            17
           ],
-          "coins": 1390,
+          "coins": 1984,
           "orbs": 9,
           "tonics": 3
         },
         {
           "region": 2,
-          "battles": 3,
-          "levels": [
-            18,
-            18,
-            18
-          ],
-          "coins": 2195,
-          "orbs": 9,
-          "tonics": 3
-        },
-        {
-          "region": 3,
-          "battles": 3,
+          "battles": 5,
           "levels": [
             22,
             22,
             22
           ],
-          "coins": 3137,
+          "coins": 3202,
           "orbs": 9,
           "tonics": 3
+        },
+        {
+          "region": 3,
+          "battles": 5,
+          "levels": [
+            27,
+            26,
+            27
+          ],
+          "coins": 4626,
+          "orbs": 11,
+          "tonics": 4
         },
         {
           "region": 4,
-          "battles": 3,
+          "battles": 5,
           "levels": [
-            26,
-            26,
-            26
+            31,
+            31,
+            32
           ],
-          "coins": 4239,
-          "orbs": 9,
-          "tonics": 3
+          "coins": 6297,
+          "orbs": 13,
+          "tonics": 5
         },
         {
           "region": 5,
-          "battles": 3,
+          "battles": 5,
           "levels": [
-            30,
-            30,
-            30
+            36,
+            36,
+            36
           ],
-          "coins": 5500,
-          "orbs": 9,
-          "tonics": 3
+          "coins": 8135,
+          "orbs": 13,
+          "tonics": 5
         }
       ],
-      "battles": 18,
-      "actions": 216,
+      "battles": 30,
+      "actions": 274,
       "losses": 0,
-      "travelMoves": 72,
-      "puzzleMoves": 76,
-      "storyNodes": 0,
-      "relays": 12,
-      "fieldRooms": 84
+      "travelMoves": 108,
+      "puzzleMoves": 128,
+      "storyNodes": 18,
+      "relays": 18,
+      "fieldRooms": 126
     }
   ],
   "completionist": {

@@ -55,3 +55,8 @@ Integrated saved-progress chapter guidance covering first companions, unfinished
 ## Latest checkpoint: 3.0.0-dev.6
 
 Integrated finale preparation and persistent shelter/relay approach selection. Three linked trials now use their own ridge, storm and final Guardian cycles. Regional request decisions grant matching-phase shields or energy; completed regional expeditions grant modest active-companion recovery. Trial narrative, preparation summary and scouting are integrated into battle/region UI. Phase effects apply once; final ending/rewards remain gated to the third victory. Tests cover all choice combinations, no duplicate phase grants, escape/healing, save migration and rematches. Existing pacing and final product acceptance gates remain in force; public/main unchanged.
+
+
+## Release candidate 3.0.0-rc.1
+
+Integrated all 18 field missions and one selected story arc per region into main progression. Existing seals grandfathered; secrets, other stories and requests remain optional. 64 regression checks; fresh starter campaigns complete at 30–48 battles without defeats. Chrome narrow-layout review covers all eight screens. Candidate and remaining acceptance differences are explicit in RELEASE_CANDIDATE.md. No claim of 8–12-hour duration or physical/human acceptance. Public/main unchanged.

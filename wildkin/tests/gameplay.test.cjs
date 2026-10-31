@@ -16,7 +16,7 @@ test('campaign traversal completes every authored node and all six Guardians wit
  s.zone=z;
  // Replace an older team with a local bond only when needed, as an ordinary player can.
  for(let route=0;route<3;route++)for(let n=0;n<3;n++){const event=h.api.World.REGIONS[z].routes[route][n],id=`${z}:${route}:${n}`;if(event.kind==='battle'){let retries=0;while(!s.story.completed.includes(id)&&retries++<30){h.api.enterNode(id);const result=await win(h.api);metrics.push(result.turns);if(!result.won){for(let i=0;i<3;i++){h.api.startEncounter();await win(h.api)}}}assert.ok(s.story.completed.includes(id),id)}else assert.ok(h.api.completeStory(id,event.answer));}
- for(let r=0;r<2;r++)await walkAdventure(h,z,r);
+ for(let r=0;r<3;r++)await walkAdventure(h,z,r);
  let train=0;while(!h.api.guardianReady(z)&&train++<40){h.api.startEncounter();await win(h.api)}assert.ok(h.api.guardianReady(z));
  let won=false;for(let retry=0;retry<30&&!won;retry++){h.api.startEncounter(true);const result=await win(h.api);won=result.won;metrics.push(result.turns);if(!won){for(let train=0;train<5;train++){h.api.startEncounter();await win(h.api)}}}
  assert.ok(won,'Guardian '+z);assert.ok(s.badges.includes(z));h.api.claimGuardian();assert.ok(s.kin.some(k=>k.guardianZone===z));

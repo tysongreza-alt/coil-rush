@@ -11,5 +11,5 @@ async function walkAdventure(h,z,r,{optional=false,approach='lower',metrics=null
  for(const destination of path){assert.equal(api.moveAdventure(destination),true,`Move ${run.position}→${destination} in ${z}:${r}`);if(metrics)metrics.travelMoves=(metrics.travelMoves||0)+1;await resolve();}
  assert.ok(run.completed);api.featureAction('fieldleave','',{});return run;
 }
-function prepareGuardianFixture(s,z,Adv){for(let r=0;r<2;r++){const run=Adv.runState(z,r);run.visited=[0,1,2,3,7,9,11];run.cleared=run.visited.slice();run.position=11;run.branch='upper';run.completed=true;s.adventure.runs[`${z}:${r}`]=run;}}
+function prepareGuardianFixture(s,z,Adv){s.story.completed.push(...[0,1,2].map(n=>`${z}:0:${n}`));for(let r=0;r<3;r++){const run=Adv.runState(z,r);run.visited=[0,1,2,3,7,9,11];run.cleared=run.visited.slice();run.position=11;run.branch='upper';run.completed=true;s.adventure.runs[`${z}:${r}`]=run;}}
 module.exports={walkAdventure,prepareGuardianFixture};
