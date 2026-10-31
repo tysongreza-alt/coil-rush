@@ -50,3 +50,8 @@ Fixed a release-blocking persistence bug: releasing a companion with habitat mem
 ## Latest checkpoint: 3.0.0-dev.5
 
 Integrated saved-progress chapter guidance covering first companions, unfinished mapped routes, Guardian preparation and postgame. Added optional guided practice from the opening and a six-technique workshop in Camp. Technique records require executed actions and survive backups; no extra progression gates. Regression suite: 61 checks. Campaign traversal rerun. This improves onboarding/navigation, not the main-story duration. Existing release criteria and pacing/quality limitations remain in force. Public/main unchanged.
+
+
+## Latest checkpoint: 3.0.0-dev.6
+
+Integrated finale preparation and persistent shelter/relay approach selection. Three linked trials now use their own ridge, storm and final Guardian cycles. Regional request decisions grant matching-phase shields or energy; completed regional expeditions grant modest active-companion recovery. Trial narrative, preparation summary and scouting are integrated into battle/region UI. Phase effects apply once; final ending/rewards remain gated to the third victory. Tests cover all choice combinations, no duplicate phase grants, escape/healing, save migration and rematches. Existing pacing and final product acceptance gates remain in force; public/main unchanged.

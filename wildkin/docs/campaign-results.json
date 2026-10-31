@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-31T02:19:20.441Z",
-  "build": "3.0.0-dev.5",
+  "generated": "2026-10-31T02:23:37.216Z",
+  "build": "3.0.0-dev.6",
   "method": "Six clean main campaigns: every starter through either direct encounters or puzzle approaches, plus one completionist campaign including all 18 field routes, 54 optional stories and six requests. Actual newState and two ordinary starter bonds, no injected levels, HP, XP or coins. Battles use a simple tactical policy; puzzle agent uses deterministic hints. Animations accelerated.",
   "limitation": "This establishes traversal and progression, not observed human enjoyment or 8–12-hour pacing. Action and room counts cannot establish a human completion time.",
   "routes": [
@@ -82,7 +82,7 @@
         }
       ],
       "battles": 30,
-      "actions": 277,
+      "actions": 276,
       "losses": 0,
       "travelMoves": 72,
       "storyNodes": 0,
@@ -167,7 +167,7 @@
         }
       ],
       "battles": 36,
-      "actions": 290,
+      "actions": 289,
       "losses": 1,
       "travelMoves": 72,
       "storyNodes": 0,
@@ -252,7 +252,7 @@
         }
       ],
       "battles": 36,
-      "actions": 333,
+      "actions": 332,
       "losses": 1,
       "travelMoves": 72,
       "storyNodes": 0,
@@ -423,7 +423,7 @@
         }
       ],
       "battles": 24,
-      "actions": 217,
+      "actions": 215,
       "losses": 1,
       "travelMoves": 72,
       "puzzleMoves": 76,
@@ -509,7 +509,7 @@
         }
       ],
       "battles": 18,
-      "actions": 217,
+      "actions": 216,
       "losses": 0,
       "travelMoves": 72,
       "puzzleMoves": 76,
@@ -595,7 +595,7 @@
       }
     ],
     "battles": 71,
-    "actions": 357,
+    "actions": 354,
     "losses": 0,
     "travelMoves": 270,
     "puzzleMoves": 128,

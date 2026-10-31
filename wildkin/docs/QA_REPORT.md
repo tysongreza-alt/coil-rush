@@ -1,3 +1,9 @@
+# Current development QA: 3.0.0-dev.6
+
+63 regression checks pass. Two new finale tests cover three distinct phase cycles, all shelter/relay and regional resolution combinations, once-per-phase expedition recovery, backup retention, escape, final-only rewards/ending, and ordinary Guardian rematches. Initial test assertions were corrected to treat an absent legacy ending flag as false, matching the existing save behavior. Clean starter campaigns rerun with the new cycles. Physical-device and human pacing/enjoyment acceptance have not occurred; the existing release gates remain open.
+
+---
+
 # Current development QA: 3.0.0-dev.5
 
 61 regression checks pass. Added actual guided-practice actions, duplicate/invalid technique protection, technique backup migration, skip/replay, chapter routing through bonds/field objectives/Guardians and all-seals postgame. The chapter guide derives its state from earned objectives, with no artificial timers or additional grind gates. Main campaign traversal rerun. These changes do not establish 8–12-hour pacing or replace final quality/device acceptance.

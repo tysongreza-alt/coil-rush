@@ -1,6 +1,6 @@
 # Wildkin 3.0 development branch
 
-**Build: 3.0.0-dev.5. Not a finished release. The public GitHub Pages deployment has not been updated by this development work.**
+**Build: 3.0.0-dev.6. Not a finished release. The public GitHub Pages deployment has not been updated by this development work.**
 
 Read [docs/DEVELOPMENT_STATUS.md](docs/DEVELOPMENT_STATUS.md), [docs/QA_REPORT.md](docs/QA_REPORT.md), and the authoritative [RELEASE_SPEC_3_0.md](RELEASE_SPEC_3_0.md) before resuming. Release-blocking work remains, including campaign length/depth, final visual/audio polish, and physical-device/family acceptance.
 

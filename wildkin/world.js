@@ -73,5 +73,11 @@ const HOMECOMINGS=[
  'Sola takes the repaired glider above a moving storm. The pilots paint alternate routes on the landing stones and leave a place for tomorrow’s weather. From the meadow, children watch the clouds change shape.',
  'Ione sets Aster’s unfinished book beside a fresh stack of paper. The last archivist becomes the first teacher of an open school. Your companions leave muddy footprints across the first page, and nobody wipes them away.'
 ];
-return {REGIONS,ENDING,ARENA,HOMECOMINGS,BRACKETS,EXPEDITION_THEMES,expeditionEvent};
+const FINAL_TRIALS=[
+ {region:3,title:'The ember that warms',text:'Aster holds the mountain just before its eruption. Fenn’s cooling ember answers: a fire can warm a home without holding a world still.',cycle:['charge','heavy','recover','strike']},
+ {region:4,title:'The wind that carries',text:'The bottled storm remembers Sola’s glider. The echo opens its wings. Protection can be a safe way forward, not a locked door.',cycle:['strike','charge','heavy','drain']},
+ {region:5,title:'Room for tomorrow',text:'The Starbound One waits at the center of the roots. Every changing voice joins the seed-bell. Aster listens for the future you are willing to welcome.',cycle:['mirror','charge','heavy','recover','drain']}
+];
+function finalePreparation(state,index){const trial=FINAL_TRIALS[index];if(!trial)return null;const choice=state.adventure?.requests?.[trial.region],expedition=Object.entries(state.expeditionRecords||{}).some(([key,r])=>key.startsWith(trial.region+':')&&r.wins>0);return {...trial,approach:state.story?.finalApproach==='relay'?'relay':'shelter',guard:choice===0,energy:choice===1,expedition};}
+return {REGIONS,ENDING,ARENA,HOMECOMINGS,BRACKETS,EXPEDITION_THEMES,expeditionEvent,FINAL_TRIALS,finalePreparation};
 });

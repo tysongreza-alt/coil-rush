@@ -1,7 +1,7 @@
 /* Wildkin domain rules. Original code, no runtime dependencies. */
 (function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./adventures.js'):root.WildkinAdventures);if(typeof module==='object'&&module.exports)module.exports=api;else root.WildkinCore=api;})(typeof globalThis!=='undefined'?globalThis:this,function(Adventures){
 'use strict';
-const BUILD='3.0.0-dev.5',SCHEMA=5;
+const BUILD='3.0.0-dev.6',SCHEMA=5;
 const BASE_LEVELS=[5,11,17,23,29,35],GUARDIAN_LEVELS=[9,15,21,27,33,40];
 const PASSIVES=[
  ['Verdant care','Guard restores 10% HP.','rest',.10],['First spark','First attack deals 25% more damage.','opener',.25],['River shelter','First incoming hit is 30% weaker.','shell',.30],['Honey reserve','Gain one energy after every third attack.','battery',3],['Patient stone','After guarding, the next attack is 25% stronger.','patient',.25],
@@ -57,6 +57,7 @@ function normalize(input){
  for(const [key,n] of Object.entries(a.trailSpot))insist(/^[0-5]$/.test(key)&&int(n,0,2),'Invalid trail selection');
  a.story.completed=Array.isArray(a.story.completed)?[...new Set(a.story.completed.filter(v=>typeof v==='string'&&/^[0-5]:[0-2]:[0-3]$/.test(v)))]:[];
  a.story.choices=obj(a.story.choices)?Object.fromEntries(Object.entries(a.story.choices).filter(([k,v])=>/^[0-5]:[0-2]:[0-3]$/.test(k)&&int(v,0,3))):{};
+ a.story.finalApproach=a.story.finalApproach==='relay'?'relay':'shelter';
  a.story.lessons=Array.isArray(a.story.lessons)?[...new Set(a.story.lessons.filter(id=>['strike','guard','burst','signature','switch','bond'].includes(id)))]:[];
  a.story.ending=!!a.story.ending;a.story.tutorial=!!a.story.tutorial;
  a.story.journal=Array.isArray(a.story.journal)?a.story.journal.filter(x=>typeof x==='string').slice(-200):[];
