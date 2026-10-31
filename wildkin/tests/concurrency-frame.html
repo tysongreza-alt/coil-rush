@@ -1,0 +1,5 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Wildkin isolated save window</title><div id="app"></div><div id="toast"></div><script>
+window.__WILDKIN_TEST__=true;window.__WILDKIN_TEST_STORAGE__='wildkin-qa-concurrency';
+// Test a real IndexedDB transaction with fallback storage unavailable in both windows.
+Object.defineProperty(window,'localStorage',{value:{getItem(){return null},setItem(){throw Error('QA fallback unavailable')},removeItem(){throw Error('QA fallback unavailable')}}});
+</script><script src="../adventures.js"></script><script src="../core.js"></script><script src="../world.js"></script><script src="../game.js"></script></html>

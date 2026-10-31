@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Wildkin real IndexedDB conflict QA</title><style>body{font:16px system-ui;background:#132632;color:#eef5da;padding:24px}button{padding:14px;font:inherit}iframe{display:none}pre{white-space:pre-wrap}</style><h1>Isolated two-window save test</h1><p>Uses only wildkin-qa-concurrency in the QA vault. No player saves are read or changed. localStorage is unavailable to both game frames.</p><button id="run">Test simultaneous IndexedDB writes</button><pre id="result" role="status">Ready</pre><iframe id="a" title="Isolated save window A" src="concurrency-frame.html"></iframe><iframe id="b" title="Isolated save window B" src="concurrency-frame.html"></iframe><script>
+const result=document.getElementById('result');document.getElementById('run').onclick=async()=>{try{
+ const wa=document.getElementById('a').contentWindow,wb=document.getElementById('b').contentWindow,a=wa.WILDKIN_TEST_API,b=wb.WILDKIN_TEST_API;await Promise.all([a.ready,b.ready]);
+ await a.startGame();if(!a.getState()){a.setState(a.newState(0));a.save();await a.flush()}await Promise.all([a.startGame(),b.startGame()]);await Promise.all([a.flush(),b.flush()]);
+ // Reload each baseline sequentially so both copies see the last committed revision.
+ await a.startGame();await a.flush();await b.startGame();await b.flush();await a.startGame();await a.flush();
+ // B now has an older baseline. A commits, then B queues several actions.
+ a.getState().coins=1111;a.save();await a.flush();b.getState().coins=2222;for(let i=0;i<5;i++)b.save();await b.flush();
+ const stored=await a.readVaultDb();if(stored.coins!==1111)throw Error('Stale window overwrote the committed save');
+ b.render();if(!wb.document.getElementById('app').textContent.includes('Another window saved progress'))throw Error('Conflict was not shown');
+ const inMemory=b.getState().coins;await b.startGame();await b.flush();if(b.getState().coins!==1111)throw Error('Load latest failed');b.getState().coins=3333;b.save();await b.flush();if((await b.readVaultDb()).coins!==3333)throw Error('Resumed writes failed');
+ result.textContent=JSON.stringify({passed:true,storage:'Actual browser IndexedDB, localStorage unavailable',staleQueuedWrites:5,protectedCoins:stored.coins,exportableInMemoryCopy:inMemory,resumedCoins:3333},null,2);
+}catch(error){result.textContent=JSON.stringify({passed:false,error:error.message},null,2)}};
+</script></html>

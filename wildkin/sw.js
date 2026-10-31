@@ -1,12 +1,24 @@
-const CACHE='wildkin-v2.0.0';
-const ASSETS=['./','./index.html','./styles.css?v=2.0.0','./game.js?v=2.0.0','./icon.svg','./manifest.webmanifest','./version.json'];
-self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()))});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
-self.addEventListener('fetch',e=>{
- if(e.request.method!=='GET'||new URL(e.request.url).origin!==location.origin)return;
- // Always check for a newer game shell; fall back to offline cache.
- if(e.request.mode==='navigate'){
-  e.respondWith(fetch(e.request).then(r=>{if(r.ok){const copy=r.clone();caches.open(CACHE).then(c=>c.put('./index.html',copy))}return r}).catch(()=>caches.match('./index.html')));return;
+/* Atomic offline shell. A new build waits until the player installs it. */
+const CACHE='wildkin-shell-3.0.0';
+const ROOT=new URL('./',self.location.href).href;
+const ASSETS=['./index.html','./styles.css?v=3.0.0','./adventures.js?v=3.0.0','./core.js?v=3.0.0','./world.js?v=3.0.0','./game.js?v=3.0.0','./icon.svg','./icon-192.png','./icon-512.png','./apple-touch-icon.png','./manifest.webmanifest'];
+self.addEventListener('install',event=>event.waitUntil((async()=>{
+ const cache=await caches.open(CACHE);
+ try{await cache.addAll(ASSETS.map(path=>new Request(new URL(path,ROOT),{cache:'reload'})))}
+ catch(error){await caches.delete(CACHE);throw error}
+})()));
+self.addEventListener('message',event=>{if(event.data?.type==='SKIP_WAITING')self.skipWaiting()});
+self.addEventListener('activate',event=>event.waitUntil((async()=>{
+ const keys=await caches.keys();
+ await Promise.all(keys.filter(key=>key!==CACHE&&(key.startsWith('wildkin-shell-')||/^wildkin-v\d/.test(key))).map(key=>caches.delete(key)));
+ await self.clients.claim();
+})()));
+self.addEventListener('fetch',event=>{
+ const url=new URL(event.request.url);
+ if(event.request.method!=='GET'||url.origin!==self.location.origin||!url.href.startsWith(ROOT))return;
+ if(url.pathname.endsWith('/version.json')){event.respondWith(fetch(event.request,{cache:'no-store'}));return}
+ if(event.request.mode==='navigate'){
+  event.respondWith(caches.open(CACHE).then(cache=>cache.match(new URL('index.html',ROOT))).then(cached=>cached||fetch(event.request)));return;
  }
- e.respondWith(caches.match(e.request).then(m=>m||fetch(e.request).then(r=>{if(r.ok){const copy=r.clone();caches.open(CACHE).then(c=>c.put(e.request,copy))}return r})));
+ event.respondWith(caches.open(CACHE).then(cache=>cache.match(event.request)).then(cached=>cached||fetch(event.request)));
 });

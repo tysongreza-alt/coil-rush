@@ -1,0 +1,9181 @@
+{
+  "build": "3.0.0",
+  "generated": "2026-10-31T07:49:23.029Z",
+  "encounters": 2700,
+  "method": "All 30 families lead a mixed team against six Guardian rematches and four final arena matches at equal level, three seeds, three fixed policies. Exact real engine. No tonics. Full-party HP available at entry.",
+  "limitations": "Synthetic equal-level fixtures, not observed players, campaign pacing or proof of optimal balance. Rematches include one Guardian, not the campaign finale echoes. Every family has two fixed supports; results describe the whole team.",
+  "policies": {
+    "burst": {
+      "wins": 851,
+      "trials": 900,
+      "meanActions": 8.6,
+      "switches": 0
+    },
+    "signatures": {
+      "wins": 842,
+      "trials": 900,
+      "meanActions": 8.9,
+      "switches": 0
+    },
+    "adapt": {
+      "wins": 833,
+      "trials": 900,
+      "meanActions": 10.7,
+      "switches": 559
+    }
+  },
+  "families": [
+    {
+      "lead": 0,
+      "wins": 81,
+      "trials": 90
+    },
+    {
+      "lead": 1,
+      "wins": 81,
+      "trials": 90
+    },
+    {
+      "lead": 2,
+      "wins": 86,
+      "trials": 90
+    },
+    {
+      "lead": 3,
+      "wins": 81,
+      "trials": 90
+    },
+    {
+      "lead": 4,
+      "wins": 87,
+      "trials": 90
+    },
+    {
+      "lead": 5,
+      "wins": 85,
+      "trials": 90
+    },
+    {
+      "lead": 6,
+      "wins": 78,
+      "trials": 90
+    },
+    {
+      "lead": 7,
+      "wins": 84,
+      "trials": 90
+    },
+    {
+      "lead": 8,
+      "wins": 85,
+      "trials": 90
+    },
+    {
+      "lead": 9,
+      "wins": 89,
+      "trials": 90
+    },
+    {
+      "lead": 10,
+      "wins": 84,
+      "trials": 90
+    },
+    {
+      "lead": 11,
+      "wins": 87,
+      "trials": 90
+    },
+    {
+      "lead": 12,
+      "wins": 81,
+      "trials": 90
+    },
+    {
+      "lead": 13,
+      "wins": 81,
+      "trials": 90
+    },
+    {
+      "lead": 14,
+      "wins": 90,
+      "trials": 90
+    },
+    {
+      "lead": 15,
+      "wins": 81,
+      "trials": 90
+    },
+    {
+      "lead": 16,
+      "wins": 84,
+      "trials": 90
+    },
+    {
+      "lead": 17,
+      "wins": 81,
+      "trials": 90
+    },
+    {
+      "lead": 18,
+      "wins": 87,
+      "trials": 90
+    },
+    {
+      "lead": 19,
+      "wins": 82,
+      "trials": 90
+    },
+    {
+      "lead": 20,
+      "wins": 81,
+      "trials": 90
+    },
+    {
+      "lead": 21,
+      "wins": 90,
+      "trials": 90
+    },
+    {
+      "lead": 22,
+      "wins": 86,
+      "trials": 90
+    },
+    {
+      "lead": 23,
+      "wins": 81,
+      "trials": 90
+    },
+    {
+      "lead": 24,
+      "wins": 81,
+      "trials": 90
+    },
+    {
+      "lead": 25,
+      "wins": 86,
+      "trials": 90
+    },
+    {
+      "lead": 26,
+      "wins": 90,
+      "trials": 90
+    },
+    {
+      "lead": 27,
+      "wins": 85,
+      "trials": 90
+    },
+    {
+      "lead": 28,
+      "wins": 90,
+      "trials": 90
+    },
+    {
+      "lead": 29,
+      "wins": 81,
+      "trials": 90
+    }
+  ],
+  "rows": [
+    {
+      "policy": "burst",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 0,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 0,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 0,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 0,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 1,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 1,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 1,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 1,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 4,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 2,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 2,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 2,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 2,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 3,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 3,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 3,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 3,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 5.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 4,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 4,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 4,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 4,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 2,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 5,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 5,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 5,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 5,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 6,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 6,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 6,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 6,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 7,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 7,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 7,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 7,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 8,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 8,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 8,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 8,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 9,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 9,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 9,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 9,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 10,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 10,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 10,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 14,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 10,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 4,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 11,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 11,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 11,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 11,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 12,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 12,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 12,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 12,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 4,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 13,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 13,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 13,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 13,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 14,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 14,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 14,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 14,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 15,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 15,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 15,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 15,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 16,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 16,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 16,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 16,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 17,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 17,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 17,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 17,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 18,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 18,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 18,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 18,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 19,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 19,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 19,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 19,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 5.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 20,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 20,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 20,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 20,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 21,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 21,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 21,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 21,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 22,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 22,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 22,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 22,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 7.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 4,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 23,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 23,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 23,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 23,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 24,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 24,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 24,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 24,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 25,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 25,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 25,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 25,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 26,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 26,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 26,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 26,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 27,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 27,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 27,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 27,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 28,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 28,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 28,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 28,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 29,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.3,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 29,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 29,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "burst",
+      "lead": 29,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 0,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 0,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 0,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 0,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 7.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 1,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 1,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 1,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 1,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 2,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 4,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 2,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 2,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 2,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 2,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 3,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 3,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 3,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 3,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 5.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 4,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 4,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 4,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 4,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 5,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 5,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 5,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 5,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 6,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 6,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 6,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 6,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 7,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 7,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 7,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 7,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 8,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 8,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 8,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 8,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 9,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 9,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 9,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 9,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 10,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 10,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 10,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 10,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 4,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 11,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 11,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 11,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 11,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 12,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 12,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 12,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 12,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 4,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 13,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 13,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 13,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 13,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 14,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 14,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 14,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 14,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 15,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 15,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 15,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 15,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 16,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 16,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 16,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 16,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 5,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 17,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 17,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 17,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 17,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 1,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 18,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 18,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 18,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 18,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 1,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 19,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 19,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 19,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 19,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 5.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 20,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 20,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 20,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 20,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 21,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 21,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 21,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 21,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 2,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 22,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 22,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 22,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 22,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 4,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 23,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 23,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 23,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 23,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 24,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 24,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 24,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 24,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 2,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 25,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 25,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 25,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 25,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 5,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 26,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 26,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 26,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 26,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 27,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 27,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 27,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 27,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 28,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 28,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 28,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 28,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 29,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 29,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 29,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "signatures",
+      "lead": 29,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 0,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 0,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 0,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 9
+    },
+    {
+      "policy": "adapt",
+      "lead": 0,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 14.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 0,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 1,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 1,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 1,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 9
+    },
+    {
+      "policy": "adapt",
+      "lead": 1,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 1,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 11.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 15,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 2,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 5,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 2,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 9
+    },
+    {
+      "policy": "adapt",
+      "lead": 2,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 5
+    },
+    {
+      "policy": "adapt",
+      "lead": 2,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 2,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 3,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 3,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 3,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 9
+    },
+    {
+      "policy": "adapt",
+      "lead": 3,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 1
+    },
+    {
+      "policy": "adapt",
+      "lead": 3,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.3,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 10,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 1
+    },
+    {
+      "policy": "adapt",
+      "lead": 4,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 5.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 4,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 4,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 4,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 14,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 4,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 9
+    },
+    {
+      "policy": "adapt",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 2,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 14,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 5,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 5,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 2
+    },
+    {
+      "policy": "adapt",
+      "lead": 5,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 5,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 5,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 6,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 6,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 6,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 6,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 6,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 11,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 7,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 7,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 7,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 7,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 7,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 14,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 1,
+      "meanActions": 12.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 8,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 8,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 8,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 8,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 14.7,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 8,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 2,
+      "meanActions": 10.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 9,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 9,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 4
+    },
+    {
+      "policy": "adapt",
+      "lead": 9,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 9,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 9,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 14,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 10,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 10,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 10,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 10,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 15,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 10,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 9.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 11,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 4.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 11,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 9
+    },
+    {
+      "policy": "adapt",
+      "lead": 11,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.3,
+      "switches": 4
+    },
+    {
+      "policy": "adapt",
+      "lead": 11,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 11,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 9.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 12,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 12,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 14,
+      "switches": 9
+    },
+    {
+      "policy": "adapt",
+      "lead": 12,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 12,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 12,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 14,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 8.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 13,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 4,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 13,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.7,
+      "switches": 7
+    },
+    {
+      "policy": "adapt",
+      "lead": 13,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 13,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 13,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 14,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 14,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 4
+    },
+    {
+      "policy": "adapt",
+      "lead": 14,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 14,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 14,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 15,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 15,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 15,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 15,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 15,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 16,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 16,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 16,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 16,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 16,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 14,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 17,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 17,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 17,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 17,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 15.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 17,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 2,
+      "meanActions": 12,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 18,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 18,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 18,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 18,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 15,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 18,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 10,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 19,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 19,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 1
+    },
+    {
+      "policy": "adapt",
+      "lead": 19,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 19,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 19,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 20,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 20,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 20,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 20,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 20,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 21,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 21,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 21,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 9
+    },
+    {
+      "policy": "adapt",
+      "lead": 21,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 21,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.3,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 9.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 22,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 22,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 22,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 22,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 22,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 23,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 4.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 23,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.7,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 23,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.7,
+      "switches": 9
+    },
+    {
+      "policy": "adapt",
+      "lead": 23,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 23,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 8.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 24,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 5.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 24,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 9
+    },
+    {
+      "policy": "adapt",
+      "lead": 24,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 24,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 24,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.7,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 25,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 25,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.7,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 25,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 25,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 25,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.3,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 26,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 26,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 26,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 26,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 26,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 1,
+      "meanActions": 10,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 14,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 8,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 27,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 27,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 27,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12,
+      "switches": 9
+    },
+    {
+      "policy": "adapt",
+      "lead": 27,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13.3,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 27,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 6
+    },
+    {
+      "policy": "adapt",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 28,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 28,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9.3,
+      "switches": 5
+    },
+    {
+      "policy": "adapt",
+      "lead": 28,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 28,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 28,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 0,
+      "trials": 3,
+      "wins": 0,
+      "meanActions": 8,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 9,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 12.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 4,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 29,
+      "kind": "guardian",
+      "index": 5,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 6.7,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 29,
+      "kind": "arena",
+      "index": 0,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 3
+    },
+    {
+      "policy": "adapt",
+      "lead": 29,
+      "kind": "arena",
+      "index": 1,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 10.3,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 29,
+      "kind": "arena",
+      "index": 2,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 11,
+      "switches": 0
+    },
+    {
+      "policy": "adapt",
+      "lead": 29,
+      "kind": "arena",
+      "index": 3,
+      "trials": 3,
+      "wins": 3,
+      "meanActions": 13,
+      "switches": 0
+    }
+  ]
+}

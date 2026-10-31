@@ -1,0 +1,1973 @@
+{
+  "encounters": 2592,
+  "generated": "2026-10-30T13:09:39.880Z",
+  "limitations": "Deterministic policy simulation of real engine with three starting-element companions. Does not validate human fun, device performance, or 8–12-hour pacing.",
+  "policies": {
+    "strike": {
+      "wins": 357,
+      "trials": 648,
+      "meanActions": 11.3
+    },
+    "burst": {
+      "wins": 590,
+      "trials": 648,
+      "meanActions": 8.6
+    },
+    "signature": {
+      "wins": 549,
+      "trials": 648,
+      "meanActions": 9.3
+    },
+    "tactical": {
+      "wins": 584,
+      "trials": 648,
+      "meanActions": 10.8
+    }
+  },
+  "results": [
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": -3,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 6
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": -3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.4
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": -3,
+      "region": 2,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 12
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": -3,
+      "region": 3,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 10
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": -3,
+      "region": 4,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": -3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 16
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": 0,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 8.4
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": 0,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": 0,
+      "region": 2,
+      "wins": 11,
+      "trials": 12,
+      "meanActions": 12
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": 0,
+      "region": 3,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 10.3
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": 0,
+      "region": 4,
+      "wins": 1,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": 0,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 16
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": 3,
+      "region": 0,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": 3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": 3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.1
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": 3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.3
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": 3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.9
+    },
+    {
+      "policy": "strike",
+      "starter": 0,
+      "offset": 3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 15.8
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": -3,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 6
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": -3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.4
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": -3,
+      "region": 2,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 12
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": -3,
+      "region": 3,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 10
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": -3,
+      "region": 4,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": -3,
+      "region": 5,
+      "wins": 10,
+      "trials": 12,
+      "meanActions": 18.7
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": 0,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 7.3
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": 0,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": 0,
+      "region": 2,
+      "wins": 11,
+      "trials": 12,
+      "meanActions": 12
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": 0,
+      "region": 3,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 10.3
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": 0,
+      "region": 4,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": 0,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 17.1
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": 3,
+      "region": 0,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.1
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": 3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": 3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.1
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": 3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 12
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": 3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "strike",
+      "starter": 1,
+      "offset": 3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 15.1
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": -3,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 6
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": -3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.5
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": -3,
+      "region": 2,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 12
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": -3,
+      "region": 3,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 10
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": -3,
+      "region": 4,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": -3,
+      "region": 5,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 16.4
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": 0,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 8.3
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": 0,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": 0,
+      "region": 2,
+      "wins": 11,
+      "trials": 12,
+      "meanActions": 12
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": 0,
+      "region": 3,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 10.2
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": 0,
+      "region": 4,
+      "wins": 2,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": 0,
+      "region": 5,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 16.1
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": 3,
+      "region": 0,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.1
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": 3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": 3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.1
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": 3,
+      "region": 3,
+      "wins": 11,
+      "trials": 12,
+      "meanActions": 11.9
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": 3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "strike",
+      "starter": 2,
+      "offset": 3,
+      "region": 5,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 16
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": -3,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 6
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": -3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": -3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.1
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": -3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.9
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": -3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.6
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": -3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 12.7
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": 0,
+      "region": 0,
+      "wins": 6,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": 0,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": 0,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": 0,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.3
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": 0,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7.9
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": 0,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.7
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": 3,
+      "region": 0,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 5.9
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": 3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 6
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": 3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": 3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7.5
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": 3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7.3
+    },
+    {
+      "policy": "burst",
+      "starter": 0,
+      "offset": 3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.2
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": -3,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 6
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": -3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": -3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.1
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": -3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.9
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": -3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.7
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": -3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 12
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": 0,
+      "region": 0,
+      "wins": 2,
+      "trials": 12,
+      "meanActions": 7
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": 0,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": 0,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": 0,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": 0,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.8
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": 0,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.7
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": 3,
+      "region": 0,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 5.9
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": 3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 6.1
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": 3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": 3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.6
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": 3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "burst",
+      "starter": 1,
+      "offset": 3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.7
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": -3,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 6
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": -3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": -3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.1
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": -3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.8
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": -3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": -3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.3
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": 0,
+      "region": 0,
+      "wins": 6,
+      "trials": 12,
+      "meanActions": 8.2
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": 0,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7.5
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": 0,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": 0,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.9
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": 0,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.3
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": 0,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.6
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": 3,
+      "region": 0,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 6.3
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": 3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 6.6
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": 3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.2
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": 3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": 3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "burst",
+      "starter": 2,
+      "offset": 3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.2
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": -3,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 7.8
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": -3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.3
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": -3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": -3,
+      "region": 3,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 10
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": -3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.6
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": -3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 13.4
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": 0,
+      "region": 0,
+      "wins": 2,
+      "trials": 12,
+      "meanActions": 8.2
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": 0,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": 0,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.8
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": 0,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.5
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": 0,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.4
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": 0,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 13
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": 3,
+      "region": 0,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 6.9
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": 3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": 3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.4
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": 3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7.5
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": 3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7.8
+    },
+    {
+      "policy": "signature",
+      "starter": 0,
+      "offset": 3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 12.8
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": -3,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": -3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.3
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": -3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": -3,
+      "region": 3,
+      "wins": 1,
+      "trials": 12,
+      "meanActions": 10.1
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": -3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.3
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": -3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 12.1
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": 0,
+      "region": 0,
+      "wins": 3,
+      "trials": 12,
+      "meanActions": 8.2
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": 0,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7.1
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": 0,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.8
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": 0,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.1
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": 0,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.4
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": 0,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.1
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": 3,
+      "region": 0,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 6.9
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": 3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": 3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.3
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": 3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.3
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": 3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.9
+    },
+    {
+      "policy": "signature",
+      "starter": 1,
+      "offset": 3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": -3,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": -3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": -3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": -3,
+      "region": 3,
+      "wins": 1,
+      "trials": 12,
+      "meanActions": 10
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": -3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.1
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": -3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.8
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": 0,
+      "region": 0,
+      "wins": 2,
+      "trials": 12,
+      "meanActions": 8.2
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": 0,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7.6
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": 0,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.8
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": 0,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.2
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": 0,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.3
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": 0,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.1
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": 3,
+      "region": 0,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": 3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": 3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.8
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": 3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.8
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": 3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.5
+    },
+    {
+      "policy": "signature",
+      "starter": 2,
+      "offset": 3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.6
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": -3,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 8.2
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": -3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": -3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 13
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": -3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.5
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": -3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.9
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": -3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 17
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": 0,
+      "region": 0,
+      "wins": 4,
+      "trials": 12,
+      "meanActions": 9.3
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": 0,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7.8
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": 0,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 12.8
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": 0,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": 0,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.3
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": 0,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 17
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": 3,
+      "region": 0,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": 3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": 3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": 3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": 3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.3
+    },
+    {
+      "policy": "tactical",
+      "starter": 0,
+      "offset": 3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 16.7
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": -3,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": -3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": -3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 13.3
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": -3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 13
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": -3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.7
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": -3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 15.6
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": 0,
+      "region": 0,
+      "wins": 4,
+      "trials": 12,
+      "meanActions": 9.5
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": 0,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7.2
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": 0,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.3
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": 0,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.1
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": 0,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.9
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": 0,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 14.4
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": 3,
+      "region": 0,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7.2
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": 3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": 3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": 3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.9
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": 3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9.8
+    },
+    {
+      "policy": "tactical",
+      "starter": 1,
+      "offset": 3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 13.4
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": -3,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": -3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 9
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": -3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 13.4
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": -3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 13.3
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": -3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10.7
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": -3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 14.1
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": 0,
+      "region": 0,
+      "wins": 0,
+      "trials": 12,
+      "meanActions": 9.5
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": 0,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8.8
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": 0,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 13.3
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": 0,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 12.3
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": 0,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": 0,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 14.2
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": 3,
+      "region": 0,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 7.8
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": 3,
+      "region": 1,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 8
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": 3,
+      "region": 2,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.5
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": 3,
+      "region": 3,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 11.9
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": 3,
+      "region": 4,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 10
+    },
+    {
+      "policy": "tactical",
+      "starter": 2,
+      "offset": 3,
+      "region": 5,
+      "wins": 12,
+      "trials": 12,
+      "meanActions": 14.1
+    }
+  ]
+}
