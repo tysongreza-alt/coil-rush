@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#081727"><meta name="color-scheme" content="dark">
 <meta name="description" content="One More Move is a cozy little sliding puzzle adventure with 80 charming brain teasers, no ads and no accounts.">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="One More Move">
-<title>One More Move | A tiny puzzle adventure</title>
+<link rel="icon" type="image/svg+xml" href="./icon.svg"><link rel="manifest" href="./manifest.webmanifest"><title>One More Move | A tiny puzzle adventure</title>
 <style>
 :root{--bg:#081727;--navy:#102a3c;--pane:#19364a;--line:rgba(196,232,227,.16);--aqua:#8cefe0;--mint:#58d9bd;--coral:#ff9d88;--gold:#ffdb83;--text:#f2f7f2;--muted:#a6bbc4;--shadow:0 18px 52px rgba(1,11,22,.42);font-family:ui-rounded,"Avenir Next",Avenir,"Trebuchet MS",system-ui,sans-serif;color:var(--text);background:var(--bg)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{min-height:100%;background:var(--bg)}body{margin:0;min-height:100dvh;overflow-x:hidden;overscroll-behavior-y:none;background:radial-gradient(ellipse 85% 45% at 50% -15%,#386179 0%,transparent 78%),linear-gradient(145deg,#0b2235,#081726 62%,#0c2030);}
@@ -76,4 +76,5 @@ $('homeBrand').onclick=()=>{closeModal();show('home')};$('continueBtn').onclick=
 $('settingsBtn').onclick=()=>{lastScreen=view;show('settings')};$('settingsBack').onclick=()=>show(lastScreen==='settings'?'home':lastScreen);$('soundBtn').onclick=()=>{save.sound=!save.sound;persist();paintSound();if(save.sound)blip();};$('soundToggle').onclick=()=>{save.sound=!save.sound;persist();paintSettings();if(save.sound)blip();};$('vibeToggle').onclick=()=>{save.vibe=!save.vibe;persist();paintSettings();};$('resetProfile').onclick=confirmReset;
 let touch=null;const board=$('board');board.addEventListener('pointerdown',e=>{if(view!=='game')return;touch={x:e.clientX,y:e.clientY,t:Date.now()};});board.addEventListener('pointerup',e=>{if(!touch||view!=='game')return;let dx=e.clientX-touch.x,dy=e.clientY-touch.y;touch=null;if(Math.max(Math.abs(dx),Math.abs(dy))<22)return;move(Math.abs(dx)>Math.abs(dy)?dx>0?'R':'L':dy>0?'D':'U');});board.addEventListener('pointercancel',()=>touch=null);document.addEventListener('keydown',e=>{if(modalType&&e.key==='Escape'){closeModal();return;}if(view==='game'&&!modalType){let d={ArrowUp:'U',ArrowRight:'R',ArrowDown:'D',ArrowLeft:'L'}[e.key];if(d){e.preventDefault();move(d);}if(e.key==='Backspace'){e.preventDefault();undo();}}});
 paintSound();show('home');
+if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){navigator.serviceWorker.register('./sw.js').catch(()=>{});}
 </script></body></html>
