@@ -1,4 +1,4 @@
-# One More Move: family browser playtest v1.2.0
+# One More Move: family browser playtest v1.3.0
 
 Open the web game at: https://tysongreza-alt.github.io/coil-rush/one-more-move/
 
@@ -23,3 +23,16 @@ Open the web game at: https://tysongreza-alt.github.io/coil-rush/one-more-move/
 - New app versions refresh on initial launch, return to the page, or while the app remains active. Offline checks fail gracefully. A browser app cannot install updates while fully closed; it checks when opened and connected again.
 - The version-aware service worker retains locally cached game assets for offline use but prefers network-fresh files whenever available.
 - QA: Chromium mobile emulation across eight viewport dimensions, 320×480 to 430×932 plus 667×375 landscape; first and third puzzle gameplay; version checks; and active-puzzle safety. Final on-device Safari verification remains useful.
+
+## Version 1.3.0: commercial polish and quality hardening
+
+- Local save state now preserves an unfinished puzzle plus its undo history, separately for each of three profiles; completed stars and previous progress remain intact.
+- Five worlds have distinct board materials and ambient colors while retaining their original puzzle geometry.
+- Blocked-move explanations now differentiate stones, frozen lines and one-way rails; unfinished exits explain the remaining glow goal.
+- Added How to Play in Settings, an optional reduced-motion toggle and OS-level prefers-reduced-motion support.
+- Improved layout fitting after dynamic phone viewport changes (including Safari bars and orientation changes).
+- Exported platform-neutral `levels.json` for the eventual native iOS build.
+- Local automated browser validation passed all 80 shortest routes, multi-profile resume/undo, and nine viewport configurations including compact phones and landscape.
+- Commercial launch checklist: `RELEASE_READINESS.md`; provisional App Store metadata: `STORE_COPY_DRAFT.md`.
+- The browser game is still a **free family playtest**. It is not yet an App Store app or a paid native release.
+
