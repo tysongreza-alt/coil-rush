@@ -1,6 +1,6 @@
 {
-  "version": "1.2.0",
-  "build": 10200,
+  "version": "1.3.0",
+  "build": 10300,
   "released": "2026-11-03",
-  "notes": "One-screen adaptive play, automatic update checks, and protected in-progress puzzles."
+  "notes": "Resume unfinished puzzles, five distinct world designs, 80 titled levels, clearer feedback, How to Play, reduced motion and improved phone layout."
 }
