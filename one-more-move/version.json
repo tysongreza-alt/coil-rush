@@ -1,6 +1,6 @@
 {
-  "version": "1.7.1",
-  "build": 10701,
+  "version": "1.7.2",
+  "build": 10702,
   "released": "2026-11-03",
-  "notes": "Fix the puzzle board continuously shrinking after taps and UI recalculations. The board stays full-size with the bottom hint area."
+  "notes": "Approved Glowbud artwork is now the iPhone Home Screen icon and web game icon. Gameplay, levels, and saves are unchanged."
 }
