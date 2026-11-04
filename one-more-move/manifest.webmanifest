@@ -1,7 +1,7 @@
 {
   "name": "One More Move",
   "short_name": "One More Move",
-  "description": "An offline puzzle adventure with 80 levels, seven companions, and star-powered progression.",
+  "description": "A cozy puzzle adventure with 80 levels, seven companions, and star-powered progression.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -9,8 +9,14 @@
   "theme_color": "#081727",
   "icons": [
     {
-      "src": "./apple-touch-icon.png",
+      "src": "./apple-touch-icon.png?v=1.7.2",
       "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./app-icon-512.png?v=1.7.2",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
@@ -18,7 +24,7 @@
       "src": "./icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     }
   ]
 }
