@@ -1,4 +1,4 @@
-# One More Move: family browser playtest v1.3.0
+# One More Move: family browser playtest v1.5.0
 
 Open the web game at: https://tysongreza-alt.github.io/coil-rush/one-more-move/
 
@@ -36,3 +36,11 @@ Open the web game at: https://tysongreza-alt.github.io/coil-rush/one-more-move/
 - Commercial launch checklist: `RELEASE_READINESS.md`; provisional App Store metadata: `STORE_COPY_DRAFT.md`.
 - The browser game is still a **free family playtest**. It is not yet an App Store app or a paid native release.
 
+
+## Version 1.5.0: hint accessibility and dismissible guides
+
+- Hint and gameplay feedback are now shown in a compact in-layout message row above the board, instead of a bottom toast that could cover directional controls.
+- The first play in each of the five worlds displays its world-specific guide with a one-tap **Got it** button. Dismissal persists separately for each player profile, leaving additional room for the puzzle board.
+- A permanent **?** button next to Exit reopens the current world's guide without resetting the puzzle. The embedded edge-hop illustration remains available.
+- The board recalculates its size as guides or status messages appear and disappear, maintaining the one-screen layout.
+- Updating a running game with an unfinished puzzle is deferred until the player exits that puzzle. Older tabs can still show an earlier version until a safe update takes place.
