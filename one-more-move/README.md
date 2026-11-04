@@ -1,4 +1,4 @@
-# One More Move: family browser playtest v1.7.0
+# One More Move: family browser playtest v1.7.2
 
 Open the web game at: https://tysongreza-alt.github.io/coil-rush/one-more-move/
 
@@ -63,3 +63,7 @@ Open the web game at: https://tysongreza-alt.github.io/coil-rush/one-more-move/
 The hint dock intentionally uses a flex auto margin to stay at the bottom of the phone. Chromium/Safari can resolve that auto margin to a changing pixel value. The responsive layout estimator previously counted it as fixed content, producing a feedback loop: each tap recalculated a smaller board, which enlarged the auto margin, which made the next board smaller. The estimator now **excludes the reserved hint dock's flexible margin** while continuing to count the dock's actual fixed height. Repeated recalculations therefore converge immediately to a stable board size.
 
 Reproduction/regression exercise: simulated an auto-margin feedback dock and compared 8 sequential layout recalculations, which previously shrank the board from ~300 to ~146 pixels at 390×844. With the fix, it remained 366 pixels. An additional automated interactive test across 320×568, 375×667, 390×844, 430×932, and 667×375 reported zero board-size drift after 16 repeated hints, moves, retries, and layout recalculations at each size. Physical iPhone/Safari confirmation is still required.
+
+## Version 1.7.2: approved Glowbud home-screen branding
+
+The owner approved the new full-colour Glowbud artwork. The site now serves this artwork as a 180×180 non-transparent iPhone `apple-touch-icon.png`, and an optimized 512×512 PNG for web-app installation and favicon use. The previous generic letter/icon art is no longer advertised by the manifest. The HTTP icon URL includes a v1.7.2 cache-busting query; the service worker cache advanced to `one-more-move-v9`. This release does not modify puzzle logic or player saves. An iOS Home Screen shortcut that already captured the old icon may need to be removed and recreated in Safari. Never clear Safari website data merely to update the icon, as it stores local progress.
