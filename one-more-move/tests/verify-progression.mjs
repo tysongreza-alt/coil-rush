@@ -1,0 +1,35 @@
+// Zero-dependency regression suite for progression rules and companion entitlements.
+// Run: node one-more-move/tests/verify-progression.mjs
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
+const code=html.slice(html.indexOf('const WORLD_STARS='),html.indexOf('const DIRS='));
+assert.ok(code.startsWith('const WORLD_STARS='),'Game progression segment missing');
+const levels=Array.from({length:80},(_,i)=>({chapter:Math.floor(i/16)}));
+const make=p=>new Function('p','LEVELS','const player=()=>p;const $=()=>null;const persist=()=>{};const toast=()=>{};'+code+';return {canStartLevel,worldReady,totalStars,nextUnplayed,characterUnlocked,unlockedCharacters,spriteMarkup};')(p,levels);
+let p={completed:{},selectedCharacter:'glowbud',legacyCeiling:-1};let g=make(p);
+assert.equal(g.canStartLevel(0),true);
+assert.equal(g.canStartLevel(1),false);
+p.completed[0]=1;assert.equal(g.canStartLevel(1),true);assert.equal(g.canStartLevel(2),false);
+for(let i=0;i<16;i++)p.completed[i]=1;
+assert.equal(g.totalStars(),16);assert.equal(g.worldReady(1),false);assert.ok(g.nextUnplayed()<16);
+for(let i=0;i<8;i++)p.completed[i]=2;
+assert.equal(g.totalStars(),24);assert.equal(g.worldReady(1),true);assert.equal(g.characterUnlocked('bloop'),true);
+for(let i=16;i<32;i++)p.completed[i]=1;
+assert.equal(g.worldReady(2),false);
+for(let i=16;i<28;i++)p.completed[i]=2;
+assert.equal(g.totalStars(),52);assert.equal(g.worldReady(2),true);assert.equal(g.characterUnlocked('pebble'),true);
+for(let i=32;i<48;i++)p.completed[i]=2;
+assert.equal(g.totalStars(),84);assert.equal(g.worldReady(3),true);assert.equal(g.characterUnlocked('nova'),true);
+for(let i=48;i<64;i++)p.completed[i]=3;
+assert.equal(g.worldReady(4),true);assert.equal(g.characterUnlocked('glint'),true);
+assert.equal(g.characterUnlocked('starbean'),false);
+for(let i=64;i<80;i++)p.completed[i]=1;
+assert.equal(g.characterUnlocked('starbean'),true);assert.equal(g.characterUnlocked('pip'),false);
+for(let i=64;i<80;i++)p.completed[i]=3;
+assert.equal(g.totalStars(),180);assert.equal(g.characterUnlocked('pip'),true);
+assert.equal(g.unlockedCharacters().length,7);
+for(const c of ['glowbud','bloop','pebble','nova','glint','starbean','pip'])assert.match(g.spriteMarkup(c),/^<svg[\s\S]*<\/svg>$/);
+const legacy=make({completed:{17:2},legacyCeiling:19,selectedCharacter:'glowbud'});
+assert.equal(legacy.canStartLevel(19),true);assert.equal(legacy.canStartLevel(8),true);assert.equal(legacy.worldReady(2),false);
+console.log('PASS: sequential levels, four star gates, seven companions, grandfathered progress');
