@@ -1,7 +1,7 @@
 {
   "name": "One More Move",
   "short_name": "One More Move",
-  "description": "A cozy, offline sliding-puzzle game",
+  "description": "An offline puzzle adventure with 80 levels, seven companions, and star-powered progression.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -9,7 +9,13 @@
   "theme_color": "#081727",
   "icons": [
     {
-      "src": "icon.svg",
+      "src": "./apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
