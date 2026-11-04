@@ -1,4 +1,4 @@
-# One More Move: family browser playtest v1.5.0
+# One More Move: family browser playtest v1.7.0
 
 Open the web game at: https://tysongreza-alt.github.io/coil-rush/one-more-move/
 
@@ -44,3 +44,16 @@ Open the web game at: https://tysongreza-alt.github.io/coil-rush/one-more-move/
 - A permanent **?** button next to Exit reopens the current world's guide without resetting the puzzle. The embedded edge-hop illustration remains available.
 - The board recalculates its size as guides or status messages appear and disappear, maintaining the one-screen layout.
 - Updating a running game with an unfinished puzzle is deferred until the player exits that puzzle. Older tabs can still show an earlier version until a safe update takes place.
+
+## Version 1.7.0: character collection, progression, and iPhone icon
+
+- **Glowbud** is the default playable character, illustrated in pure vector graphics and visible in the puzzle and home screen. Six additional cosmetic companions: **Bloop**, **Pebble**, **Nova**, **Glint**, **Starbean**, and **Pip**.
+- World entry is gated by clearing prior levels **and** cumulative star thresholds. World 2: 24 stars; World 3: 52 stars; World 4: 84 stars; World 5: 120 stars. All prior levels must be cleared for each gate. World 1 is always accessible.
+- Within a world, the next unsolved puzzle unlocks only after completing the previous puzzle. Completed puzzles remain replayable to improve the star count.
+- Opening Worlds 2–5 unlocks Bloop, Pebble, Nova, and Glint, respectively. Completing all 80 levels unlocks Starbean. Collecting 180 of the maximum 240 stars unlocks Pip.
+- The character locker is accessible from the home screen and Settings; characters do not change the difficulty. Unlocks and current character are saved separately for each player.
+- Existing playtest saves are **grandfathered** into any levels/worlds they reached prior to this release, avoiding loss of access. Resetting a player starts the new progression from Puzzle 1.
+- Hint and gameplay feedback live in a **fixed-height dock below the arrows**, using remaining screen space and never moving the board when messages appear.
+- A real **180x180 PNG home-screen icon** and improved SVG icon now feature Glowbud. A previously installed home-screen shortcut may need to be removed and re-added to refresh the icon; doing so should not require clearing Safari site data.
+- Test: `node one-more-move/tests/verify-progression.mjs`. Solver and browser device tests still required for the final production build.
+
