@@ -1,6 +1,6 @@
 {
-  "version": "1.7.0",
-  "build": 10700,
+  "version": "1.7.1",
+  "build": 10701,
   "released": "2026-11-03",
-  "notes": "A fixed bottom hint dock; sequential puzzle and star-gated world progression; seven unlockable vector characters; real iPhone home-screen icon."
+  "notes": "Fix the puzzle board continuously shrinking after taps and UI recalculations. The board stays full-size with the bottom hint area."
 }
