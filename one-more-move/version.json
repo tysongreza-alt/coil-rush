@@ -1,6 +1,6 @@
 {
-  "version": "1.4.0",
-  "build": 10400,
+  "version": "1.5.0",
+  "build": 10500,
   "released": "2026-11-03",
-  "notes": "Safer spacing around movement arrows and fast double-tap Retry, without a confirmation popup."
+  "notes": "Hints and feedback no longer cover arrow controls. World instructions can be dismissed and reopened from the game header."
 }
