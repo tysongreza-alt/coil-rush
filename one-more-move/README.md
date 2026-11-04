@@ -57,3 +57,9 @@ Open the web game at: https://tysongreza-alt.github.io/coil-rush/one-more-move/
 - A real **180x180 PNG home-screen icon** and improved SVG icon now feature Glowbud. A previously installed home-screen shortcut may need to be removed and re-added to refresh the icon; doing so should not require clearing Safari site data.
 - Test: `node one-more-move/tests/verify-progression.mjs`. Solver and browser device tests still required for the final production build.
 
+
+## Version 1.7.1: fixed shrinking puzzle board
+
+The hint dock intentionally uses a flex auto margin to stay at the bottom of the phone. Chromium/Safari can resolve that auto margin to a changing pixel value. The responsive layout estimator previously counted it as fixed content, producing a feedback loop: each tap recalculated a smaller board, which enlarged the auto margin, which made the next board smaller. The estimator now **excludes the reserved hint dock's flexible margin** while continuing to count the dock's actual fixed height. Repeated recalculations therefore converge immediately to a stable board size.
+
+Reproduction/regression exercise: simulated an auto-margin feedback dock and compared 8 sequential layout recalculations, which previously shrank the board from ~300 to ~146 pixels at 390×844. With the fix, it remained 366 pixels. An additional automated interactive test across 320×568, 375×667, 390×844, 430×932, and 667×375 reported zero board-size drift after 16 repeated hints, moves, retries, and layout recalculations at each size. Physical iPhone/Safari confirmation is still required.
