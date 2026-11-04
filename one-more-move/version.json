@@ -1,6 +1,6 @@
 {
-  "version": "1.5.0",
-  "build": 10500,
+  "version": "1.7.0",
+  "build": 10700,
   "released": "2026-11-03",
-  "notes": "Hints and feedback no longer cover arrow controls. World instructions can be dismissed and reopened from the game header."
+  "notes": "A fixed bottom hint dock; sequential puzzle and star-gated world progression; seven unlockable vector characters; real iPhone home-screen icon."
 }
